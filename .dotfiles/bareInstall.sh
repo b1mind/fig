@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # install bare script
-git clone --separate-git-dir=$HOME/.fig https://github.com/b1mind/fig.git fig-tmp
+git clone -b linux --separate-git-dir=$HOME/.fig https://github.com/b1mind/fig.git fig-tmp
 rsync --recursive --verbose --exclude '.git' fig-tmp/ $HOME/
 rm --recursive fig-tmp
 
