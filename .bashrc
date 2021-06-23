@@ -3,13 +3,10 @@ set -o vi
 eval "$(oh-my-posh --init --shell bash --config ~/.poshthemes/star.omp.json)"
 
 # TODO make banner.bash? Print colors?
-# cat ~/banner
-printf "%s\n" "    __ _   _    _             _   -------------------"
-printf "%s\n" "   /  | \_/ \  (_) _ __    __| |  Never Surrender"
-printf "%s\n" "    | |_   _ \ | || '_ \  / _  |  $(date)"
-printf "%s\n" "    | | \_/ \ \| || | | || (_| |  "
-printf "%s\n" "    |_|      \/|_||_| |_| \__,_|  ~: $(hostname) $(whoami)"
-printf "%s\n" "                                  -------------------------"
+if [ -f ~/.banner ]; then
+    . ~/.banner
+fi
+
 # Uptime: $(uptime -p)
 
 # Alias definitions.
