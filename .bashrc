@@ -47,6 +47,8 @@ alias gomg='~/releaseMe.sh'
 fig () {
   git --git-dir="$HOME/.fig" --work-tree="$HOME" "$@"
 }
+alias figc='fig commit -a -m'
+alias figs='fig status'
 
 # Colours!
 blk='\[\033[01;30m\]'   # Black

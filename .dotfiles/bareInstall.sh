@@ -14,3 +14,6 @@ fi;
 fig checkout
 fig config --local status.showUntrackedFiles no
 echo ".fig" >> .gitignore
+
+# TODO instal ? vim-plug?
+# TODO install ? ohMyPosh?
