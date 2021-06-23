@@ -3,8 +3,8 @@ set -o vi
 eval "$(oh-my-posh --init --shell bash --config ~/.poshthemes/star.omp.json)"
 
 # TODO make banner.bash? Print colors?
-if [ -f ~/.banner ]; then
-    . ~/.banner
+if [ -f ~/.dotfiles/.banner ]; then
+    . ~/.dotfiles/.banner
 fi
 
 # Uptime: $(uptime -p)
@@ -13,7 +13,6 @@ fi
 # TODO Make a .bash_aliases
 alias v='nvim'
 
-alias .r='~/.bashrc'
 alias .c='clear'
 alias .win='cd /mnt/c/Users/sh0rt/'
 alias .~='cd ~/'
