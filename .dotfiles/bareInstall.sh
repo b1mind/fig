@@ -1,7 +1,12 @@
 #!/bin/bash
 
 # install bare script
-git clone --branch linux --bare https://github.com/b1mind/fig.git $HOME/.fig
+git clone --separate-git-dir=$HOME/.fig https://github.com/b1mind/fig.git fig-tmp
+rsync --recursive --verbose --exclude '.git' fig-tmp/ $HOME/
+rm --recursive fig-tmp
+
+# working but trying above method of cloning
+# git clone --branch linux --bare https://github.com/b1mind/fig.git $HOME/.fig
 
 function fig {
    /usr/bin/git --git-dir=$HOME/.fig/ --work-tree=$HOME $@
