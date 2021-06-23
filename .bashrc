@@ -8,7 +8,7 @@ printf "%s\n" "    __ _   _    _             _   -------------------"
 printf "%s\n" "   /  | \_/ \  (_) _ __    __| |  Never Surrender"
 printf "%s\n" "    | |_   _ \ | || '_ \  / _  |  $(date)"
 printf "%s\n" "    | | \_/ \ \| || | | || (_| |  "
-printf "%s\n" "    |_|      \/|_||_| |_| \__,_|  "
+printf "%s\n" "    |_|      \/|_||_| |_| \__,_|  ~: $(hostname) $(whoami)"
 printf "%s\n" "                                  -------------------------"
 # Uptime: $(uptime -p)
 
