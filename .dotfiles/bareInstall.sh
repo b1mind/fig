@@ -28,6 +28,7 @@ echo ".fig" >> .gitignore
 sudo apt install unzip
 
 # instal ? vim-plug?
+echo "Install vim-plug dependancies?"
 while true
   do
     read -r -p "Are You Sure? [Y/n] " input
