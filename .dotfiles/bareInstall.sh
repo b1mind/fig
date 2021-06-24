@@ -23,18 +23,6 @@ else
 
 fi
 
-# Old from when I was cloning the bare repo without tempDir..
-# fig checkout
-# if [ $? = 0 ]; then
-#   echo "Checked out fig.";
-#   else
-#     echo "Backing up pre-existing dot files.";
-#     mkdir -p .config-backup
-#     fig checkout 2>&1 | egrep "\s+\." | awk {'print $1'} | xargs -I{} mv {} .config-backup/{}
-# fi;
-# echo "Backed up files"
-# ls -a .config-backup
-
 # clone bare repo into tempDir and update files
 echo "Cloning bare repo and staring fig setup"
 git clone --separate-git-dir=$HOME/.fig -b linux https://github.com/b1mind/fig.git fig-tmp
@@ -91,15 +79,12 @@ fi
 # TODO Install more? utils
 
 # clean up
-
 read -p "Reload ? ( n ) / ( any )" input
 if [ $input == 'n' ]; then
   echo "Reload to take effect"
-  rm bareInstall.sh
 
 else
   clear 
   bash
-  rm bareInstall.sh
 fi
 
