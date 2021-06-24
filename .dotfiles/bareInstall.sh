@@ -35,6 +35,7 @@ function fig {
 
 fig checkout
 fig config --local status.showUntrackedFiles no
+fig remote set-url origin https://github.com/b1mind/fig.git
 echo ".fig" >> .gitignore
 
 # install ? extras?
@@ -85,6 +86,6 @@ if [ $input == 'n' ]; then
 
 else
   clear 
-  bash
+  source ~/.bashrc
 fi
 
