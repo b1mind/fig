@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # install bare script
-git clone -b linux --separate-git-dir=$HOME/.fig https://github.com/b1mind/fig.git fig-tmp
+git clone --separate-git-dir=$HOME/.fig -b linux https://github.com/b1mind/fig.git fig-tmp
 rsync --recursive --verbose --exclude '.git' fig-tmp/ $HOME/
 rm --recursive fig-tmp
 
@@ -25,30 +25,30 @@ fi;
 fig checkout
 fig config --local status.showUntrackedFiles no
 echo ".fig" >> .gitignore
+
 sudo apt install unzip
 
 # instal ? vim-plug?
 echo "Install vim-plug dependancies?"
-while true
-  do
-    read -r -p "Are You Sure? [Y/n] " input
-   
-    case $input in
-       [yY][eE][sS]|[yY])
-    echo "Yes"
-    sh -c 'curl -fLo "${XDG_DATA_HOME:-$HOME/.local/share}"/nvim/site/autoload/plug.vim --create-dirs \
-    https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'
-    break
-    ;;
-       [nN][oO]|[nN])
-    echo "No"
-    break
-           ;;
-        *)
-    echo "Invalid input..."
-    ;;
-    esac
-done
+
+read input
+if [ $input == "y" ]; then
+  echo "Installing vim-plug"
+  sh -c 'curl -fLo "${XDG_DATA_HOME:-$HOME/.local/share}"/nvim/site/autoload/plug.vim --create-dirs \
+  https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'
+  else 
+    echo "skipped vim-plug"
 
 # TODO install ? ohMyPosh?
+echo "Install ohMyPosh"
+read input
+
+if [ $input == "y" ]; then
+  echo "Installing oh my posh"
+  sudo wget https://github.com/JanDeDobbeleer/oh-my-posh/releases/latest/download/posh-linux-amd64 -O /usr/local/bin/oh-my-posh
+  sudo chmod +x /usr/local/bin/oh-my-posh
+
+  else 
+    echo "skipped installing posh"
+
 
