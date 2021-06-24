@@ -172,6 +172,8 @@ let g:wordmotion_mappings = { 'w' : 'w', 'b' : 'b', 'e' : '<W-e>' , 'iw': 'iw'}
 ">> Key maps for all
 "<< cause i know better
 let mapleader = " "
+map , %
+
 " nnoremap ; zz
 noremap J }j
 noremap K {k
@@ -186,7 +188,6 @@ nnoremap { 9j
 " normal maps
 nnoremap R r
 nnoremap S R
-map , %
 nnoremap U <C-r>
 nnoremap Q @
 " nnoremap <silent> <Esc> :noh<CR>
@@ -202,7 +203,6 @@ vnoremap L W
 vnoremap H B
 vnoremap > >gv
 vnoremap < <gv
-vnoremap , %
 vnoremap <C-c> "+y
 
 "FIXME vmap <C-/> gcc

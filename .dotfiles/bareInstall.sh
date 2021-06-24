@@ -1,5 +1,6 @@
 #!/bin/bash
 
+cd ~/
 # clone bare repo and update files
 git clone --separate-git-dir=$HOME/.fig -b linux https://github.com/b1mind/fig.git fig-tmp
 rsync --recursive --verbose --exclude '.git' fig-tmp/ $HOME/
@@ -9,13 +10,12 @@ function fig {
    /usr/bin/git --git-dir=$HOME/.fig/ --work-tree=$HOME $@
 }
 
-mkdir -p .config-backup
 fig checkout
-
 if [ $? = 0 ]; then
   echo "Checked out fig.";
   else
     echo "Backing up pre-existing dot files.";
+    mkdir -p .config-backup
     fig checkout 2>&1 | egrep "\s+\." | awk {'print $1'} | xargs -I{} mv {} .config-backup/{}
 fi;
 
@@ -54,10 +54,21 @@ if [ $input == "y" ]; then
     echo "Install complete"
 
     else 
-    echo "skipped installing posh themes"
+      echo "skipped installing posh themes"
   fi
 
   else 
     echo "skipped installing posh"
+fi
+
+# clean up
+rm bareInstall.sh
+echo "Backed up files"
+ls -a .config-backup
+
+read -p "Reload ? ( y ) / ( any )" input
+if [ $input == 'y' ]; then
+  clear | bash
+else
 fi
 
