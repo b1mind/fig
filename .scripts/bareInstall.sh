@@ -6,6 +6,7 @@ if [ $input == "n" ]; then
   echo "Skipped Apts"
 else
   sudo apt update
+  sudo apt-get update
   # TODO requried installs ??
 fi
 
@@ -39,16 +40,16 @@ fig remote set-url origin https://github.com/b1mind/fig.git
 echo ".fig" >> .gitignore
 
 # install ? extras?
-read -p "Install vim-plug dependancies? ( n ) / ( any )" input
-if [ $input == "n" ]; then
-  echo "skipped vim-plug"
+# read -p "Install vim-plug dependancies? ( n ) / ( any )" input
+# if [ $input == "n" ]; then
+#   echo "skipped vim-plug"
 
-else 
+# else 
   echo "Installing vim-plug"
   sh -c 'curl -fLo "${XDG_DATA_HOME:-$HOME/.local/share}"/nvim/site/autoload/plug.vim --create-dirs \
   https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'
   echo "Install complete"
-fi
+# fi
 
 read -p "Install ohMyPosh? ( n ) / ( any )" input
 if [ $input == "n" ]; then
@@ -78,6 +79,15 @@ else
 fi
 
 # TODO Install more? utils
+read -p "Almost DONE! Install nvm/python3/pip? ( n ) / ( any )"
+if [ $input == 'n' ]; then
+  echo "skipped installing packages"
+else
+  wget -qO- https://raw.githubusercontent.com/nvm-sh/nvm/v0.38.0/install.sh | bash
+  nvm install v14.17.0
+  sudo apt-get install python3.6 python3-pip
+  echo "Install complete"
+
 sudo update-alternatives --config editor
 
 # clean up

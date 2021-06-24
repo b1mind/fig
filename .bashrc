@@ -40,7 +40,7 @@ md () {
     cd $1
 } 
 
-alias .1m='ssh root@1mind.dev'
+alias .1m='ssh sh0rtyb@1mind.dev'
 
 #Git stuffs
 alias gc='git commit -m'
