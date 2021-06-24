@@ -45,7 +45,7 @@ alias .1m='ssh root@1mind.dev'
 #Git stuffs
 alias gc='git commit -m'
 alias gall='git add .'
-alias gomg='~/releaseMe.sh'
+alias gomg='~/scripts/releaseMe.sh'
 
 # for --bare git repos
 fig () {
