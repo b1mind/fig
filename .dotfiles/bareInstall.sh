@@ -12,12 +12,13 @@ fi
 read -p "Backup current figs ? ( n ) / ( any )" input
 if [ $input == "n" ]; then
   echo "Skipped backup"
+
 else
-  # TODO make new backup function?
-  #?
+  # TODO make better backup function?
   echo "Backing up pre-existing dot files.";
   mkdir -p .fig-backup
-  egrep "\s+\." | awk {'print $1'} | xargs -I{} mv {} .fig-backup/{}
+  cp ~/.bashrc .fig-backup/.bashrc
+  cp ~/.config/nvim/init.vim .fig-backup/.config/nvim/init.vim
   echo "Backed up files"
   ls -a .fig-backup
 
