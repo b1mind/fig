@@ -18,7 +18,6 @@ else
   echo "Backing up pre-existing dot files.";
   mkdir -p .fig-backup
   cp ~/.bashrc .fig-backup/.bashrc
-  cp ~/.config/nvim/init.vim .fig-backup/.config/nvim/init.vim
   echo "Backed up files"
   ls -a .fig-backup
 
@@ -89,17 +88,18 @@ else
 
 fi
 
-# TODO Install utils
+# TODO Install more? utils
 
 # clean up
-rm ~/bareInstall.sh
 
 read -p "Reload ? ( n ) / ( any )" input
 if [ $input == 'n' ]; then
   echo "Reload to take effect"
+  rm bareInstall.sh
 
 else
   clear 
   bash
+  rm bareInstall.sh
 fi
 
