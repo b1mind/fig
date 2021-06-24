@@ -86,6 +86,6 @@ if [ $input == 'n' ]; then
 
 else
   clear 
-  source ~/.bashrc
+  . ~/.bashrc
 fi
 
