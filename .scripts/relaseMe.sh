@@ -1,1 +1,0 @@
-/mnt/c/Users/sh0rt/cfig/releaseMe.sh
