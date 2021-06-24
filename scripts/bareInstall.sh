@@ -78,6 +78,7 @@ else
 fi
 
 # TODO Install more? utils
+sudo update-alternatives --config editor
 
 # clean up
 read -p "Reload ? ( n ) / ( any )" input

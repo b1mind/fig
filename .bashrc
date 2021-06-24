@@ -17,6 +17,12 @@ alias .c='clear'
 alias .win='cd /mnt/c/Users/sh0rt/'
 alias .~='cd ~/'
 
+rl () {
+  clear 
+  . ~/.bashrc
+}
+alias .rl='rl'
+
 alias .b='nvim ~/.bashrc'
 alias .v='nvim ~/.config/nvim/init.vim'
 
@@ -33,6 +39,8 @@ md () {
     mkdir -p $1
     cd $1
 } 
+
+alias .1m='ssh root@1mind.dev'
 
 #Git stuffs
 alias gc='git commit -m'
