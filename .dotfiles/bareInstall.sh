@@ -1,7 +1,7 @@
 #!/bin/bash
 
 cd ~/
-# clone bare repo and update files
+# clone bare repo into tempDir and update files
 git clone --separate-git-dir=$HOME/.fig -b linux https://github.com/b1mind/fig.git fig-tmp
 rsync --recursive --verbose --exclude '.git' fig-tmp/ $HOME/
 rm --recursive fig-tmp
@@ -10,14 +10,17 @@ function fig {
    /usr/bin/git --git-dir=$HOME/.fig/ --work-tree=$HOME $@
 }
 
-fig checkout
-if [ $? = 0 ]; then
-  echo "Checked out fig.";
-  else
-    echo "Backing up pre-existing dot files.";
-    mkdir -p .config-backup
-    fig checkout 2>&1 | egrep "\s+\." | awk {'print $1'} | xargs -I{} mv {} .config-backup/{}
-fi;
+# Old from when I was cloning the bare repo without tempDir..
+# fig checkout
+# if [ $? = 0 ]; then
+#   echo "Checked out fig.";
+#   else
+#     echo "Backing up pre-existing dot files.";
+#     mkdir -p .config-backup
+#     fig checkout 2>&1 | egrep "\s+\." | awk {'print $1'} | xargs -I{} mv {} .config-backup/{}
+# fi;
+# echo "Backed up files"
+# ls -a .config-backup
 
 fig checkout
 fig config --local status.showUntrackedFiles no
@@ -62,9 +65,7 @@ if [ $input == "y" ]; then
 fi
 
 # clean up
-rm bareInstall.sh
-echo "Backed up files"
-ls -a .config-backup
+rm ~/bareInstall.sh
 
 read -p "Reload ? ( y ) / ( any )" input
 if [ $input == 'y' ]; then
