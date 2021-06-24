@@ -69,7 +69,9 @@ rm ~/bareInstall.sh
 
 read -p "Reload ? ( y ) / ( any )" input
 if [ $input == 'y' ]; then
-  clear | bash
-else
+  clear 
+  bash
+  else
+    echo "Reload to take effect"
 fi
 
