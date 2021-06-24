@@ -1,14 +1,27 @@
 #!/bin/bash
 
 cd ~/
-# clone bare repo into tempDir and update files
-git clone --separate-git-dir=$HOME/.fig -b linux https://github.com/b1mind/fig.git fig-tmp
-rsync --recursive --verbose --exclude '.git' fig-tmp/ $HOME/
-rm --recursive fig-tmp
+read -p "Apt Update and Install Utils? ( n ) / ( any )" input
+if [ $input == "n" ]; then
+  echo "Skipped Apts"
+else
+  sudo apt update
+  # TODO requried installs ??
+fi
 
-function fig {
-   /usr/bin/git --git-dir=$HOME/.fig/ --work-tree=$HOME $@
-}
+read -p "Backup current figs ? ( n ) / ( any )" input
+if [ $input == "n" ]; then
+  echo "Skipped backup"
+else
+  # TODO make new backup function?
+  #?
+  echo "Backing up pre-existing dot files.";
+  mkdir -p .fig-backup
+  egrep "\s+\." | awk {'print $1'} | xargs -I{} mv {} .fig-backup/{}
+  echo "Backed up files"
+  ls -a .fig-backup
+
+fi
 
 # Old from when I was cloning the bare repo without tempDir..
 # fig checkout
@@ -22,6 +35,16 @@ function fig {
 # echo "Backed up files"
 # ls -a .config-backup
 
+# clone bare repo into tempDir and update files
+echo "Cloning bare repo and staring fig setup"
+git clone --separate-git-dir=$HOME/.fig -b linux https://github.com/b1mind/fig.git fig-tmp
+rsync --recursive --verbose --exclude '.git' fig-tmp/ $HOME/
+rm --recursive fig-tmp
+
+function fig {
+   /usr/bin/git --git-dir=$HOME/.fig/ --work-tree=$HOME $@
+}
+
 fig checkout
 fig config --local status.showUntrackedFiles no
 echo ".fig" >> .gitignore
@@ -31,48 +54,51 @@ read -p "Install vim-plug dependancies? ( n ) / ( any )" input
 if [ $input == "n" ]; then
   echo "skipped vim-plug"
 
-  else 
-    echo "Installing vim-plug"
-    sh -c 'curl -fLo "${XDG_DATA_HOME:-$HOME/.local/share}"/nvim/site/autoload/plug.vim --create-dirs \
-    https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'
-    echo "Install complete"
+else 
+  echo "Installing vim-plug"
+  sh -c 'curl -fLo "${XDG_DATA_HOME:-$HOME/.local/share}"/nvim/site/autoload/plug.vim --create-dirs \
+  https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'
+  echo "Install complete"
 fi
 
 read -p "Install ohMyPosh? ( n ) / ( any )" input
 if [ $input == "n" ]; then
   echo "skipped installing posh"
 
+else 
+  echo "Installing oh my posh"
+  sudo wget https://github.com/JanDeDobbeleer/oh-my-posh/releases/latest/download/posh-linux-amd64 -O /usr/local/bin/oh-my-posh
+  sudo chmod +x /usr/local/bin/oh-my-posh
+  echo "Install complete"
+
+  read -p "Install ohMyPosh themes? ( n ) / ( any )" input
+  if [ $input == "n" ]; then
+    echo "skipped installing posh themes"
+
   else 
-    echo "Installing oh my posh"
-    sudo wget https://github.com/JanDeDobbeleer/oh-my-posh/releases/latest/download/posh-linux-amd64 -O /usr/local/bin/oh-my-posh
-    sudo chmod +x /usr/local/bin/oh-my-posh
+    echo "Installing posh themes"
+    sudo apt install unzip
+    mkdir ~/.poshthemes
+    wget https://github.com/JanDeDobbeleer/oh-my-posh/releases/latest/download/themes.zip -O ~/.poshthemes/themes.zip
+    unzip ~/.poshthemes/themes.zip -d ~/.poshthemes
+    chmod u+rw ~/.poshthemes/*.json
+    rm ~/.poshthemes/themes.zip
     echo "Install complete"
-
-    read -p "Install ohMyPosh themes? ( n ) / ( any )" input
-    if [ $input == "n" ]; then
-      echo "skipped installing posh themes"
-
-      else 
-        echo "Installing posh themes"
-        sudo apt install unzip
-        mkdir ~/.poshthemes
-        wget https://github.com/JanDeDobbeleer/oh-my-posh/releases/latest/download/themes.zip -O ~/.poshthemes/themes.zip
-        unzip ~/.poshthemes/themes.zip -d ~/.poshthemes
-        chmod u+rw ~/.poshthemes/*.json
-        rm ~/.poshthemes/themes.zip
-        echo "Install complete"
-    fi
+  fi
 
 fi
+
+# TODO Install utils
 
 # clean up
 rm ~/bareInstall.sh
 
-read -p "Reload ? ( y ) / ( any )" input
-if [ $input == 'y' ]; then
+read -p "Reload ? ( n ) / ( any )" input
+if [ $input == 'n' ]; then
+  echo "Reload to take effect"
+
+else
   clear 
   bash
-  else
-    echo "Reload to take effect"
 fi
 
