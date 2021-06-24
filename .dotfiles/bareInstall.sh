@@ -38,6 +38,7 @@ if [ $input == "y" ]; then
   https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'
   else 
     echo "skipped vim-plug"
+fi
 
 # TODO install ? ohMyPosh?
 echo "Install ohMyPosh"
@@ -50,5 +51,5 @@ if [ $input == "y" ]; then
 
   else 
     echo "skipped installing posh"
-
+fi
 
