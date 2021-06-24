@@ -79,7 +79,7 @@ else
 fi
 
 # TODO Install more? utils
-read -p "Almost DONE! Install nvm/python3/pip? ( n ) / ( any )"
+read -p "Almost DONE! Install nvm/python3/pip? ( n ) / ( any )" input
 if [ $input == 'n' ]; then
   echo "skipped installing packages"
 else

@@ -1,6 +1,8 @@
 # My settings ... lets play
 set -o vi
-eval "$(oh-my-posh --init --shell bash --config ~/.poshthemes/star.omp.json)"
+if [ -f ~/.poshthemes ]; then
+    eval "$(oh-my-posh --init --shell bash --config ~/.poshthemes/star.omp.json)"
+fi
 
 # TODO make banner.bash? Print colors?
 if [ -f ~/.dotfiles/.banner ]; then
