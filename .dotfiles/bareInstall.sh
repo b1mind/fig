@@ -27,41 +27,42 @@ fig config --local status.showUntrackedFiles no
 echo ".fig" >> .gitignore
 
 # install ? extras?
-read -p "Install vim-plug dependancies? ( y ) / ( any )" input
-if [ $input == "y" ]; then
-  echo "Installing vim-plug"
-  sh -c 'curl -fLo "${XDG_DATA_HOME:-$HOME/.local/share}"/nvim/site/autoload/plug.vim --create-dirs \
-  https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'
-  echo "Install complete"
+read -p "Install vim-plug dependancies? ( n ) / ( any )" input
+if [ $input == "n" ]; then
+  echo "skipped vim-plug"
 
   else 
-    echo "skipped vim-plug"
+    echo "Installing vim-plug"
+    sh -c 'curl -fLo "${XDG_DATA_HOME:-$HOME/.local/share}"/nvim/site/autoload/plug.vim --create-dirs \
+    https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'
+    echo "Install complete"
 fi
 
-read -p "Install ohMyPosh? ( y )/( any )" input
-if [ $input == "y" ]; then
-  echo "Installing oh my posh"
-  sudo wget https://github.com/JanDeDobbeleer/oh-my-posh/releases/latest/download/posh-linux-amd64 -O /usr/local/bin/oh-my-posh
-  sudo chmod +x /usr/local/bin/oh-my-posh
-  echo "Install complete"
-
-  read -p "Install ohMyPosh themes? ( y )/( any )" input
-  if [ $input == "y" ]; then
-    echo "Installing posh themes"
-    sudo apt install unzip
-    mkdir ~/.poshthemes
-    wget https://github.com/JanDeDobbeleer/oh-my-posh/releases/latest/download/themes.zip -O ~/.poshthemes/themes.zip
-    unzip ~/.poshthemes/themes.zip -d ~/.poshthemes
-    chmod u+rw ~/.poshthemes/*.json
-    rm ~/.poshthemes/themes.zip
-    echo "Install complete"
-
-    else 
-      echo "skipped installing posh themes"
-  fi
+read -p "Install ohMyPosh? ( n ) / ( any )" input
+if [ $input == "n" ]; then
+  echo "skipped installing posh"
 
   else 
-    echo "skipped installing posh"
+    echo "Installing oh my posh"
+    sudo wget https://github.com/JanDeDobbeleer/oh-my-posh/releases/latest/download/posh-linux-amd64 -O /usr/local/bin/oh-my-posh
+    sudo chmod +x /usr/local/bin/oh-my-posh
+    echo "Install complete"
+
+    read -p "Install ohMyPosh themes? ( n ) / ( any )" input
+    if [ $input == "n" ]; then
+      echo "skipped installing posh themes"
+
+      else 
+        echo "Installing posh themes"
+        sudo apt install unzip
+        mkdir ~/.poshthemes
+        wget https://github.com/JanDeDobbeleer/oh-my-posh/releases/latest/download/themes.zip -O ~/.poshthemes/themes.zip
+        unzip ~/.poshthemes/themes.zip -d ~/.poshthemes
+        chmod u+rw ~/.poshthemes/*.json
+        rm ~/.poshthemes/themes.zip
+        echo "Install complete"
+    fi
+
 fi
 
 # clean up
