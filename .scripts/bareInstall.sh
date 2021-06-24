@@ -86,7 +86,6 @@ if [ $input == 'n' ]; then
   echo "Reload to take effect"
 
 else
-  bash
   clear 
   . ~/.bashrc
 fi

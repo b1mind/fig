@@ -112,12 +112,13 @@ if !exists('g:vscode')
 
   let g:airline#extensions#tabline#enabled = 1
   colorscheme onedark
-  set termguicolors
   set background=dark
-  " cursor
-  set guicursor=n-v-c:block,i-ci-ve:ver25,r-cr:hor20,o:hor50
-    \,a:blinkwait600-blinkoff400-blinkon250-Cursor/lCursor
-    \,sm:block-blinkwait275-blinkoff120-blinkon175,
+
+  " set cursor
+  " set guicursor=
+  " set guicursor=n-v-c:block,i-ci-ve:ver25,r-cr:hor20,o:hor50
+  "   \,a:blinkwait600-blinkoff400-blinkon250-Cursor/lCursor
+  "   \,sm:block-blinkwait275-blinkoff120-blinkon175,
 
   " >> abbreviations
   " abbr soM something
