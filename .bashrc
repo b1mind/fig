@@ -1,6 +1,8 @@
+#!/usr/bin/env bash
+
 # My settings ... lets play
 set -o vi
-if [ -f ~/.poshthemes ]; then
+if [ -d ~/.poshthemes/ ]; then
     eval "$(oh-my-posh --init --shell bash --config ~/.poshthemes/star.omp.json)"
 fi
 
@@ -42,7 +44,7 @@ md () {
     cd $1
 } 
 
-alias .1m='ssh sh0rtyb@1mind.dev'
+alias .1m='ssh -t sh0rtyb@1mind.dev'
 
 #Git stuffs
 alias gc='git commit -m'
