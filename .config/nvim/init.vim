@@ -51,6 +51,8 @@ call plug#begin('~/.vim/plugged')
   Plug 'vim-scripts/ReplaceWithRegister'
   Plug 'chaoren/vim-wordmotion'
   Plug 'unblevable/quick-scope'
+  Plug 'adelarsq/vim-matchit'
+  Plug 'evanleck/vim-svelte', {'branch': 'main'}
   " Plug 'rhysd/clever-f.vim'
 
   " >vim plugins only
@@ -116,9 +118,9 @@ if !exists('g:vscode')
 
   " set cursor
   " set guicursor=
-  " set guicursor=n-v-c:block,i-ci-ve:ver25,r-cr:hor20,o:hor50
-  "   \,a:blinkwait600-blinkoff400-blinkon250-Cursor/lCursor
-  "   \,sm:block-blinkwait275-blinkoff120-blinkon175,
+  set guicursor=n-v-c:block,i-ci-ve:ver25,r-cr:hor20,o:hor50
+    \,a:blinkwait600-blinkoff400-blinkon250-Cursor/lCursor
+    \,sm:block-blinkwait275-blinkoff120-blinkon175,
 
   " >> abbreviations
   " abbr soM something
