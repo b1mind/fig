@@ -1,13 +1,18 @@
+// makes tabs be in order
+// settings.tabsMRUOrder = false;
+
 // an example to create a new mapping `ctrl-y`
 mapkey('<ctrl-y>', 'Show me the money', function() {
     Front.showPopup('a well-known phrase uttered by characters in the 1996 film Jerry Maguire (Escape to close).');
 });
 
 // an example to replace `T` with `gt`, click `Default mappings` to see how `T` works.
-map('gt', 'T');
+map('t', 'T');
+map('H', 'S');
+map('L', 'D');
 
-// an example to remove mapkey `Ctrl-i`
-unmap('<ctrl-i>');
+//imap(';', "<Esc>");
+unmap('r');
 
 // set search aliases
 addSearchAliasX('s', 'searX', 'https://x.1mind.dev/search?q=', 's');
@@ -15,7 +20,18 @@ mapkey('os', '#8Open Search with alias s', function() {
     Front.openOmnibar({type: "SearchEngine", extra: "s"});
 });
 
+// Editor maps
+aceVimMap(';', '<Esc>', 'insert');
+
 // set theme
+//link styles
+Hints.style('border: solid 3px #552a48; color:#efe1eb; background: initial; background-color: #552a48;');
+//text hint styles
+Hints.style("border: solid 1px #C38A22; padding: 1px; background: #e39913", "text");
+//search marks and cursor
+Visual.style('marks', 'background-color: #900fb1;');
+Visual.style('cursor', 'background-color: #ff50ff;');
+
 settings.theme = `
 .sk_theme {
     font-family: Input Sans Condensed, Charcoal, sans-serif;
