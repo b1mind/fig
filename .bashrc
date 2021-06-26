@@ -3,7 +3,7 @@
 # My settings ... lets play
 set -o vi
 if [ -d ~/.poshthemes/ ]; then
-    eval "$(oh-my-posh --init --shell bash --config ~/.poshthemes/star.omp.json)"
+    eval "$(oh-my-posh --init --shell bash --config ~/.poshthemes/1mind.omp.json)"
 fi
 
 # TODO make banner.bash? Print colors?
@@ -49,7 +49,7 @@ alias .1m='ssh -t sh0rtyb@1mind.dev'
 #Git stuffs
 alias gc='git commit -m'
 alias gall='git add .'
-alias gomg='~/scripts/releaseMe.sh'
+alias gomg='~/.scripts/releaseMe.sh'
 
 # for --bare git repos
 fig () {
@@ -99,11 +99,6 @@ if [ -z "$debian_chroot" ] && [ -r /etc/debian_chroot ]; then
     debian_chroot=$(cat /etc/debian_chroot)
 fi
 
-# set a fancy prompt (non-color, unless we know we "want" color)
-# case "$TERM" in
-#     xterm-color) color_prompt=yes;;
-# esac
-
 # uncomment for a colored prompt, if the terminal has the capability; turned
 # off by default to not distract the user: the focus in a terminal window
 # should be on the output of commands, not on the prompt
@@ -126,15 +121,6 @@ fi
 #     PS1='${debian_chroot:+($debian_chroot)}\u@\h:\w\$ '
 # fi
 # unset color_prompt force_color_prompt
-
-# If this is an xterm set the title to user@host:dir
-case "$TERM" in
-xterm*|rxvt*)
-    PS1="\[\e]0;${debian_chroot:+($debian_chroot)}\u@\h: \w\a\]$PS1"
-    ;;
-*)
-    ;;
-esac
 
 # enable color support of ls and also add handy aliases
 if [ -x /usr/bin/dircolors ]; then

@@ -273,7 +273,7 @@ if exists('g:vscode')
   nnoremap <silent> <leader><leader>r <Cmd>call VSCodeCall('workbench.action.openRecent')<CR>
 
   " hit that gspot with vsc actions (todo make some work for neovim)
-  nnoremap <silent> gp <Cmd>call VSCodeCall('editor.action.peekDefinition')<CR>
+  nnoremap <silent> gp <Cmd>call VSCodeCall('editor.action.marker.next')<CR>
   nnoremap <silent> gl <Cmd>call VSCodeCall('editor.action.openLink')<CR>
 
   " Git version controls
