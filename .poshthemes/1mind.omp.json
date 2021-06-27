@@ -50,7 +50,7 @@
           "foreground": "#98C379",
           "properties": {
             "display_version": false,
-            "prefix": "/ \uE781"
+            "prefix": "| \uE781"
           }
         },
         {

@@ -8,7 +8,6 @@ if !exists('g:vscode')
   set t_Co=256
 
   " -- Keep Settings --
-  set termguicolors
   set cursorline
   set incsearch
   set smartcase
@@ -118,6 +117,8 @@ if !exists('g:vscode')
 
   " set cursor
   " set guicursor=
+  hi Cursor guifg='#e3e3e3' guibg='#ff50ff'
+  set termguicolors
   set guicursor=n-v-c:block,i-ci-ve:ver25,r-cr:hor20,o:hor50
     \,a:blinkwait600-blinkoff400-blinkon250-Cursor/lCursor
     \,sm:block-blinkwait275-blinkoff120-blinkon175,
@@ -207,6 +208,19 @@ vnoremap H B
 vnoremap > >gv
 vnoremap < <gv
 vnoremap <C-c> "+y
+let s:clip = '/mnt/c/Windows/System32/clip.exe'
+let g:clipboard = {
+  \   'name': 'WslClipboard',
+  \   'copy': {
+  \      '+': 'clip.exe',
+  \      '*': 'clip.exe',
+  \    },
+  \   'paste': {
+  \      '+': 'powershell.exe -c [Console]::Out.Write($(Get-Clipboard -Raw).tostring().replace("`r", ""))',
+  \      '*': 'powershell.exe -c [Console]::Out.Write($(Get-Clipboard -Raw).tostring().replace("`r", ""))',
+  \   },
+  \   'cache_enabled': 0,
+  \ }
 
 "FIXME vmap <C-/> gcc
 vmap s S
