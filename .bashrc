@@ -45,6 +45,8 @@ md () {
 } 
 
 alias .1m='ssh -t sh0rtyb@1mind.dev'
+alias py='python3'
+alias pip='pip3'
 
 #Git stuffs
 alias gc='git commit -m'

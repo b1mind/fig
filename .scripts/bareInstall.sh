@@ -83,10 +83,11 @@ read -p "Almost DONE! Install nvm/python3/pip? ( n ) / ( any )" input
 if [ $input == 'n' ]; then
   echo "skipped installing packages"
 else
-  wget -qO- https://raw.githubusercontent.com/nvm-sh/nvm/v0.38.0/install.sh | bash
+  wget -qO- https://raw.githubusercontent.com/nvm-sh/nvm/v0.38.0/install.sh
   nvm install v14.17.0
-  sudo apt-get install python3.6 python3-pip
-  echo "Install complete"
+  sudo apt-get install python3.6 python3-pip python3-venv
+  echo "Installs complete"
+fi
 
 sudo update-alternatives --config editor
 
@@ -95,8 +96,7 @@ read -p "Reload ? ( n ) / ( any )" input
 if [ $input == 'n' ]; then
   echo "Reload to take effect"
 
-else
-  clear 
-  . ~/.bashrc
+  else
+    clear 
+    . ~/.bashrc
 fi
-
