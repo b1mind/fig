@@ -1,6 +1,10 @@
+#!/usr/bin/env bash
+
 # My settings ... lets play
 set -o vi
-eval "$(oh-my-posh --init --shell bash --config ~/.poshthemes/star.omp.json)"
+if [ -d ~/.poshthemes/ ]; then
+    eval "$(oh-my-posh --init --shell bash --config ~/.poshthemes/1mind.omp.json)"
+fi
 
 # TODO make banner.bash? Print colors?
 if [ -f ~/.dotfiles/.banner ]; then
@@ -16,6 +20,12 @@ alias v='nvim'
 alias .c='clear'
 alias .win='cd /mnt/c/Users/sh0rt/'
 alias .~='cd ~/'
+
+rl () {
+  clear 
+  . ~/.bashrc
+}
+alias .rl='rl'
 
 alias .b='nvim ~/.bashrc'
 alias .v='nvim ~/.config/nvim/init.vim'
@@ -34,10 +44,14 @@ md () {
     cd $1
 } 
 
+alias .1m='ssh -t sh0rtyb@1mind.dev'
+alias py='python3'
+alias pip='pip3'
+
 #Git stuffs
 alias gc='git commit -m'
 alias gall='git add .'
-alias gomg='~/releaseMe.sh'
+alias gomg='~/.scripts/releaseMe.sh'
 
 # for --bare git repos
 fig () {
@@ -87,15 +101,10 @@ if [ -z "$debian_chroot" ] && [ -r /etc/debian_chroot ]; then
     debian_chroot=$(cat /etc/debian_chroot)
 fi
 
-# set a fancy prompt (non-color, unless we know we "want" color)
-case "$TERM" in
-    xterm-color) color_prompt=yes;;
-esac
-
 # uncomment for a colored prompt, if the terminal has the capability; turned
 # off by default to not distract the user: the focus in a terminal window
 # should be on the output of commands, not on the prompt
-#force_color_prompt=yes
+force_color_prompt=yes
 
 if [ -n "$force_color_prompt" ]; then
     if [ -x /usr/bin/tput ] && tput setaf 1 >&/dev/null; then
@@ -108,21 +117,12 @@ if [ -n "$force_color_prompt" ]; then
     fi
 fi
 
-if [ "$color_prompt" = yes ]; then
-    PS1='${debian_chroot:+($debian_chroot)}\[\033[01;32m\]\u@\h\[\033[00m\]:\[\033[01;34m\]\w\[\033[00m\]\$ '
-else
-    PS1='${debian_chroot:+($debian_chroot)}\u@\h:\w\$ '
-fi
-unset color_prompt force_color_prompt
-
-# If this is an xterm set the title to user@host:dir
-case "$TERM" in
-xterm*|rxvt*)
-    PS1="\[\e]0;${debian_chroot:+($debian_chroot)}\u@\h: \w\a\]$PS1"
-    ;;
-*)
-    ;;
-esac
+# if [ "$color_prompt" = yes ]; then
+#     PS1='${debian_chroot:+($debian_chroot)}\[\033[01;32m\]\u@\h\[\033[00m\]:\[\033[01;34m\]\w\[\033[00m\]\$ '
+# else
+#     PS1='${debian_chroot:+($debian_chroot)}\u@\h:\w\$ '
+# fi
+# unset color_prompt force_color_prompt
 
 # enable color support of ls and also add handy aliases
 if [ -x /usr/bin/dircolors ]; then

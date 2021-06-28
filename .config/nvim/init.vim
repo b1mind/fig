@@ -8,7 +8,6 @@ if !exists('g:vscode')
   set t_Co=256
 
   " -- Keep Settings --
-  set termguicolors
   set cursorline
   set incsearch
   set smartcase
@@ -51,6 +50,8 @@ call plug#begin('~/.vim/plugged')
   Plug 'vim-scripts/ReplaceWithRegister'
   Plug 'chaoren/vim-wordmotion'
   Plug 'unblevable/quick-scope'
+  Plug 'adelarsq/vim-matchit'
+  Plug 'evanleck/vim-svelte', {'branch': 'main'}
   " Plug 'rhysd/clever-f.vim'
 
   " >vim plugins only
@@ -112,9 +113,12 @@ if !exists('g:vscode')
 
   let g:airline#extensions#tabline#enabled = 1
   colorscheme onedark
-  set termguicolors
   set background=dark
-  " cursor
+
+  " set cursor
+  " set guicursor=
+  hi Cursor guifg='#e3e3e3' guibg='#ff50ff'
+  set termguicolors
   set guicursor=n-v-c:block,i-ci-ve:ver25,r-cr:hor20,o:hor50
     \,a:blinkwait600-blinkoff400-blinkon250-Cursor/lCursor
     \,sm:block-blinkwait275-blinkoff120-blinkon175,
@@ -204,6 +208,19 @@ vnoremap H B
 vnoremap > >gv
 vnoremap < <gv
 vnoremap <C-c> "+y
+let s:clip = '/mnt/c/Windows/System32/clip.exe'
+let g:clipboard = {
+  \   'name': 'WslClipboard',
+  \   'copy': {
+  \      '+': 'clip.exe',
+  \      '*': 'clip.exe',
+  \    },
+  \   'paste': {
+  \      '+': 'powershell.exe -c [Console]::Out.Write($(Get-Clipboard -Raw).tostring().replace("`r", ""))',
+  \      '*': 'powershell.exe -c [Console]::Out.Write($(Get-Clipboard -Raw).tostring().replace("`r", ""))',
+  \   },
+  \   'cache_enabled': 0,
+  \ }
 
 "FIXME vmap <C-/> gcc
 vmap s S
@@ -270,7 +287,7 @@ if exists('g:vscode')
   nnoremap <silent> <leader><leader>r <Cmd>call VSCodeCall('workbench.action.openRecent')<CR>
 
   " hit that gspot with vsc actions (todo make some work for neovim)
-  nnoremap <silent> gp <Cmd>call VSCodeCall('editor.action.peekDefinition')<CR>
+  nnoremap <silent> gp <Cmd>call VSCodeCall('editor.action.marker.next')<CR>
   nnoremap <silent> gl <Cmd>call VSCodeCall('editor.action.openLink')<CR>
 
   " Git version controls
