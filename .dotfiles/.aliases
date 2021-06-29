@@ -1,0 +1,67 @@
+#!/usr/bin/env bash
+
+alias v='nvim'
+
+alias .c='clear'
+alias .win='cd /mnt/c/Users/sh0rt/'
+alias .~='cd ~/'
+
+md () {
+    mkdir -p $1
+    cd $1
+} 
+
+rl () {
+  clear 
+  . ~/.bashrc
+}
+alias .rl='rl'
+
+alias .a='nvim ~/.dotfiles/.aliases'
+alias .b='nvim ~/.bashrc'
+alias .v='nvim ~/.config/nvim/init.vim'
+
+
+alias explore='explorer.exe .'
+
+alias fcf='cd /mnt/c/Users/sh0rt/cfig'
+alias fws='cd ~/dev/websites/'
+
+alias ..='cd ..'
+alias ...='cd ../../'
+alias ....='cd ../../../'
+
+alias .1m='ssh -t sh0rtyb@1mind.dev'
+
+# Python stuffs
+alias py='python3'
+alias pip='pip3'
+alias dj='python3 manage.py'
+
+# Git stuffs
+alias gc='git commit -m'
+alias gall='git add .'
+alias gomg='~/.scripts/releaseMe.sh'
+
+# Git --bare repo for dot files
+fig () {
+  git --git-dir="$HOME/.fig" --work-tree="$HOME" "$@"
+}
+alias figc='fig commit -a -m'
+alias figs='fig status'
+
+# some more ls aliases
+alias ll='ls -alF'
+alias la='ls -A'
+alias l='ls -CF'
+
+# Colours!
+blk='\[\033[01;30m\]'   # Black
+red='\[\033[01;31m\]'   # Red
+grn='\[\033[01;32m\]'   # Green
+ylw='\[\033[01;33m\]'   # Yellow
+blu='\[\033[01;34m\]'   # Blue
+pur='\[\033[01;35m\]'   # Purple
+cyn='\[\033[01;36m\]'   # Cyan
+wht='\[\033[01;37m\]'   # White
+clr='\[\033[00m\]'      # Reset
