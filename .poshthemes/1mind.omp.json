@@ -31,7 +31,7 @@
         {
           "type": "root",
           "style": "plain",
-          "foreground": "#E06C75",
+          "foreground": "#9494ff",
           "properties": {
             "root_icon": "\uF0E7",
             "prefix": "",
@@ -44,7 +44,7 @@
           "style": "plain",
           "foreground": "#7b56ff",
           "properties": {
-            "ssh_icon": "\uF817 ",
+            "ssh_icon": "<#9494ff>\uF817</> ",
             "prefix": "",
             "display_user": false,
             "host_color": "#7b56ff",
