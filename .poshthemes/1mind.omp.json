@@ -32,7 +32,7 @@
           "style": "plain",
           "foreground": "#7b56ff",
           "properties": {
-            "ssh_icon": "[\uF817]",
+            "ssh_icon": "\uF817 ",
             "prefix": "<#9494ff>[</>",
             "display_user": false,
             "host_color": "#7b56ff",
