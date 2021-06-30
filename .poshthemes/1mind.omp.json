@@ -12,7 +12,7 @@
           "foreground": "#7b56ff",
           "properties": {
             "prefix":"",
-            "text": "<#9494ff>┏</>",
+            "text": "<#9494ff>┏[</>",
             "postfix":""
           }
         },
@@ -22,21 +22,9 @@
           "style": "plain",
           "foreground": "#C94A16",
           "properties": {
-            "prefix": "<#9494ff>[x]</>",
+            "prefix": "<#f05050>x</><#9494ff>][</>",
             "postfix":"",
             "display_exit_code": false
-          }
-        },
-        {
-          "type": "session",
-          "style": "plain",
-          "foreground": "#7b56ff",
-          "properties": {
-            "ssh_icon": "\uF817 ",
-            "prefix": "<#9494ff>[</>",
-            "display_user": false,
-            "host_color": "#7b56ff",
-            "postfix": "<#9494ff>: </>"
           }
         },
 
@@ -45,9 +33,22 @@
           "style": "plain",
           "foreground": "#E06C75",
           "properties": {
-            "root_icon": "root",
+            "root_icon": "\uF0E7][",
             "prefix": "",
-            "postfix": " <#ffffff>::</> "
+            "postfix": ""
+          }
+        },
+
+        {
+          "type": "session",
+          "style": "plain",
+          "foreground": "#7b56ff",
+          "properties": {
+            "ssh_icon": "\uF817][",
+            "prefix": "",
+            "display_user": false,
+            "host_color": "#7b56ff",
+            "postfix": "<#9494ff>: </>"
           }
         },
 
