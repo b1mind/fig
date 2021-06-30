@@ -22,8 +22,8 @@
           "style": "plain",
           "foreground": "#9494ff",
           "properties": {
-            "prefix": "<#f05050>x</>",
-            "postfix":" ",
+            "prefix": "<#f05050>x</><#9494ff>][</>",
+            "postfix":"",
             "display_exit_code": false
           }
         },
