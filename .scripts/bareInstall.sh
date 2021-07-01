@@ -8,6 +8,18 @@ else
   sudo apt update
   sudo apt-get update
   # TODO requried installs ??
+
+  # TODO Install more? utils
+  read -p "Install nvm/python3/pip? ( n ) / ( any )" input
+  if [ $input == 'n' ]; then
+    echo "skipped installing packages"
+  else
+    sudo apt-get install python3.6 python3-pip python3-venv
+    sudo wget -qO- https://raw.githubusercontent.com/nvm-sh/nvm/v0.38.0/install.sh / root
+    nvm install v14.17.0
+    echo "Installs complete"
+  fi
+
 fi
 
 read -p "Backup current figs ? ( n ) / ( any )" input
@@ -51,6 +63,12 @@ echo ".fig" >> .gitignore
   echo "Install complete"
 # fi
 
+if [$editor == $vim]; then
+  echo 'default editor is vim'
+else
+  sudo update-alternatives --config editor
+fi
+
 read -p "Install ohMyPosh? ( n ) / ( any )" input
 if [ $input == "n" ]; then
   echo "skipped installing posh"
@@ -61,35 +79,22 @@ else
   sudo chmod +x /usr/local/bin/oh-my-posh
   echo "Install complete"
 
-  read -p "Install ohMyPosh themes? ( n ) / ( any )" input
-  if [ $input == "n" ]; then
-    echo "skipped installing posh themes"
+  # read -p "Install ohMyPosh themes? ( n ) / ( any )" input
+  # if [ $input == "n" ]; then
+  #   echo "skipped installing posh themes"
 
-  else 
-    echo "Installing posh themes"
-    sudo apt install unzip
-    mkdir ~/.poshthemes
-    wget https://github.com/JanDeDobbeleer/oh-my-posh/releases/latest/download/themes.zip -O ~/.poshthemes/themes.zip
-    unzip ~/.poshthemes/themes.zip -d ~/.poshthemes
-    chmod u+rw ~/.poshthemes/*.json
-    rm ~/.poshthemes/themes.zip
-    echo "Install complete"
-  fi
+  # else 
+  #   echo "Installing posh themes"
+  #   sudo apt install unzip
+  #   mkdir ~/.poshthemes
+  #   wget https://github.com/JanDeDobbeleer/oh-my-posh/releases/latest/download/themes.zip -O ~/.poshthemes/themes.zip
+  #   unzip ~/.poshthemes/themes.zip -d ~/.poshthemes
+  #   chmod u+rw ~/.poshthemes/*.json
+  #   rm ~/.poshthemes/themes.zip
+  #   echo "Install complete"
+  # fi
 
 fi
-
-# TODO Install more? utils
-read -p "Almost DONE! Install nvm/python3/pip? ( n ) / ( any )" input
-if [ $input == 'n' ]; then
-  echo "skipped installing packages"
-else
-  wget -qO- https://raw.githubusercontent.com/nvm-sh/nvm/v0.38.0/install.sh
-  nvm install v14.17.0
-  sudo apt-get install python3.6 python3-pip python3-venv
-  echo "Installs complete"
-fi
-
-sudo update-alternatives --config editor
 
 # clean up
 read -p "Reload ? ( n ) / ( any )" input
