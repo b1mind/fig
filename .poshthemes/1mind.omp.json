@@ -33,9 +33,9 @@
           "style": "plain",
           "foreground": "#9494ff",
           "properties": {
-            "root_icon": "\u26a1",
+            "root_icon": "\u3df0",
             "prefix": "",
-            "postfix": " "
+            "postfix": ""
           }
         },
 
