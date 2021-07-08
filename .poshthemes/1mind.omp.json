@@ -5,37 +5,61 @@
       "type": "prompt",
       "alignment": "left",
       "segments": [
+
         {
-          "type": "root",
+          "type": "text",
           "style": "plain",
-          "foreground": "#E06C75",
+          "foreground": "#7b56ff",
           "properties": {
-            "root_icon": "root",
-            "prefix": "",
-            "postfix": " <#ffffff>::</> "
+            "prefix":"",
+            "text": "<#9494ff>┏[</>",
+            "postfix":""
           }
         },
 
+        {
+          "type": "exit",
+          "style": "plain",
+          "foreground": "#9494ff",
+          "properties": {
+            "prefix": "<#f05050>x</><#9494ff>][</>",
+            "postfix":"",
+            "display_exit_code": false
+          }
+        },
+
+        {
+          "type": "root",
+          "style": "plain",
+          "foreground": "#9494ff",
+          "properties": {
+            "root_icon": "\u2b4d",
+            "prefix": "",
+            "postfix": " "
+          }
+        },
 
         {
           "type": "session",
           "style": "plain",
-          "foreground": "#ffffff",
+          "foreground": "#7b56ff",
           "properties": {
-            "prefix": "<#63F08C>[</><#0377C8>@</>",
+            "ssh_icon": "<#9494ff>\uF817</> ",
+            "prefix": "",
             "display_user": false,
-            "host_color": "#0377c8",
-            "postfix": "<#63F08C>]</>"
+            "host_color": "#7b56ff",
+            "postfix": "<#9494ff>: </>"
           }
         },
 
         {
           "type": "node",
           "style": "plain",
-          "foreground": "#98C379",
+          "foreground": "#AAE682",
           "properties": {
             "display_version": false,
-            "prefix": " \uE781"
+            "prefix": "\uE781",
+            "postfix": " "
           }
         },
 
@@ -46,18 +70,18 @@
           "properties": {
             "display_mode": "context",
             "display_version": false,
-            "prefix": " \uE235 ",
-            "postfix": ""
+            "prefix": "\uE235",
+            "postfix": " "
           }
         },
 
         {
           "type": "path",
           "style": "plain",
-          "foreground": "#55B9C4",
+          "foreground": "#94bfff",
           "properties": {
             "style": "folder",
-            "prefix": "<#63F08C> </>"
+            "prefix": ""
           }
         },
 
@@ -70,17 +94,8 @@
             "display_status": true,
             "postfix":""
           }
-        },
-
-        {
-          "type": "exit",
-          "style": "plain",
-          "foreground": "#C94A16",
-          "properties": {
-            "prefix": " [x]",
-            "display_exit_code": false
-          }
         }
+
       ]
     },
     {
@@ -91,10 +106,10 @@
         {
           "type": "text",
           "style": "plain",
-          "foreground": "#63F08C",
+          "foreground": "#9494ff",
           "properties": {
-            "prefix": "",
-            "text": "\u279C"
+            "prefix": "┖",
+            "text": "\u276F"
           }
         }
       ]

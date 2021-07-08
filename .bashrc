@@ -7,69 +7,17 @@ if [ -d ~/.poshthemes/ ]; then
 fi
 
 # TODO make banner.bash? Print colors?
+# should it always print? or use motd?
 if [ -f ~/.dotfiles/.banner ]; then
     . ~/.dotfiles/.banner
 fi
 
-# Uptime: $(uptime -p)
-
 # Alias definitions.
-# TODO Make a .bash_aliases
-alias v='nvim'
+# See /usr/share/doc/bash-doc/examples in the bash-doc package.
 
-alias .c='clear'
-alias .win='cd /mnt/c/Users/sh0rt/'
-alias .~='cd ~/'
-
-rl () {
-  clear 
-  . ~/.bashrc
-}
-alias .rl='rl'
-
-alias .b='nvim ~/.bashrc'
-alias .v='nvim ~/.config/nvim/init.vim'
-
-alias explore='explorer.exe .'
-
-alias fcf='cd /mnt/c/Users/sh0rt/cfig'
-alias fws='cd ~/dev/websites/'
-
-alias ..='cd ..'
-alias ...='cd ../../'
-alias ....='cd ../../../'
-
-md () {
-    mkdir -p $1
-    cd $1
-} 
-
-alias .1m='ssh -t sh0rtyb@1mind.dev'
-alias py='python3'
-alias pip='pip3'
-
-#Git stuffs
-alias gc='git commit -m'
-alias gall='git add .'
-alias gomg='~/.scripts/releaseMe.sh'
-
-# for --bare git repos
-fig () {
-  git --git-dir="$HOME/.fig" --work-tree="$HOME" "$@"
-}
-alias figc='fig commit -a -m'
-alias figs='fig status'
-
-# Colours!
-blk='\[\033[01;30m\]'   # Black
-red='\[\033[01;31m\]'   # Red
-grn='\[\033[01;32m\]'   # Green
-ylw='\[\033[01;33m\]'   # Yellow
-blu='\[\033[01;34m\]'   # Blue
-pur='\[\033[01;35m\]'   # Purple
-cyn='\[\033[01;36m\]'   # Cyan
-wht='\[\033[01;37m\]'   # White
-clr='\[\033[00m\]'      # Reset
+if [ -f ~/.dotfiles/.aliases ]; then
+    . ~/.dotfiles/.aliases
+fi
 
 # ~/.bashrc: executed by bash(1) for non-login shells.
 # see /usr/share/doc/bash/examples/startup-files (in the package bash-doc)
@@ -136,23 +84,9 @@ if [ -x /usr/bin/dircolors ]; then
     alias egrep='egrep --color=auto'
 fi
 
-# some more ls aliases
-alias ll='ls -alF'
-alias la='ls -A'
-alias l='ls -CF'
-
 # Add an "alert" alias for long running commands.  Use like so:
 #   sleep 10; alert
 alias alert='notify-send --urgency=low -i "$([ $? = 0 ] && echo terminal || echo error)" "$(history|tail -n1|sed -e '\''s/^\s*[0-9]\+\s*//;s/[;&|]\s*alert$//'\'')"'
-
-# Alias definitions.
-# You may want to put all your additions into a separate file like
-# ~/.bash_aliases, instead of adding them here directly.
-# See /usr/share/doc/bash-doc/examples in the bash-doc package.
-
-if [ -f ~/.bash_aliases ]; then
-    . ~/.bash_aliases
-fi
 
 # enable programmable completion features (you don't need to enable
 # this, if it's already enabled in /etc/bash.bashrc and /etc/profile
