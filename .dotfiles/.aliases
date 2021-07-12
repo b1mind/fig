@@ -1,7 +1,5 @@
 #!/usr/bin/env bash
 
-alias v='nvim'
-
 alias .c='clear'
 alias .win='cd /mnt/c/Users/sh0rt/'
 alias .~='cd ~/'
@@ -17,6 +15,7 @@ rl () {
 }
 alias .rl='rl'
 
+alias v='nvim'
 alias .a='nvim ~/.dotfiles/.aliases'
 alias .b='nvim ~/.bashrc'
 alias .v='nvim ~/.config/nvim/init.vim'

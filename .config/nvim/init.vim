@@ -207,6 +207,8 @@ vnoremap L W
 vnoremap H B
 vnoremap > >gv
 vnoremap < <gv
+
+" Stuff for wsl copy
 vnoremap <C-c> "+y
 let s:clip = '/mnt/c/Windows/System32/clip.exe'
 let g:clipboard = {
@@ -331,9 +333,9 @@ if exists('g:vscode')
 
   " Fix for comments?
   "FIXME use plugin for vim motions not working with vsCode comments
-  xmap gc  <Plug>VSCodeCommentary
-  nmap gc  <Plug>VSCodeCommentary
-  omap gc  <Plug>VSCodeCommentary
+  xmap gc <Plug>VSCodeCommentary
+  nmap gc <Plug>VSCodeCommentary
+  omap gc <Plug>VSCodeCommentary
   nmap gcc <Plug>VSCodeCommentaryLine
   vmap <silent> gC <Cmd>call VSCodeCall('editor.action.blockComment')<CR>
 
