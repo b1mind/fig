@@ -181,6 +181,7 @@ map , %
 " nnoremap ; zz
 noremap J }j
 noremap K {k
+noremap Y y$
 
 " nav remaps
 nnoremap die ggVG
@@ -207,6 +208,8 @@ vnoremap L W
 vnoremap H B
 vnoremap > >gv
 vnoremap < <gv
+
+" Stuff for wsl copy
 vnoremap <C-c> "+y
 let s:clip = '/mnt/c/Windows/System32/clip.exe'
 let g:clipboard = {
@@ -280,7 +283,7 @@ nmap <leader>] f]i
 if exists('g:vscode')
 
   nnoremap <silent> <leader>z <Cmd>call VSCodeCall('workbench.action.toggleZenMode')<CR><Cmd>call VSCodeCall('workbench.action.focusActiveEditorGroup')<CR>
-  map <silent> zv <Cmd>call VSCodeCall('workbench.action.toggleZenMode')<CR><Cmd>call VSCodeCall('workbench.action.focusActiveEditorGroup')<CR>
+  " nnoremap <silent> zv <Cmd>call VSCodeCall('workbench.action.toggleZenMode')<CR><Cmd>call VSCodeCall('workbench.action.focusActiveEditorGroup')<CR>
 
   " FIXME buffer wont save in vsCode?
   nnoremap <silent> <leader>s <Cmd>call VSCodeCall('workbench.action.files.save')<CR>
@@ -331,9 +334,9 @@ if exists('g:vscode')
 
   " Fix for comments?
   "FIXME use plugin for vim motions not working with vsCode comments
-  xmap gc  <Plug>VSCodeCommentary
-  nmap gc  <Plug>VSCodeCommentary
-  omap gc  <Plug>VSCodeCommentary
+  xmap gc <Plug>VSCodeCommentary
+  nmap gc <Plug>VSCodeCommentary
+  omap gc <Plug>VSCodeCommentary
   nmap gcc <Plug>VSCodeCommentaryLine
   vmap <silent> gC <Cmd>call VSCodeCall('editor.action.blockComment')<CR>
 

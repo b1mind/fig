@@ -6,17 +6,17 @@ if [ -d ~/.poshthemes/ ]; then
     eval "$(oh-my-posh --init --shell bash --config ~/.poshthemes/1mind.omp.json)"
 fi
 
-# TODO make banner.bash? Print colors?
-# should it always print? or use motd?
-if [ -f ~/.dotfiles/.banner ]; then
-    . ~/.dotfiles/.banner
-fi
-
 # Alias definitions.
 # See /usr/share/doc/bash-doc/examples in the bash-doc package.
 
 if [ -f ~/.dotfiles/.aliases ]; then
     . ~/.dotfiles/.aliases
+fi
+
+# TODO make banner.bash? Print colors?
+# should it always print? or use motd?
+if [ -f ~/.dotfiles/.banner ]; then
+    . ~/.dotfiles/.banner
 fi
 
 # ~/.bashrc: executed by bash(1) for non-login shells.
