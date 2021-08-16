@@ -181,6 +181,7 @@ map , %
 " nnoremap ; zz
 noremap J }j
 noremap K {k
+noremap Y y$
 
 " nav remaps
 nnoremap die ggVG
@@ -282,7 +283,7 @@ nmap <leader>] f]i
 if exists('g:vscode')
 
   nnoremap <silent> <leader>z <Cmd>call VSCodeCall('workbench.action.toggleZenMode')<CR><Cmd>call VSCodeCall('workbench.action.focusActiveEditorGroup')<CR>
-  map <silent> zv <Cmd>call VSCodeCall('workbench.action.toggleZenMode')<CR><Cmd>call VSCodeCall('workbench.action.focusActiveEditorGroup')<CR>
+  " nnoremap <silent> zv <Cmd>call VSCodeCall('workbench.action.toggleZenMode')<CR><Cmd>call VSCodeCall('workbench.action.focusActiveEditorGroup')<CR>
 
   " FIXME buffer wont save in vsCode?
   nnoremap <silent> <leader>s <Cmd>call VSCodeCall('workbench.action.files.save')<CR>
