@@ -4,6 +4,10 @@ alias .c='clear'
 alias .win='cd /mnt/c/Users/sh0rt/'
 alias .~='cd ~/'
 
+kp () {
+  fuser -k $1/tcp
+}
+
 md () {
     mkdir -p $1
     cd $1
@@ -36,6 +40,9 @@ alias .1m='ssh -t sh0rtyb@1mind.dev'
 alias py='python3'
 alias pip='pip3'
 alias dj='python3 manage.py'
+
+# NPM stuff
+alias nrd='npm run dev'
 
 # Git stuffs
 alias gc='git commit -m'

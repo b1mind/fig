@@ -1,5 +1,6 @@
 #!/usr/bin/env bash
 
+
 # My settings ... lets play
 set -o vi
 if [ -d ~/.poshthemes/ ]; then
