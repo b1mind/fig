@@ -186,6 +186,9 @@ nnoremap K {k
 vnoremap K {
 nnoremap Y y$
 
+nmap [m [t
+nmap ]m ]t
+
 " nav remaps
 nnoremap die ggVG
 nnoremap H B
