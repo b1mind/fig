@@ -1,3 +1,4 @@
+" Windows version please check for linux copy (also where does nvim vsc extension pull from?)
 set exrc
 set nohlsearch
 set hidden
@@ -22,6 +23,7 @@ if !exists('g:vscode')
   set smartindent
   set nu
   set nowrap
+  set textwidth=80
   set splitbelow splitright
   set wildmenu
   set nocompatible
@@ -51,6 +53,8 @@ call plug#begin('~/.vim/plugged')
   Plug 'vim-scripts/ReplaceWithRegister'
   Plug 'chaoren/vim-wordmotion'
   Plug 'unblevable/quick-scope'
+  Plug 'adelarsq/vim-matchit'
+  Plug 'evanleck/vim-svelte', {'branch': 'main'}
   " Plug 'rhysd/clever-f.vim'
 
   " >vim plugins only
