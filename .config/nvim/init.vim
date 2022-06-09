@@ -26,7 +26,6 @@ if !exists('g:vscode')
   set nocompatible
 
   " % for html tags use https://www.vim.org/scripts/script.php?script_id=39
-  filetype plugin on
   filetype off
 
   set showcmd
@@ -51,7 +50,8 @@ call plug#begin('~/.vim/plugged')
   Plug 'chaoren/vim-wordmotion'
   Plug 'unblevable/quick-scope'
   Plug 'adelarsq/vim-matchit'
-  Plug 'evanleck/vim-svelte', {'branch': 'main'}
+  "Plug 'evanleck/vim-svelte', {'branch': 'main'}
+  Plug 'leafOfTree/vim-svelte-plugin'
   " Plug 'rhysd/clever-f.vim'
 
   " >vim plugins only
@@ -75,7 +75,7 @@ call plug#begin('~/.vim/plugged')
 
     " Primeagen recommends--
     "Plug ***Get Harpoooooon and Telescope learn the way ..
-    Plug 'tpope/vim-fugitive'
+    "Plug 'tpope/vim-fugitive'
     Plug 'vim-utils/vim-man'
     Plug 'mbbill/undotree'
     Plug 'sheerun/vim-polyglot'
@@ -133,11 +133,12 @@ if !exists('g:vscode')
   augroup END
 
   " >> Key mappings VIM only
-  imap ; <Esc>
-  vmap ; <Esc>
+  inoremap ; <Esc>
+  " vnoremap ; <Esc>
 
-  vnoremap J :m '>+1<CR>gv=gv
-  vnoremap K :m '<-2<CR>gv=gv
+  " does this work? Prime bind?
+  " vnoremap J :m '>+1<CR>gv=gv
+  " vnoremap K :m '<-2<CR>gv=gv
  
   "TODO split buffer/panes
 
@@ -161,7 +162,7 @@ if !exists('g:vscode')
   " leader leader window/plugin actions 
   nnoremap <leader><leader>u :UndotreeShow<CR>
   nnoremap <leader><leader>e :wincmd v<bar> :Ex <bar> :vertical resize 30<CR>
-  nnoremap <C-S-E>:wincmd v<bar> :Ex <bar> :vertical resize 30<CR>
+  nnoremap <C-S-E>:wincmd v<bar> :Ex <bar> :vertical resize 30<CR>;
 
 endif 
 "end vim only settings
@@ -179,16 +180,18 @@ let mapleader = " "
 map , %
 
 " nnoremap ; zz
-noremap J }j
-noremap K {k
-noremap Y y$
+nnoremap J }j
+vnoremap J }
+nnoremap K {k
+vnoremap K {
+nnoremap Y y$
 
 " nav remaps
 nnoremap die ggVG
 nnoremap H B
 nnoremap L W
-nnoremap } 9k
-nnoremap { 9j
+" nnoremap } 9k
+" nnoremap { 9j
 
 " normal maps
 nnoremap R r
@@ -229,7 +232,7 @@ let g:clipboard = {
 vmap s S
 
 " gspot maps
-nmap gs ysiw
+nmap gs ysaw
 
 " Map for r as gr
 vmap r gr 
@@ -251,16 +254,20 @@ vnoremap <leader>i $
 vnoremap <leader>a ^
 
 " FIXME does not account for indent this way
-nnoremap <leader>o o<Esc>O
+nnoremap <leader>o }o<Esc>O
+nnoremap <leader>O {o<Esc>O
 nnoremap <leader>. @@
-
 nnoremap <leader>; $a;<Esc>
 nnoremap <leader><leader>; a;<Esc>
 nnoremap <leader>, $a,<Esc>
+nnoremap <leader><leader>, f i,<Esc>
 nnoremap <leader>p "+p
 nnoremap <leader>m M
-nnoremap <leader>v vaBV
-nnoremap <leader>V vabV
+nnoremap <leader>b vaBV
+nnoremap <leader>B va[V
+nnoremap <leader>t vatV
+
+nnoremap <leader>e f 
 
 nnoremap <leader>y "+y
 vnoremap <leader>y "+y
@@ -271,6 +278,7 @@ vnoremap <leader>d "_d
 noremap <leader>J J
 
 " Imitate goto symbol clear/insert
+" use [m ]m to look for {
 nmap <leader>{ f{ci{
 nmap <leader>} f}i
 nmap <leader>( f(ci(
@@ -282,7 +290,8 @@ nmap <leader>] f]i
 
 if exists('g:vscode')
 
-  nnoremap <silent> <leader>z <Cmd>call VSCodeCall('workbench.action.toggleZenMode')<CR><Cmd>call VSCodeCall('workbench.action.focusActiveEditorGroup')<CR>
+  nnoremap <silent> <leader>z <Cmd>call VSCodeCall('workbench.action.toggleZenMode')<CR>
+  nnoremap <silent> <leader><leader>z <Cmd>call VSCodeCall('settings.cycle.zenModeFull')<CR>
   " nnoremap <silent> zv <Cmd>call VSCodeCall('workbench.action.toggleZenMode')<CR><Cmd>call VSCodeCall('workbench.action.focusActiveEditorGroup')<CR>
 
   " FIXME buffer wont save in vsCode?
