@@ -47,6 +47,13 @@ $cdd = "..\..\"
 Function cddPath {Set-Location -Path $cdd}
 Set-Alias -name ... -value cddPath
 
+$btestPath = "~/browser-test/" 
+Function btest ($browser = 'safari') {
+  Set-Location -Path $btestPath
+  npm run test:$browser
+}
+Set-Alias -name bt -value btest
+
 # $vrc= "~/cfig/_vimrc"
 $vrc= "%userprofile%/AppData/Local/nvim/init.vim"
 
