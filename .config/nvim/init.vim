@@ -173,6 +173,12 @@ let g:wordmotion_mappings = { 'w' : 'w', 'b' : 'b', 'e' : '<W-e>' , 'iw': 'iw'}
 " let g:clever_f_chars_match_any_signs = ";"
 " let g:clever_f_fix_key_direction = 1
 " let g:clever_f_mark_direct = 1
+ 
+" //fix playing with colors for QS
+" highlight QuickScopePrimary guifg='#ff50ff' gui=underline ctermfg=155 cterm=underline
+" highlight QuickScopeSecondary guifg='#ff50ff' gui=underline ctermfg=81 cterm=underline
+" highlight TabLineFill guibg='#000000' guifg='#ff50ff'
+" highlight TabLineSelection guibg='#000000' guifg='#ff50ff'
 
 ">> Key maps for all
 "<< cause i know better
@@ -185,7 +191,6 @@ vnoremap J }
 nnoremap K {k
 vnoremap K {
 nnoremap Y y$
-
 nmap [m [t
 nmap ]m ]t
 
@@ -292,6 +297,9 @@ nmap <leader>] f]i
 "TODO better [ ] as g; and g,
 
 if exists('g:vscode')
+  " highlight Visual guibg='#2f2b3a' 
+  highlight Visual guibg='#00000000' 
+  highlight QuickScopeSecondary guifg='#e3e3e3' gui=underline ctermfg=81 cterm=underline
 
   nnoremap <silent> <leader>z <Cmd>call VSCodeCall('workbench.action.toggleZenMode')<CR>
   nnoremap <silent> <leader><leader>z <Cmd>call VSCodeCall('settings.cycle.zenModeFull')<CR>
@@ -361,5 +369,4 @@ if exists('g:vscode')
   "nnoremap <silent> i <Cmd>call VSCodeCall('settings.cycle.statusBarInsert')<CR>i
   "#nnoremap <silent> v <Cmd>call VSCodeCall('settings.cycle.statusBarVisual')<CR>v
   "#nnoremap <silent> ; <Cmd>call VSCodeCall('settings.cycle.statusBarEsc')<CR><Esc>
-  "#nnoremap <silent> ? <Cmd>call VSCodeNotify('workbench.action.findInFiles', { 'query': expand('<cword>')})<CR>
 endif
