@@ -1,5 +1,13 @@
 [
 	//> Main bindings
+	{
+		"key": "ctrl+q",
+		"command": "workbench.action.joinAllGroups"
+	},
+	{
+		"key": "ctrl+shift+q",
+		"command": "workbench.action.closeAllGroups"
+	},
 
 	//< List vim like controls
 	{
@@ -203,7 +211,6 @@
 	},
 
 	//< inputs
-
 	//< search/replace panel
 	{
 		"key": "ctrl+j",
@@ -308,7 +315,6 @@
 		"command": "git.stageSelectedRanges",
 		"when": "isInDiffEditor || dirtyDiffVisible"
 	},
-
 	{
 		"key": "ctrl+r",
 		"command": "git.revertSelectedRanges",
@@ -592,5 +598,9 @@
 		"key": "ctrl+h",
 		"command": "-editor.action.startFindReplaceAction",
 		"when": "editorFocus || editorIsOpen"
+	},
+	{
+		"key": "ctrl+q",
+		"command": "-workbench.action.quickOpenView"
 	}
 ]
