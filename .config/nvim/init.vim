@@ -17,7 +17,7 @@ if !exists('g:vscode')
   set tabstop=2
   set softtabstop=2
   set shiftwidth=2
-  set expandtab
+  " set expandtab
   set smartindent
   set nu
   set nowrap
@@ -75,6 +75,7 @@ call plug#begin('~/.vim/plugged')
 
     " Primeagen recommends--
     "Plug ***Get Harpoooooon and Telescope learn the way ..
+    "Plug ***Get TreeSitter?
     "Plug 'tpope/vim-fugitive'
     Plug 'vim-utils/vim-man'
     Plug 'mbbill/undotree'
@@ -92,8 +93,6 @@ call plug#end()
 
 " >vim only settings
 if !exists('g:vscode')
-
-  let mapleader = " "
 
   " >> qol settings
   let g:netrw_browse_split = 2
@@ -297,9 +296,12 @@ nmap <leader>] f]i
 "TODO better [ ] as g; and g,
 
 if exists('g:vscode')
+
+  " Different settings in vsCode for scoping 
+  highlight QuickScopePrimary gui=underline cterm=underline ctermfg=155 
+  highlight QuickScopeSecondary gui=underline cterm=underline ctermfg=81
   " highlight Visual guibg='#2f2b3a' 
   highlight Visual guibg='#00000000' 
-  highlight QuickScopeSecondary guifg='#e3e3e3' gui=underline ctermfg=81 cterm=underline
 
   nnoremap <silent> <leader>z <Cmd>call VSCodeCall('workbench.action.toggleZenMode')<CR>
   nnoremap <silent> <leader><leader>z <Cmd>call VSCodeCall('settings.cycle.zenModeFull')<CR>
@@ -348,21 +350,18 @@ if exists('g:vscode')
   " Good example of cmd bind that extends
   nnoremap <silent> ? <Cmd>call VSCodeNotify('workbench.action.findInFiles', { 'query': expand('<cword>')})<CR>
 
-  " Different settings in vsCode for scoping 
-  highlight QuickScopePrimary gui=underline cterm=underline ctermfg=155 
-  highlight QuickScopeSecondary gui=underline cterm=underline ctermfg=81
-
   " Fix for comments?
   "FIXME use plugin for vim motions not working with vsCode comments
   xmap gc <Plug>VSCodeCommentary
   nmap gc <Plug>VSCodeCommentary
   omap gc <Plug>VSCodeCommentary
   nmap gcc <Plug>VSCodeCommentaryLine
-  vmap <silent> gC <Cmd>call VSCodeCall('editor.action.blockComment')<CR>
+  " vmap <silent> gC <Cmd>call VSCodeCall('editor.action.blockComment')<CR>
 
-  "FIXME " Highlighting in vsCode/neoVCS/neovim are all different?
-  vmap <silent> af <Cmd>call VSCodeCall('editor.action.smartSelect.grow')<CR>
-  vmap <silent> aF <Cmd>call VSCodeCall('editor.action.smartSelect.shrink')<CR>
+  " look at how maybe treesitter can work.
+  "FIXME " VSC highlighting only activates Visual mode if mouse inits
+  " vmap <silent> af <Cmd>call VSCodeNotifyVisual('editor.action.smartSelect.grow')<CR>
+  " vmap <silent> aF <Cmd>call VSCodeNotifyVisual('editor.action.smartSelect.shrink')<CR>
 
   "BORKED
   "(Hacky attempt and having colored action bar but overwrites and esc not working)

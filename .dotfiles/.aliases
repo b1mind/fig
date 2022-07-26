@@ -24,6 +24,7 @@ alias .a='nvim ~/.dotfiles/.aliases'
 alias .b='nvim ~/.bashrc'
 alias .v='nvim ~/.config/nvim/init.vim'
 
+alias c='code'
 
 alias explore='explorer.exe .'
 
