@@ -31,7 +31,6 @@ function fig {
 # need quick functions for fig
 # Set-Alias -name figc -value 'fig commit -am'
 
-
 # >> Alias and Vars
 $nvim = "C:/Program Files/Neovim/bin/nvim.exe"
 Set-Alias -name v -value $nvim
