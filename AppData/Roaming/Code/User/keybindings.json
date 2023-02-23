@@ -1,32 +1,53 @@
 [
 	//> Main bindings
-	{
-		"key": "ctrl+q",
-		"command": "workbench.action.joinAllGroups"
-	},
-	{
-		"key": "ctrl+shift+q",
-		"command": "workbench.action.closeAllGroups"
-	},
+	//multi cursor test
+
+	//commands?
+	// workbench.action.toggleMultiCursorModifier
+	// createCursor
 
 	//< List vim like controls
+	//trying to move to center after ctrl d/u
 	{
-		"key": "j",
-		"command": "list.focusDown",
-		"when": "listFocus && !inputFocus"
+		"key": "ctrl+d",
+		"command": "extension.multiCommand.execute",
+		"when": "editorTextFocus && neovim.mode == normal",
+		"args": {
+			"sequence": [
+				"vscode-neovim.ctrl-d",
+				{ "command": "cursorMove", "args": { "to": "viewPortCenter" } }
+			]
+		}
+	},
+	{
+		"key": "ctrl+u",
+		"command": "extension.multiCommand.execute",
+		"when": "editorTextFocus && neovim.mode == normal",
+		"args": {
+			"sequence": [
+				"vscode-neovim.ctrl-u",
+				{ "command": "cursorMove", "args": { "to": "viewPortCenter" } }
+			]
+		}
 	},
 
-	//todo check if in toggleKeyboardNavigation for list nav currently still c-p/n
-	{
-		"key": "h",
-		"command": "list.collapse",
-		"when": "listFocus && !inputFocus"
-	},
+	//command to center
+	// {
+	// 	"key": "alt+y",
+	// 	"command": "cursorMove",
+	// 	"args": { "to": "viewPortCenter" }
+	// },
+
 	{
 		"key": "o",
-		"command": "list.toggleExpand",
+		"command": "list.expand",
 		"when": "listFocus && !inputFocus"
 	},
+	// {
+	// 	"key": "shift+o",
+	// 	"command": "list.select",
+	// 	"when": "listFocus && !inputFocus"
+	// },
 	{
 		"key": "shift+h",
 		"command": "list.collapseAll",
@@ -37,15 +58,20 @@
 		"command": "list.toggleSelection",
 		"when": "listFocus && !inputFocus"
 	},
+	{
+		"key": "shift+l",
+		"command": "list.selectAndPreserveFocus",
+		"when": "listFocus && !inputFocus"
+	},
 
 	// Nav for problems and ?? don't forget this time... ffs
 	{
-		"key": "ctrl+j",
+		"key": "alt+j",
 		"command": "list.focusPageDown",
 		"when": "!explorerViewletFocus && listFocus && !inputFocus"
 	},
 	{
-		"key": "ctrl+k",
+		"key": "alt+k",
 		"command": "list.focusPageUp",
 		"when": "!explorerViewletFocus && listFocus && !inputFocus"
 	},
@@ -55,30 +81,31 @@
 		"command": "list.focusUp",
 		"when": "listFocus && !inputFocus"
 	},
-	{
-		"key": "ctrl+shift+z",
-		"command": "workbench.action.toggleZenMode"
-	},
-	{
-		"key": "ctrl+shift+/",
-		"command": "editor.action.blockComment",
-		"when": "editorTextFocus && !editorReadonly"
-	},
 
 	{
-		"key": "ctrl+shift+n",
+		"key": "alt+z",
+		"command": "workbench.action.toggleZenMode"
+	},
+
+	// tasks... dope
+	{
+		"key": "ctrl+alt+z",
+		"command": "workbench.action.tasks.runTask",
+		"args": "ZenZen",
+		"when": "inZenMode"
+	},
+	{
+		"key": "ctrl+alt+f",
 		"command": "settings.cycle.fontSize",
 		"when": "editorTextFocus && !editorReadonly"
 	},
-
-	// {
-	//   "key": "ctrl+shift+n",
-	//   "command": "settings.cycle.lineNumber",
-	//   "when": "editorTextFocus && !editorReadonly"
-	// },
-
 	{
-		"key": "ctrl+b",
+		"key": "ctrl+alt+n",
+		"command": "settings.cycle.lineNumber",
+		"when": "editorTextFocus && !editorReadonly"
+	},
+	{
+		"key": "alt+b",
 		"command": "workbench.action.toggleSidebarVisibility"
 	},
 	{
@@ -90,137 +117,60 @@
 		"command": "workbench.action.closeEditorsInGroup",
 		"when": "editorTextFocus && !editorReadonly"
 	},
+
+	//todo wtf is this for again? hah
+
+	//> special K keys TT
+	//note This is a catch all to get back into editor when odd focus don't delete...
+	// {
+	// 	"key": "ctrl+; k",
+	// 	"command": "workbench.action.showCommands",
+	// 	"when": "neovim.mode != insert"
+
+	{
+		"key": "escape escape",
+		"command": "workbench.action.navigateLast",
+		"when": "!editorTextFocus && editorFocus && !renameInputVisible"
+	},
+	{
+		"key": "ctrl+k escape",
+		"command": "workbench.action.navigateLast",
+		"when": "!terminalFocus || !editorTextFocus || !terminalEditorFocus"
+	},
+	{
+		"key": "ctrl+k k",
+		"command": "svelte.kit.generateMultipleFiles",
+		"when": "sideBarFocus && explorerViewletFocus || editorFocus"
+	},
+	// {
+	//   "key": ";",
+
+	//   "command": "removeSecondaryCursors",
+	//   "when": "editorHasMultipleSelections"
+	// },
+
 	{
 		"key": "escape",
 		"command": "refactorPreview.discard",
 		"when": "refactorPreview.active"
 	},
 
-	//note This is a catch all to get back into editor when odd focus don't delete...
-	{
-		"key": "ctrl+k ctrl+k",
-		"command": "workbench.action.navigateLast",
-		"when": "!terminalFocus || !editorFocus || !terminalEditorFocus"
-	},
-	// {
-	//   "key": ";",
-	//   "command": "removeSecondaryCursors",
-	//   "when": "editorHasMultipleSelections"
-	// },
-
-	{
-		"key": "ctrl+6",
-		"command": "workbench.action.quickOpenPreviousRecentlyUsedEditorInGroup"
-	},
-	{
-		"key": "ctrl+6",
-		"command": "workbench.action.quickOpenNavigateNextInEditorPicker",
-		"when": "inEditorsPicker && inQuickOpen"
-	},
-	{
-		"key": "ctrl+shift+6",
-		"command": "workbench.action.quickOpenNavigatePreviousInEditorPicker",
-		"when": "inEditorsPicker && inQuickOpen"
-	},
-
-	/* {
-    "key": "ctrl+a",
-    "command": "cursorEnd",
-    "when": ""
-  }, */
-
-	//< terminal
-	//todo better terminal think about same cmd for winTerm
-
-	{
-		"key": "ctrl+'",
-		"command": "workbench.action.terminal.toggleTerminal"
-	},
-	{
-		"key": "ctrl+h",
-		"command": "workbench.action.terminal.focusPrevious",
-		"when": "terminalFocus"
-	},
-	{
-		"key": "ctrl+l",
-		"command": "workbench.action.terminal.focusNextPane",
-		"when": "terminalFocus"
-	},
-	{
-		"key": "ctrl+j",
-		"command": "workbench.action.toggleMaximizedPanel",
-		"when": "panelFocus || terminalFocus"
-	},
-	{
-		"key": "ctrl+j",
-		"command": "-workbench.action.terminal.moveToTerminalPanel",
-		"when": "terminalFocus"
-	},
-	{
-		"key": "ctrl+alt+k",
-		"command": "workbench.action.terminal.moveToEditor",
-		"when": "terminalFocus"
-	},
-	{
-		"key": "ctrl+alt+j",
-		"command": "workbench.action.terminal.moveToTerminalPanel",
-		"when": "terminalFocus"
-	},
-	//note: let the default take over when editor, its different f'n command...
-	{
-		"key": "ctrl+w",
-		"command": "workbench.action.terminal.kill",
-		"when": "terminalFocus && !terminalEditorFocus"
-	},
-	{
-		"key": "ctrl+d",
-		"command": "workbench.action.terminal.scrollDownPage",
-		"when": "terminalFocus"
-	},
-	{
-		"key": "ctrl+u",
-		"command": "workbench.action.terminal.scrollUpPage",
-		"when": "terminalFocus"
-	},
-
-	//< breadCrumbs
-	{
-		"key": "shift+space",
-		"command": "breadcrumbs.focusAndSelect",
-		"when": "neovim.mode == normal && breadcrumbsPossible"
-	},
-	{
-		"key": "ctrl+shift+;",
-		"command": "-breadcrumbs.focus",
-		"when": "breadcrumbsPossible"
-	},
-	{
-		"key": "ctrl+shift+.",
-		"command": "-breadcrumbs.focusAndSelect",
-		"when": "breadcrumbsPossible"
-	},
-	{
-		"key": "ctrl+l",
-		"command": "breadcrumbs.focusNext",
-		"when": "breadcrumbsActive && breadcrumbsVisible"
-	},
-	{
-		"key": "ctrl+h",
-		"command": "breadcrumbs.focusPrevious",
-		"when": "breadcrumbsActive && breadcrumbsVisible"
-	},
-
 	//< inputs
 	//< search/replace panel
 	{
-		"key": "ctrl+j",
+		"key": "alt+j",
 		"command": "search.focus.nextInputBox",
 		"when": "inSearchEditor || searchViewletVisible"
 	},
 	{
-		"key": "ctrl+k",
+		"key": "alt+k",
 		"command": "search.focus.previousInputBox",
 		"when": "inSearchEditor || searchViewletVisible"
+	},
+	{
+		"key": "alt+l",
+		"command": "workbench.action.replaceInFiles",
+		"when": "searchInputBoxFocus && !replaceInputFocussed"
 	},
 
 	//< explorerSideBar focus
@@ -234,72 +184,45 @@
 		"command": "explorer.newFolder",
 		"when": "filesExplorerFocus && explorerViewletFocus"
 	},
+
 	{
 		"key": "ctrl+t",
 		"command": "explorer.newFile",
 		"when": "filesExplorerFocus && explorerViewletFocus"
 	},
-	{
-		"key": "ctrl+r",
-		"command": "renameFile",
-		"when": "explorerViewletVisible && filesExplorerFocus && !explorerResourceIsRoot && !explorerResourceReadonly && !inputFocus"
-	},
+	// {
+	// 	"key": "ctrl+r",
+	// 	"command": "renameFile",
+	// 	"when": "explorerViewletVisible && filesExplorerFocus && !explorerResourceIsRoot && !explorerResourceReadonly && !inputFocus"
+	// },
 
-	//< gitSideBar
-	{
-		"key": "ctrl+p",
-		"command": "git.push",
-		"when": "sideBarFocus && activeViewlet == 'workbench.view.scm'"
-	},
-	{
-		"key": "u",
-		"command": "git.unstage",
-		"when": "!textInputFocus && sideBarFocus && activeViewlet == 'workbench.view.scm'"
-	},
-	{
-		"key": "shift+u",
-		"command": "git.unstageAll",
-		"when": "isInDiffEditor || !textInputFocus && sideBarFocus && activeViewlet == 'workbench.view.scm'"
-	},
-	{
-		"key": "s",
-		"command": "git.stage",
-		"when": "!inputFocus && !textInputFocus && activeViewlet == 'workbench.view.scm'"
-	},
-
-	{
-		"key": "ctrl+j",
-		"command": "timeline.focus",
-		"when": "sideBarFocus && activeViewlet == 'workbench.view.scm'"
-	},
-
-	//fixme can't navigate out till after first tab+shift
-	{
-		"key": "ctrl+j",
-		"command": "workbench.scm.focus",
-		"when": "!panelFocus && textInputFocus && activeViewlet == 'workbench.view.scm'"
-	},
-	{
-		"key": "ctrl+k",
-		"command": "workbench.scm.focus",
-		"when": "sideBarFocus && activeViewlet == 'workbench.view.scm'"
-	},
-
-	//todo check to see if can use out of panel for last editor
-	// "command": "workbench.action.focusNextPart",
-	// "command": "workbench.action.navigateLast",
-
-	//note this would be nice for something?
-	// "command": "workbench.action.focusPanel",
-
-	//< gitDiff editor navigation
+	//< gitNavigation
 	//fixme stageChange or toggle into lens
 	// {
 	//   "key": "ctrl+s",
 	//   "command": "git.stageChange",
 	//   "when": "dirtyDiffVisible"
 	// },
-
+	{
+		"key": "ctrl+d",
+		"command": "workbench.action.compareEditor.nextChange",
+		"when": "isInDiffEditor || sideBarFocus && view.workbench.scm.visible"
+	},
+	{
+		"key": "ctrl+d",
+		"command": "-vscode-neovim.ctrl-d",
+		"when": "isInDiffEditor || sideBarFocus && view.workbench.scm.visible"
+	},
+	{
+		"key": "ctrl+u",
+		"command": "workbench.action.compareEditor.previousChange",
+		"when": "isInDiffEditor || sideBarFocus && view.workbench.scm.visible"
+	},
+	{
+		"key": "ctrl+u",
+		"command": "-vscode-neovim.ctrl-u",
+		"when": "isInDiffEditor || sideBarFocus && view.workbench.scm.visible"
+	},
 	{
 		"key": "ctrl+d",
 		"command": "editor.action.dirtydiff.next",
@@ -311,29 +234,109 @@
 		"when": "dirtyDiffVisible"
 	},
 	{
+		"key": "ctrl+alt+d",
+		"command": "editor.action.dirtydiff.next",
+		"when": "editorFocus"
+	},
+
+	//< gitSideBar
+	// {
+	// 	"key": "alt+g",
+	// 	"command": "workbench.scm.focus"
+	// 	// "when": ""
+	// },
+	{
+		"key": "ctrl+shift+p",
+		"command": "git.push",
+		"when": "sideBarFocus && focusedView == 'workbench.scm'"
+	},
+	{
+		"key": "shift+u",
+		"command": "git.unstageAll",
+		"when": "isInDiffEditor || !textInputFocus && sideBarFocus && focusedView == 'workbench.scm'"
+	},
+
+	//staging is still fucked cause it wont let me do multi select (should open a issue)
+	{
+		"key": "s",
+		"command": "git.stage",
+		"when": "sideBarFocus && !inputFocus && focusedView == 'workbench.scm'"
+		//just wont run all the commands ... would be nice
+		// "command": "workbench.action.tasks.runTask",
+		// "args": "stageMe"
+	},
+
+	{
+		"key": "u",
+		"command": "git.unstage",
+		"when": "!inputFocus && sideBarFocus && focusedView == 'workbench.scm'"
+	},
+	{
+		"key": "ctrl+s",
+		"command": "git.stageSelectedRanges",
+		"when": "sideBarFocus && !inputFocus && activeViewlet == 'workbench.view.scm'"
+	},
+	{
 		"key": "ctrl+s",
 		"command": "git.stageSelectedRanges",
 		"when": "isInDiffEditor || dirtyDiffVisible"
 	},
+	// {
+	// 	"key": "ctrl+r",
+	// 	"command": "git.revertSelectedRanges",
+	// 	"when": "isInDiffEditor || dirtyDiffVisible"
+	// },
 	{
-		"key": "ctrl+r",
-		"command": "git.revertSelectedRanges",
+		"key": "shift+u",
+		"command": "git.unstageSelectedRanges",
 		"when": "isInDiffEditor || dirtyDiffVisible"
 	},
 	{
-		"key": "ctrl+u",
-		"command": "git.unstageSelectedRanges",
-		"when": "isInDiffEditor"
+		"key": "ctrl+alt+s",
+		"command": "gitstash.stash",
+		"when": "sideBarFocus && !inputFocus && gitstash.explorer.active"
 	},
 	{
-		"key": "ctrl+d",
-		"command": "workbench.action.compareEditor.nextChange",
-		"when": "isInDiffEditor || sideBarFocus && activeViewlet == 'workbench.view.scm'"
+		"key": "ctrl+alt+p",
+		"command": "gitstash.pop",
+		"when": "sideBarFocus && !inputFocus && gitstash.explorer.active"
 	},
 	{
-		"key": "ctrl+u",
-		"command": "workbench.action.compareEditor.previousChange",
-		"when": "isInDiffEditor || sideBarFocus && activeViewlet == 'workbench.view.scm'"
+		"key": "ctrl+alt+d",
+		"command": "gitstash.drop",
+		"when": "sideBarFocus && !inputFocus && gitstash.explorer.active"
+	},
+
+	//< navigation git bar
+	{
+		"key": "alt+j",
+		"command": "timeline.focus",
+		"when": "sideBarFocus && focusedView == 'workbench.scm'"
+	},
+	{
+		"key": "alt+j",
+		"command": "gitstash.explorer.focus",
+		"when": "sideBarFocus && focusedView == 'timeline'"
+	},
+	{
+		"key": "alt+j",
+		"command": "workbench.scm.focus",
+		"when": "sideBarFocus && focusedView == 'gitstash.explorer'"
+	},
+	{
+		"key": "alt+k",
+		"command": "timeline.focus",
+		"when": "sideBarFocus && focusedView == 'gitstash.explorer'"
+	},
+	{
+		"key": "alt+k",
+		"command": "workbench.scm.focus",
+		"when": "sideBarFocus && focusedView == 'timeline'"
+	},
+	{
+		"key": "alt+k",
+		"command": "gitstash.explorer.focus",
+		"when": "focusedView == 'workbench.scm' && workbench.scm.defaultViewLocation"
 	},
 
 	//< error navigation /
@@ -348,17 +351,30 @@
 	{
 		"key": "ctrl+shift+l",
 		"command": "workbench.view.extension.todo"
+		// "when": "neovim.mode == normal"
 	},
 	{
-		"key": "ctrl+k",
+		"key": "alt+j",
+		"command": "bookmarksExplorer.focus",
+		"when": "sideBarFocus && view.todo.views.2embedded.visible"
+	},
+	{
+		"key": "alt+k",
 		"command": "todo.views.2embedded.focus",
-		"when": "sideBarFocus && activeViewlet == 'workbench.view.extension.todo'"
+		"when": "sideBarFocus && view.bookmarksExplorer.visible && bookmarksExplorer.visible"
 	},
-	{
-		"key": "ctrl+j",
-		"command": "todo.views.1files.focus",
-		"when": "sideBarFocus && activeViewlet == 'workbench.view.extension.todo'"
-	},
+
+	//fixme need to find the correct focus view
+	// {
+	// 	"key": "alt+j",
+	// 	"command": "todo.views.1files.focus",
+	// 	"when": "sideBarFocus && focusedView == 'bookmarksExplorer.focus'"
+	// },
+	// {
+	// 	"key": "alt+k",
+	// 	"command": "bookmarksExplorer.focus",
+	// 	"when": "sideBarFocus && todo.views.1files.active"
+	// },
 
 	//< cSpell navigation uses a extension to turn into quickOpen..
 	{
@@ -380,7 +396,7 @@
 	},
 	{
 		"key": "ctrl+alt+h",
-		"command": "workbench.action.moveEditorToPreviousGroup",
+		"command": "workbench.action.moveEditorToLeftGroup",
 		"when": "neovim.mode != insert && editorFocus || terminalEditorFocus"
 	},
 	{
@@ -395,42 +411,52 @@
 	},
 
 	{
-		"key": "ctrl+j",
+		"key": "alt+j",
 		"command": "workbench.action.navigateDown",
-		"when": "neovim.mode != insert && !panelFocus && !sideBarFocus && !inReferenceSearchEditor"
+		"when": "neovim.mode != insert && !panelFocus && !sideBarFocus"
 	},
 	{
-		"key": "ctrl+k",
+		"key": "alt+k",
 		"command": "workbench.action.focusActiveEditorGroup",
 		"when": "panelFocus || terminalFocus"
 	},
 	{
-		"key": "ctrl+k",
+		"key": "alt+k",
 		"command": "workbench.action.navigateUp",
 		"when": "editorFocus || terminalEditorFocus"
 	},
 	{
-		"key": "ctrl+h",
+		"key": "alt+h",
 		"command": "workbench.action.navigateLeft",
-		"when": "neovim.mode != insert && editorFocus || terminalFocus"
+		"when": "neovim.mode != insert"
 	},
 	{
-		"key": "ctrl+h",
+		"key": "alt+h",
 		"command": "workbench.action.focusNextPart",
 		"when": "sideBarFocus && !referenceSearchVisible"
 	},
-
 	{
-		"key": "ctrl+l",
+		"key": "alt+l",
 		"command": "workbench.action.navigateRight",
 		"when": "neovim.mode != insert && !panelFocus && !sideBarFocus && !breadcrumbsActive && !inReferenceSearchEditor"
 	},
-
 	{
 		"key": "ctrl+;",
 		"command": "workbench.action.showCommands",
 		"when": "neovim.mode != insert"
 	},
+	//better jump list or make g; g,
+	// {
+	// 	"key": "ctrl+i",
+	// 	"command": "workbench.action.navigateForwardInEditLocations",
+	// 	"when": "neovim.mode != insert"
+	// },
+	// {
+	// 	"key": "ctrl+o",
+	// 	"command": "workbench.action.navigateBackInEditLocations",
+	// 	"when": "neovim.mode != insert"
+	// },
+
 	{
 		"key": "ctrl+i",
 		"command": "workbench.action.navigateForward",
@@ -442,25 +468,28 @@
 		"when": "neovim.mode != insert"
 	},
 	{
-		"key": "ctrl+j",
+		"key": "alt+j",
 		"command": "selectNextSuggestion",
 		"when": "textInputFocus && suggestWidgetMultipleSuggestions && suggestWidgetVisible"
 	},
-
 	{
-		"key": "ctrl+k",
+		"key": "alt+k",
 		"command": "selectPrevSuggestion",
 		"when": "suggestWidgetMultipleSuggestions && suggestWidgetVisible"
 	},
-
 	{
-		"key": "ctrl+j",
+		"key": "alt+j",
 		"command": "workbench.action.quickOpenSelectNext",
 		"when": "inQuickOpen"
 	},
 	{
-		"key": "ctrl+k",
+		"key": "alt+k",
 		"command": "workbench.action.quickOpenSelectPrevious",
+		"when": "inQuickOpen"
+	},
+	{
+		"key": "alt+l",
+		"command": "workbench.action.quickPickManyToggle",
 		"when": "inQuickOpen"
 	},
 
@@ -481,6 +510,11 @@
 		"when": ""
 	},
 	{
+		"key": "alt+r",
+		"command": "workbench.action.replaceInFiles",
+		"when": ""
+	},
+	{
 		"key": "ctrl+t",
 		"command": "workbench.action.quickOpen",
 		"when": "!filesExplorerFocus"
@@ -491,77 +525,200 @@
 		"when": ""
 	},
 
+	//< terminal
+	//todo better terminal think about same cmd for winTerm
+	{
+		"key": "ctrl+'",
+		"command": "workbench.action.terminal.toggleTerminal"
+	},
+	{
+		"key": "ctrl+p",
+		"command": "workbench.action.togglePanel",
+		"when": "panelFocus || editorFocus"
+	},
+	{
+		"key": "alt+h",
+		"command": "workbench.action.terminal.focusPreviousPane",
+		"when": "terminalFocus && !terminalEditorFocus && editorFocus"
+	},
+	{
+		"key": "alt+l",
+		"command": "workbench.action.terminal.focusNextPane",
+		"when": "terminalFocus && !terminalEditorFocus && editorFocus"
+	},
+	{
+		"key": "alt+j",
+		"command": "workbench.action.toggleMaximizedPanel",
+		"when": "panelFocus || terminalFocus && !terminalEditorFocus"
+	},
+	{
+		"key": "ctrl+alt+l",
+		"command": "workbench.action.terminal.split",
+		"when": "terminalFocus && !terminalEditorFocus"
+	},
+	{
+		"key": "ctrl+alt+k",
+		"command": "workbench.action.terminal.moveToEditor",
+		"when": "terminalFocus"
+	},
+	{
+		"key": "ctrl+alt+j",
+		"command": "workbench.action.terminal.moveToTerminalPanel",
+		"when": "terminalFocus"
+	},
+	//note: let the default take over when editor, its different f'n command...
+	{
+		"key": "ctrl+q",
+		"command": "workbench.action.terminal.kill",
+		"when": "terminalFocus"
+	},
+	{
+		"key": "ctrl+q",
+		"command": "workbench.action.terminal.killEditor",
+		"when": "terminalEditorFocus"
+	},
+	{
+		"key": "ctrl+d",
+		"command": "workbench.action.terminal.scrollDownPage",
+		"when": "terminalFocus"
+	},
+	{
+		"key": "ctrl+u",
+		"command": "workbench.action.terminal.scrollUpPage",
+		"when": "terminalFocus"
+	},
+
+	//< breadCrumbs
+	{
+		"key": "alt+;",
+		"command": "breadcrumbs.focusAndSelect",
+		"when": "neovim.mode == normal && breadcrumbsPossible"
+	},
+	{
+		"key": "alt+l",
+		"command": "breadcrumbs.focusNext",
+		"when": "breadcrumbsActive && breadcrumbsVisible"
+	},
+	{
+		"key": "alt+h",
+		"command": "breadcrumbs.focusPrevious",
+		"when": "breadcrumbsActive && breadcrumbsVisible"
+	},
+
 	//> peek Reference window
 	{
-		"key": "ctrl+j",
+		"key": "alt+j",
 		"command": "togglePeekWidgetFocus",
 		"when": "referenceSearchVisible && !listFocus"
 	},
 	{
-		"key": "ctrl+j",
+		"key": "alt+j",
 		"command": "workbench.action.navigateDown",
 		"when": "inReferenceSearchEditor"
 	},
 	{
-		"key": "ctrl+k",
+		"key": "alt+k",
 		"command": "workbench.action.focusActiveEditorGroup",
 		"when": "inReferenceSearchEditor"
 	},
 	{
-		"key": "ctrl+h",
+		"key": "alt+h",
 		"command": "togglePeekWidgetFocus",
 		"when": "referenceSearchVisible && listFocus"
 	},
 	{
-		"key": "ctrl+l",
+		"key": "alt+l",
 		"command": "togglePeekWidgetFocus",
 		"when": "inReferenceSearchEditor && editorTextFocus"
 	},
-
-	//> NeoVim only commands
-
-	//? Keep this override for escaping peekwindows/ect.. There is a PR but not complete..
-	// {
-	//   "command": "vscode-neovim.escape",
-	//   "key": "Escape",
-	//   "when": "editorTextFocus && neovim.init && neovim.mode == insert && parameterHintsVisible"
-	// },
-	// {
-	//   "command": "vscode-neovim.escape",
-	//   "key": "Escape",
-	//   "when": "editorTextFocus && neovim.init && !filesExplorerFocus && !dirtyDiffVisible && !inReferenceSearchEditor && !referenceSearchVisible && !markersNavigationVisible && !parameterHintsVisible"
-	// },
-
-	{
-		"key": ";",
-		"command": "vscode-neovim.escape",
-		"when": "neovim.mode == insert"
-	},
-
-	// {
-	// 	"key": ";",
-	// 	"command": "cursorRight",
-	// 	"when": "editorHasMultipleSelections && neovim.mode == insert"
-	// },
 	{
 		"key": "space",
 		"command": "cursorRight",
 		"when": "editorHasSelection && editorHasMultipleSelections && neovim.mode == insert"
 	},
+
+	//> Testing auto closing sideBar with focus keybinds too
+	{
+		"key": "alt+l",
+		"command": "workbench.action.toggleSidebarVisibility",
+		"when": "activeEditorGroupLast && editorFocus && !sideBarVisible && !inReferenceSearchEditor"
+	},
+	{
+		"key": "alt+h",
+		"command": "workbench.action.toggleSidebarVisibility",
+		"when": "sideBarFocus && !editorFocus"
+	},
+
+	//< settings keys testing
+	{
+		"key": "alt+h",
+		"command": "settings.action.focusTOC",
+		"when": "inSettingsEditor && settingRowFocus"
+	},
+	{
+		"key": "alt+k",
+		"command": "workbench.action.openSettings",
+		"when": "inSettingsEditor"
+	},
+	{
+		"key": "alt+l",
+		"command": "settings.action.focusSettingsList",
+		"when": "settingsTocRowFocus"
+	},
+	{
+		"key": "alt+j",
+		"command": "settings.action.focusSettingsList",
+		"when": "inSettingsSearch && !suggestWidgetVisible"
+	},
+
+	//> NeoVim only commands
+	//todo decide if I can escape ; Live without? or keep doing you
+	{
+		"key": "ctrl+.",
+		// "command": "closeParameterHints",
+		"command": "editor.action.triggerParameterHints",
+		"when": "neovim.mode == insert && editorTextFocus"
+	},
+
+	// {
+	// 	"key": ";",
+	// 	"command": "vscode-neovim.escape",
+	// 	"when": "neovim.mode == insert"
+	// },
+	// {
+	// 	"command": "vscode-neovim.compositeEscape1",
+	// 	"key": ";",
+	// 	"when": "neovim.mode == insert && editorTextFocus",
+	// 	"args": ";"
+	// },
+	// {
+	// 	"command": "vscode-neovim.compositeEscape1",
+	// 	"key": "j",
+	// 	"when": "neovim.mode == insert && editorTextFocus",
+	// 	"args": "j"
+	// },
+	//!important? sends copy to neovim
 	{
 		"command": "vscode-neovim.send",
 		"key": "ctrl+c",
 		"args": "<C-c>"
 	},
 
-	//fixme figure out how to take args like c-r
-	// {
-	//   "command": "vscode-neovim.paste-register",
-	//   "key": "ctrl+p",
-	//   "args": "0",
-	//   "when": "editorTextFocus && neovim.mode == insert"
-	// },
+	//todo puts this in init.vim to have in both?
+	{
+		"command": "vscode-neovim.send",
+		"key": "alt+o",
+		"args": "g;",
+		"when": "neovim.mode != insert"
+	},
+	{
+		"command": "vscode-neovim.send",
+		"key": "alt+i",
+		"args": "g,",
+		"when": "neovim.mode != insert"
+	},
 
+	//> Disable for my own good or no conflicts
 	{
 		"key": "ctrl+w",
 		"command": "-vscode-neovim.send"
@@ -570,11 +727,6 @@
 		"key": "ctrl+o",
 		"command": "-workbench.action.files.openLocalFile",
 		"when": "remoteFileDialogVisible"
-	},
-	{
-		"key": "ctrl+p",
-		"command": "workbench.action.closePanel",
-		"when": "panelFocus || editorFocus"
 	},
 	{
 		"key": "ctrl+k m",
@@ -602,5 +754,98 @@
 	{
 		"key": "ctrl+q",
 		"command": "-workbench.action.quickOpenView"
+	},
+	{
+		"key": "ctrl+w",
+		"command": "-workbench.action.terminal.killEditor",
+		"when": "terminalEditorFocus && terminalFocus && terminalHasBeenCreated && resourceScheme == 'vscode-terminal' || terminalEditorFocus && terminalFocus && terminalProcessSupported && resourceScheme == 'vscode-terminal'"
+	},
+	{
+		"key": "ctrl+j",
+		"command": "-workbench.action.togglePanel"
+	},
+	{
+		"key": "escape escape",
+		"command": "-workbench.action.exitZenMode",
+		"when": "inZenMode"
+	},
+	{
+		"key": "ctrl+alt+r",
+		"command": "remote-wsl.revealInExplorer",
+		"when": "sideBarFocus && remoteName == 'wsl'"
+	},
+	{
+		"key": "shift+alt+r",
+		"command": "-remote-wsl.revealInExplorer",
+		"when": "editorFocus && remoteName == 'wsl'"
+	},
+	// {
+	// 	"key": "down",
+	// 	"command": "-settings.action.focusSettingsFile",
+	// 	"when": "inSettingsSearch && !suggestWidgetVisible"
+	// },
+	{
+		"key": "alt+enter",
+		"command": "bookmarks.listFromAllFiles"
+	},
+	{
+		"key": "alt+m",
+		"command": "bookmarks.toggle",
+		"when": "editorTextFocus && editorFocus"
+	},
+	{
+		"key": "ctrl+alt+k",
+		"command": "-bookmarks.toggle",
+		"when": "editorTextFocus"
+	},
+	{
+		"key": "alt+m",
+		"command": "bookmarks.clear",
+		"when": "inQuickOpen && !editorFocus"
+	},
+	{
+		"key": "ctrl+shift+b",
+		"command": "bookmarksExplorer.focus"
+	},
+	{
+		"key": "ctrl+alt+m",
+		"command": "bookmarks.clearFromAllFiles",
+		"when": "inQuickOpen && !editorFocus || sideBarFocus && bookmarksExplorer.active"
+	},
+	{
+		"key": "ctrl+alt+m",
+		"command": "bookmarks.toggleLabeled",
+		"when": "editorFocus && editorTextFocus"
+	},
+	{
+		"key": "ctrl+k ctrl+m",
+		"command": "testing.openOutputPeek"
+	},
+	{
+		"key": "ctrl+; ctrl+m",
+		"command": "-testing.openOutputPeek"
+	},
+	{
+		"key": "ctrl+alt+l",
+		"command": "-bookmarks.jumpToNext",
+		"when": "editorTextFocus"
+	},
+	{
+		"key": "ctrl+alt+j",
+		"command": "-bookmarks.jumpToPrevious",
+		"when": "editorTextFocus"
+	},
+	{
+		"key": "alt+.",
+		"command": "bookmarks.jumpToNext"
+	},
+	{
+		"key": "alt+,",
+		"command": "bookmarks.jumpToPrevious"
+	},
+	{
+		"key": "ctrl+d",
+		"command": "-editor.action.addSelectionToNextFindMatch",
+		"when": "editorFocus"
 	}
 ]

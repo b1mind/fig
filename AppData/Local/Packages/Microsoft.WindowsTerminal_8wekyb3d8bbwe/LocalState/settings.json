@@ -25,6 +25,10 @@
 			"keys": "ctrl+shift+f"
 		},
 		{
+			"command": "openNewTabDropdown",
+			"keys": "ctrl+t"
+		},
+		{
 			"command": "commandPalette",
 			"keys": "ctrl+;"
 		},
@@ -46,9 +50,25 @@
 		"defaults": {},
 		"list": [
 			{
-				"guid": "{0caa0dad-35be-5f56-a8ff-afceeeaa6101}",
+				"antialiasingMode": "cleartype",
+				"bellStyle": "none",
+				"colorScheme": "One Half Dark",
+				"cursorColor": "#FF40FF",
+				"cursorHeight": 100,
+				"cursorShape": "filledBox",
+				"font": {
+					"face": "FiraCode Nerd Font",
+					"size": 11,
+					"weight": "light"
+				},
+				"guid": "{08b18359-5d4a-51fe-b894-c86850a6e8d8}",
 				"hidden": false,
-				"name": "Command Prompt"
+				"name": "Ubuntu_B",
+				"padding": "14, 4, 0, 14",
+				"source": "Windows.Terminal.Wsl",
+				// "startingDirectory": "%__CD__%",
+				"startingDirectory": "//wsl$/Ubuntu_B/home/sh0rtyb/",
+				"tabTitle": null
 			},
 			{
 				"backgroundImage": null,
@@ -70,27 +90,6 @@
 				"padding": "14, 4, 0, 14",
 				"snapOnInput": true,
 				"source": "Windows.Terminal.PowershellCore"
-			},
-			{
-				"antialiasingMode": "cleartype",
-				"bellStyle": "none",
-				"colorScheme": "One Half Dark",
-				"cursorColor": "#FF40FF",
-				"cursorHeight": 100,
-				"cursorShape": "filledBox",
-				"font": {
-					"face": "FiraCode Nerd Font",
-					"size": 11,
-					"weight": "light"
-				},
-				"guid": "{08b18359-5d4a-51fe-b894-c86850a6e8d8}",
-				"hidden": false,
-				"name": "Ubuntu_B",
-				"padding": "14, 4, 0, 14",
-				"source": "Windows.Terminal.Wsl",
-				// "startingDirectory": "%__CD__%",
-				"startingDirectory": "//wsl$/Ubuntu_B/home/sh0rtyb/",
-				"tabTitle": null
 			},
 			{
 				"closeOnExit": "graceful",
@@ -116,6 +115,11 @@
 				"hidden": false,
 				"name": "Git Bash",
 				"source": "Git"
+			},
+			{
+				"guid": "{0caa0dad-35be-5f56-a8ff-afceeeaa6101}",
+				"hidden": false,
+				"name": "Command Prompt"
 			},
 			{
 				"guid": "{b453ae62-4e3d-5e58-b989-0a998ec441b8}",

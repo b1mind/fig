@@ -28,6 +28,9 @@ $env:PATHEXT += ";.py"
 function fig {
   git --git-dir="$HOME\.fig" --work-tree="$HOME" @Args
 }
+# need quick functions for fig
+# Set-Alias -name figc -value 'fig commit -am'
+
 
 # >> Alias and Vars
 $nvim = "C:/Program Files/Neovim/bin/nvim.exe"
@@ -55,7 +58,7 @@ Function btest ($browser = 'safari') {
 Set-Alias -name bt -value btest
 
 # $vrc= "~/cfig/_vimrc"
-$vrc= "%userprofile%/AppData/Local/nvim/init.vim"
+$vrc = "%userprofile%/AppData/Local/nvim/init.vim"
 
 Function profilePath {v $profile}
 Set-Alias -name .p -value profilePath

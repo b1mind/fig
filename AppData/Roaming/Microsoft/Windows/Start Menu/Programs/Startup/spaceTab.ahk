@@ -4,8 +4,8 @@ SendMode Input  ; Recommended for new scripts due to its superior speed and reli
 SetWorkingDir %A_ScriptDir%  ; Ensures a consistent starting directory.
 
 ; SpaceTab
-!Space::!Tab
-return
+;!Space::!Tab
+;return
 
 ; Default state of lock keys
 SetNumlockState, AlwaysOn
