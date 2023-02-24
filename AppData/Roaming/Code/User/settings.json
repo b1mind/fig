@@ -30,7 +30,8 @@
 	"workbench.editor.enablePreviewFromQuickOpen": false,
 	"workbench.list.multiSelectModifier": "alt",
 	"workbench.colorCustomizations": {
-		"bookmarks.overviewRuler": "#00000000"
+		"bookmarks.overviewRuler": "#00000000",
+		"bookmarks.gutterIconFillColor": "#ffffff"
 		// "bookmarks.": "#0099ff50"
 	},
 
@@ -374,9 +375,8 @@
 	"css.enabledLanguages": ["svelte", "html"],
 
 	//notworking gutterIcon..
-	"bookmarks.gutterIconFillColor": "#ffffff",
+	// "bookmarks.gutterIconFillColor": "#ffffff",
 
-	"git.closeDiffOnOperation": true,
 	"git.showActionButton": {
 		"publish": false
 	},
@@ -388,7 +388,9 @@
 	"diffEditor.renderSideBySide": false,
 
 	"svelte.enable-ts-plugin": true,
-	"svelte.ui.svelteKitFilesContextMenu.enable": "auto"
+	"svelte.ui.svelteKitFilesContextMenu.enable": "auto",
+	"git.closeDiffOnOperation": true
+	// "workbench.editor.revealIfOpen": true
 	// "output.smartScroll.enabled": false,
 	// "editor.cursorBlinking": "phase",
 	// "window.newWindowDimensions": "maximized"

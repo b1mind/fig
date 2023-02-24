@@ -31,6 +31,19 @@
 		}
 	},
 
+	//quick fix for editor diff not liking ctrl+d in normal mode (it used to work wtf)
+	// {
+	// 	"key": "space",
+	// 	"command": "extension.multiCommand.execute",
+	// 	"when": "sideBarFocus && neovim.mode == normal && view.workbench.scm.visible",
+	// 	"args": {
+	// 		"sequence": [
+	// 			"list.selectAndPreserveFocus",
+	// 			{ "command": "vscode-neovim.send", "args": "i" }
+	// 		]
+	// 	}
+	// },
+
 	//command to center
 	// {
 	// 	"key": "alt+y",
@@ -205,26 +218,6 @@
 	// },
 	{
 		"key": "ctrl+d",
-		"command": "workbench.action.compareEditor.nextChange",
-		"when": "isInDiffEditor || sideBarFocus && view.workbench.scm.visible"
-	},
-	{
-		"key": "ctrl+d",
-		"command": "-vscode-neovim.ctrl-d",
-		"when": "isInDiffEditor || sideBarFocus && view.workbench.scm.visible"
-	},
-	{
-		"key": "ctrl+u",
-		"command": "workbench.action.compareEditor.previousChange",
-		"when": "isInDiffEditor || sideBarFocus && view.workbench.scm.visible"
-	},
-	{
-		"key": "ctrl+u",
-		"command": "-vscode-neovim.ctrl-u",
-		"when": "isInDiffEditor || sideBarFocus && view.workbench.scm.visible"
-	},
-	{
-		"key": "ctrl+d",
 		"command": "editor.action.dirtydiff.next",
 		"when": "dirtyDiffVisible"
 	},
@@ -232,6 +225,16 @@
 		"key": "ctrl+u",
 		"command": "editor.action.dirtydiff.previous",
 		"when": "dirtyDiffVisible"
+	},
+	{
+		"key": "ctrl+d",
+		"command": "workbench.action.compareEditor.nextChange",
+		"when": "isInDiffEditor && neovim.mode == insert || sideBarFocus && workbench.scm.active"
+	},
+	{
+		"key": "ctrl+u",
+		"command": "workbench.action.compareEditor.previousChange",
+		"when": "isInDiffEditor && neovim.mode == insert || sideBarFocus && workbench.scm.active"
 	},
 	{
 		"key": "ctrl+alt+d",
@@ -248,10 +251,19 @@
 	{
 		"key": "s",
 		"command": "extension.multiCommand.execute",
-		"when": "focusedView == 'workbench.scm'",
+		"when": "sideBarFocus && focusedView == 'workbench.scm'",
 		"args": {
-			"interval": 69,
+			"interval": 200,
 			"sequence": ["list.selectAndPreserveFocus", "git.stage"]
+		}
+	},
+	{
+		"key": "u",
+		"command": "extension.multiCommand.execute",
+		"when": "sideBarFocus && focusedView == 'workbench.scm'",
+		"args": {
+			"interval": 200,
+			"sequence": ["list.selectAndPreserveFocus", "git.unstage"]
 		}
 	},
 	{
@@ -260,40 +272,22 @@
 		"when": "sideBarFocus && focusedView == 'workbench.scm'"
 	},
 	{
-		"key": "shift+u",
+		"key": "alt+u",
 		"command": "git.unstageAll",
 		"when": "isInDiffEditor || !textInputFocus && sideBarFocus && focusedView == 'workbench.scm'"
 	},
-
-	//staging is still fucked cause it wont let me do multi select (should open a issue)
-	// all list modes with selection are the same way... WTF vsCode
 	{
-		"key": "ctrl+s",
-		"command": "git.stage",
-		"when": "sideBarFocus && !inputFocus && focusedView == 'workbench.scm'"
-	},
-	{
-		"key": "u",
-		"command": "git.unstage",
-		"when": "!inputFocus && sideBarFocus && focusedView == 'workbench.scm'"
-	},
-	// {
-	// 	"key": "ctrl+s",
-	// 	"command": "git.stageSelectedRanges",
-	// 	"when": "sideBarFocus && !inputFocus && activeViewlet == 'workbench.view.scm'"
-	// },
-	{
-		"key": "ctrl+s",
+		"key": "alt+s",
 		"command": "git.stageSelectedRanges",
 		"when": "isInDiffEditor || dirtyDiffVisible"
 	},
-	// {
-	// 	"key": "ctrl+r",
-	// 	"command": "git.revertSelectedRanges",
-	// 	"when": "isInDiffEditor || dirtyDiffVisible"
-	// },
 	{
-		"key": "shift+u",
+		"key": "alt+r",
+		"command": "git.revertSelectedRanges",
+		"when": "isInDiffEditor || dirtyDiffVisible"
+	},
+	{
+		"key": "alt+u",
 		"command": "git.unstageSelectedRanges",
 		"when": "isInDiffEditor || dirtyDiffVisible"
 	},
@@ -330,7 +324,7 @@
 		"when": "sideBarFocus && focusedView == 'gitstash.explorer'"
 	},
 	{
-		"key": "alt+l",
+		"key": "alt+j",
 		"command": "extension.multiCommand.execute",
 		"when": "sideBarFocus && inputFocus && focusedView == 'workbench.scm'",
 		"args": {
@@ -670,7 +664,9 @@
 	{
 		"key": "alt+h",
 		"command": "workbench.action.toggleSidebarVisibility",
-		"when": "sideBarFocus && !editorFocus"
+		"when": "sideBarFocus"
+		// "when": "sideBarFocus && !view.workbench.scm.visible"
+		// "when": "!dirtyEditorFocusedInOpenEditors"
 	},
 
 	//< settings keys testing
