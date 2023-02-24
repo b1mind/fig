@@ -1,8 +1,12 @@
 {
 	//wtf is this?
 	// "files.eol": "\n",
+
 	"keyboard-quickfix.showActionNotification": true,
 	"security.workspace.trust.untrustedFiles": "open",
+
+	"window.title": "${dirty} 📁 ${activeFolderShort} | ${activeEditorShort} ",
+	"window.menuBarVisibility": "compact",
 
 	//> ZenMode settings
 	"zenMode.fullScreen": false,
@@ -12,7 +16,14 @@
 	"zenMode.restore": true,
 	"explorer.openEditors.visible": 0,
 
+	"workbench.editor.closeOnFileDelete": true,
+	"workbench.iconTheme": "symbols",
+	"workbench.layoutControl.enabled": false,
+	"workbench.sideBar.location": "right",
+	"workbench.editor.tabSizing": "shrink",
+	"workbench.editor.labelFormat": "short",
 	"workbench.preferredDarkColorTheme": "Night Mind [purple]",
+	"workbench.colorTheme": "Night Mind [purple]",
 	"workbench.startupEditor": "newUntitledFile",
 	"workbench.editor.closeEmptyGroups": true,
 	"workbench.editor.scrollToSwitchTabs": true,
@@ -23,6 +34,12 @@
 		// "bookmarks.": "#0099ff50"
 	},
 
+	"editor.copyWithSyntaxHighlighting": false,
+	"editor.occurrencesHighlight": false,
+	"editor.inlayHints.enabled": "onUnlessPressed",
+	"editor.inlayHints.fontSize": 12,
+	"editor.parameterHints.enabled": false,
+	"editor.formatOnPaste": true,
 	"editor.bracketPairColorization.enabled": true,
 	"editor.renderLineHighlightOnlyWhenFocus": true,
 	"editor.snippetSuggestions": "top",
@@ -40,6 +57,15 @@
 	"editor.acceptSuggestionOnEnter": "smart",
 	"editor.peekWidgetDefaultFocus": "editor",
 
+	"breadcrumbs.symbolPath": "last",
+	"breadcrumbs.showBooleans": false,
+	"breadcrumbs.showProperties": false,
+	"breadcrumbs.showArrays": false,
+	"breadcrumbs.showConstants": false,
+
+	"bookmarks.label.suggestion": "suggestWhenSelectedOrLineWhenNoSelected",
+	"bookmarks.sideBar.expanded": true,
+
 	"files.associations": {
 		"*.svg": "html"
 	},
@@ -50,6 +76,9 @@
 	],
 
 	//> Terminal
+	"terminal.integrated.shellIntegration.decorationsEnabled": "never",
+	"terminal.integrated.altClickMovesCursor": false,
+	"terminal.integrated.cursorBlinking": true,
 	"terminal.integrated.fontFamily": "'FiraCode Nerd Font Mono', 'Monaco', 'Consolas','monospace'",
 	"terminal.integrated.fontSize": 14,
 	"terminal.integrated.copyOnSelection": true,
@@ -129,6 +158,8 @@
 		"markdown",
 		"svelte"
 	],
+	// "vscode-neovim.mouseSelectionStartVisualMode": true,
+	// "vscode-neovim.revealCursorScrollLine": true,
 	"vscode-neovim.neovimInitVimPaths.linux": "~/.config/nvim/init.vim",
 	"vscode-neovim.neovimExecutablePaths.linux": "/usr/bin/nvim",
 	"vscode-neovim.useWSL": true,
@@ -193,6 +224,7 @@
 	//> multi line commands //this better than task?
 
 	//> cSpell spell better
+	"cSpell.showStatus": false,
 	"cSpell.language": "en, lorem",
 	"cSpell.enableFiletypes": ["svelte", "todo"],
 	"cSpell.allowCompoundWords": true,
@@ -338,52 +370,26 @@
 		"default": "right",
 		"jupyter-notebook": "left"
 	},
-	"svelte.enable-ts-plugin": true,
-	"editor.copyWithSyntaxHighlighting": false,
-	"editor.occurrencesHighlight": false,
-	"cSpell.showStatus": false,
-	"workbench.colorTheme": "Night Mind [purple]",
-	"terminal.integrated.cursorBlinking": true,
 	"screencastMode.keyboardShortcutsFormat": "keys",
-	"terminal.integrated.altClickMovesCursor": false,
-	"workbench.editor.closeOnFileDelete": true,
-	"window.title": "${dirty} 📁 ${activeFolderShort} | ${activeEditorShort} ",
 	"css.enabledLanguages": ["svelte", "html"],
-	"terminal.integrated.shellIntegration.decorationsEnabled": "never",
-	"workbench.iconTheme": "symbols",
-	"workbench.layoutControl.enabled": false,
-	"window.menuBarVisibility": "compact",
-	"workbench.sideBar.location": "right",
-	"git.showActionButton": {
-		"publish": false
-	},
-	"git.mergeEditor": true,
-	"breadcrumbs.showBooleans": false,
-	"breadcrumbs.showProperties": false,
-	"breadcrumbs.showArrays": false,
-	"breadcrumbs.showConstants": false,
-	"bookmarks.label.suggestion": "suggestWhenSelectedOrLineWhenNoSelected",
-	"bookmarks.sideBar.expanded": true,
 
 	//notworking gutterIcon..
 	"bookmarks.gutterIconFillColor": "#ffffff",
 
-	"editor.inlayHints.enabled": "onUnlessPressed",
-	"editor.inlayHints.fontSize": 12,
-	"workbench.editor.tabSizing": "shrink",
-	"breadcrumbs.symbolPath": "last",
+	"git.closeDiffOnOperation": true,
+	"git.showActionButton": {
+		"publish": false
+	},
+	"git.mergeEditor": true,
 	"scm.repositories.sortOrder": "path",
-	"editor.parameterHints.enabled": false,
-	"workbench.editor.labelFormat": "short",
-	"editor.formatOnPaste": true,
 	"scm.diffDecorationsGutterPattern": {
 		"added": true
 	},
-	"git.closeDiffOnOperation": true,
 	"diffEditor.renderSideBySide": false,
-	"scm.diffDecorationsIgnoreTrimWhitespace": "true",
-	"output.smartScroll.enabled": false
-	// "svelte.ui.svelteKitFilesContextMenu.enable": "always"
+
+	"svelte.enable-ts-plugin": true,
+	"svelte.ui.svelteKitFilesContextMenu.enable": "auto"
+	// "output.smartScroll.enabled": false,
 	// "editor.cursorBlinking": "phase",
 	// "window.newWindowDimensions": "maximized"
 	// "files.hotExit": "onExitAndWindowClose"

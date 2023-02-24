@@ -246,6 +246,15 @@
 	// 	// "when": ""
 	// },
 	{
+		"key": "s",
+		"command": "extension.multiCommand.execute",
+		"when": "focusedView == 'workbench.scm'",
+		"args": {
+			"interval": 69,
+			"sequence": ["list.selectAndPreserveFocus", "git.stage"]
+		}
+	},
+	{
 		"key": "ctrl+shift+p",
 		"command": "git.push",
 		"when": "sideBarFocus && focusedView == 'workbench.scm'"
@@ -257,25 +266,22 @@
 	},
 
 	//staging is still fucked cause it wont let me do multi select (should open a issue)
+	// all list modes with selection are the same way... WTF vsCode
 	{
-		"key": "s",
+		"key": "ctrl+s",
 		"command": "git.stage",
 		"when": "sideBarFocus && !inputFocus && focusedView == 'workbench.scm'"
-		//just wont run all the commands ... would be nice
-		// "command": "workbench.action.tasks.runTask",
-		// "args": "stageMe"
 	},
-
 	{
 		"key": "u",
 		"command": "git.unstage",
 		"when": "!inputFocus && sideBarFocus && focusedView == 'workbench.scm'"
 	},
-	{
-		"key": "ctrl+s",
-		"command": "git.stageSelectedRanges",
-		"when": "sideBarFocus && !inputFocus && activeViewlet == 'workbench.view.scm'"
-	},
+	// {
+	// 	"key": "ctrl+s",
+	// 	"command": "git.stageSelectedRanges",
+	// 	"when": "sideBarFocus && !inputFocus && activeViewlet == 'workbench.view.scm'"
+	// },
 	{
 		"key": "ctrl+s",
 		"command": "git.stageSelectedRanges",
@@ -307,7 +313,7 @@
 		"when": "sideBarFocus && !inputFocus && gitstash.explorer.active"
 	},
 
-	//< navigation git bar
+	//< navigation git sideBar
 	{
 		"key": "alt+j",
 		"command": "timeline.focus",
@@ -322,6 +328,24 @@
 		"key": "alt+j",
 		"command": "workbench.scm.focus",
 		"when": "sideBarFocus && focusedView == 'gitstash.explorer'"
+	},
+	{
+		"key": "alt+l",
+		"command": "extension.multiCommand.execute",
+		"when": "sideBarFocus && inputFocus && focusedView == 'workbench.scm'",
+		"args": {
+			"sequence": [
+				"list.focusFirst", // focuses the commit message input, as close as you can get
+				"list.focusDown",
+				"list.focusDown",
+				"list.focusDown"
+			]
+		}
+	},
+	{
+		"key": "alt+l",
+		"command": "list.focusFirst",
+		"when": "sideBarFocus && !inputFocus && focusedView == 'workbench.scm'"
 	},
 	{
 		"key": "alt+k",
