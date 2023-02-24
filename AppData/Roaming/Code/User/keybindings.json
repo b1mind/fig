@@ -252,7 +252,7 @@
 	{
 		"key": "s",
 		"command": "extension.multiCommand.execute",
-		"when": "sideBarFocus && focusedView == 'workbench.scm'",
+		"when": "sideBarFocus && !inputFocus && focusedView == 'workbench.scm'",
 		"args": {
 			"interval": 200,
 			"sequence": ["list.selectAndPreserveFocus", "git.stage"]
@@ -261,7 +261,7 @@
 	{
 		"key": "u",
 		"command": "extension.multiCommand.execute",
-		"when": "sideBarFocus && focusedView == 'workbench.scm'",
+		"when": "sideBarFocus && !inputFocus && focusedView == 'workbench.scm'",
 		"args": {
 			"interval": 200,
 			"sequence": ["list.selectAndPreserveFocus", "git.unstage"]
