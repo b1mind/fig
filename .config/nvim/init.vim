@@ -45,13 +45,11 @@ endif
 
 " >> Plugins! --
 call plug#begin('~/.vim/plugged')
-  Plug 'tpope/vim-surround'
   Plug 'vim-scripts/ReplaceWithRegister'
   Plug 'chaoren/vim-wordmotion'
   Plug 'unblevable/quick-scope'
   Plug 'adelarsq/vim-matchit'
-  "Plug 'evanleck/vim-svelte', {'branch': 'main'}
-  Plug 'leafOfTree/vim-svelte-plugin'
+  Plug 'tpope/vim-surround'
   " Plug 'rhysd/clever-f.vim'
 
   " >vim plugins only
@@ -71,6 +69,8 @@ call plug#begin('~/.vim/plugged')
 
     " Good
     Plug 'tpope/vim-commentary'
+    Plug 'leafOfTree/vim-svelte-plugin'
+    "Plug 'evanleck/vim-svelte', {'branch': 'main'}
     " Plug 'michaeljsmith/vim-indent-object'
 
     " Primeagen recommends--
@@ -94,6 +94,7 @@ call plug#end()
 " >vim only settings
 if !exists('g:vscode')
 
+  " set mouse=a
   " >> qol settings
   let g:netrw_browse_split = 2
   let g:netrw_banner = 0
@@ -142,12 +143,18 @@ if !exists('g:vscode')
   "TODO split buffer/panes
 
   "TODO map <C-t> buffer tab cycle
+  "TODO map <C-v> <C-q>
+  
+" nice hack to center after up/down
+nnoremap <C-u> <C-u>zz
+nnoremap <C-d> <C-d>M
+
   
   " navigate windows/buffers
-  nnoremap <C-h> <C-w>h
-  nnoremap <C-j> <C-w>j
-  nnoremap <C-k> <C-w>k
-  nnoremap <C-l> <C-w>l
+  nnoremap <A-h> <C-w>h
+  nnoremap <A-j> <C-w>j
+  nnoremap <A-k> <C-w>k
+  nnoremap <A-l> <C-w>l
 
   nnoremap gt :bnext<CR>
   nnoremap gT :pnext<CR>
@@ -180,7 +187,6 @@ let g:wordmotion_mappings = { 'w' : 'w', 'b' : 'b', 'e' : '<W-e>' , 'iw': 'iw'}
 " highlight TabLineSelection guibg='#000000' guifg='#ff50ff'
 
 ">> Key maps for all
-"<< cause i know better
 let mapleader = " "
 map , %
 
@@ -190,15 +196,18 @@ vnoremap J }
 nnoremap K {k
 vnoremap K {
 nnoremap Y y$
-nmap [m [t
-nmap ]m ]t
+
+" nmap [m [t
+" nmap ]m ]t
 
 " nav remaps
 nnoremap die ggVG
 nnoremap H B
 nnoremap L W
-" nnoremap } 9k
-" nnoremap { 9j
+nnoremap } }j
+nnoremap { {k
+vnoremap } }j
+vnoremap { {k
 
 " normal maps
 nnoremap R r
@@ -208,8 +217,8 @@ nnoremap Q @
 " nnoremap <silent> <Esc> :noh<CR>
 
 " insert maps
-inoremap <C-p> <C-r>0
-inoremap <C-l> <Del>
+" inoremap <C-p> <C-r>0
+" inoremap <C-l> <Del>
 
 "FIXME suggestions (ctrl + . works) "inoremap <C-space> <C-p>
 
@@ -269,12 +278,9 @@ nnoremap <leader><leader>; a;<Esc>
 nnoremap <leader>, $a,<Esc>
 nnoremap <leader><leader>, f i,<Esc>
 nnoremap <leader>p "+p
-nnoremap <leader>m M
 nnoremap <leader>b vaBV
 nnoremap <leader>B va[V
 nnoremap <leader>t vatV
-
-nnoremap <leader>e f 
 
 nnoremap <leader>y "+y
 vnoremap <leader>y "+y
@@ -300,11 +306,12 @@ if exists('g:vscode')
   " Different settings in vsCode for scoping 
   highlight QuickScopePrimary gui=underline cterm=underline ctermfg=155 
   highlight QuickScopeSecondary gui=underline cterm=underline ctermfg=81
-  " highlight Visual guibg='#2f2b3a' 
-  highlight Visual guibg='#00000000' 
+  highlight Visual guibg='#2f2b3a' 
+  " highlight Visual guibg='#00000000' 
 
   nnoremap <silent> <leader>z <Cmd>call VSCodeCall('workbench.action.toggleZenMode')<CR>
-  nnoremap <silent> <leader><leader>z <Cmd>call VSCodeCall('settings.cycle.zenModeFull')<CR>
+  nnoremap <silent> <leader><leader>z <Cmd>call VSCodeCall('workbench.action.tasks.runTask', 'ZenZen')<CR>
+  " nnoremap <silent> <leader><leader>z <Cmd>call VSCodeCall('workbench.action.toggleFullScreen')<CR>
   " nnoremap <silent> zv <Cmd>call VSCodeCall('workbench.action.toggleZenMode')<CR><Cmd>call VSCodeCall('workbench.action.focusActiveEditorGroup')<CR>
 
   " FIXME buffer wont save in vsCode?
@@ -314,6 +321,9 @@ if exists('g:vscode')
   " hit that gspot with vsc actions (todo make some work for neovim)
   nnoremap <silent> gp <Cmd>call VSCodeCall('editor.action.marker.next')<CR>
   nnoremap <silent> gl <Cmd>call VSCodeCall('editor.action.openLink')<CR>
+  nnoremap gd <Cmd>call VSCodeNotify('editor.action.peekDefinition')<CR>
+  nnoremap gD <Cmd>call VSCodeNotify('editor.action.revealDefinition')<CR>
+  " map gD <Cmd>call <SID>vscodeGoToDefinition('revealDefinition')<CR>
 
   " Git version controls
   nnoremap <silent> gb <Cmd>call VSCodeCall('editor.action.dirtydiff.next')<CR>
@@ -324,31 +334,17 @@ if exists('g:vscode')
   noremap <silent> gm <Cmd>call VSCodeCall('editor.action.addSelectionToNextFindMatch')<CR>
   noremap <silent> gM <Cmd>call VSCodeCall('editor.action.selectHighlights')<CR>
 
-  " For my bookmarks extension
-  " TODO make a function for taking in the number (refactor dis shitz)
-  noremap <silent> m1 <Cmd>call VSCodeCall('numberedBookmarks.toggleBookmark1')<CR>
-  noremap <silent> m2 <Cmd>call VSCodeCall('numberedBookmarks.toggleBookmark2')<CR>
-  noremap <silent> m3 <Cmd>call VSCodeCall('numberedBookmarks.toggleBookmark3')<CR>
-  noremap <silent> m4 <Cmd>call VSCodeCall('numberedBookmarks.toggleBookmark4')<CR>
-  noremap <silent> m5 <Cmd>call VSCodeCall('numberedBookmarks.toggleBookmark5')<CR>
-  noremap <silent> m6 <Cmd>call VSCodeCall('numberedBookmarks.toggleBookmark6')<CR>
-  noremap <silent> m7 <Cmd>call VSCodeCall('numberedBookmarks.toggleBookmark7')<CR>
-  noremap <silent> m8 <Cmd>call VSCodeCall('numberedBookmarks.toggleBookmark8')<CR>
-  noremap <silent> m9 <Cmd>call VSCodeCall('numberedBookmarks.toggleBookmark9')<CR>
-  noremap <silent> m0 <Cmd>call VSCodeCall('numberedBookmarks.toggleBookmark0')<CR>
-  noremap <silent> '1 <Cmd>call VSCodeCall('numberedBookmarks.jumpToBookmark1')<CR>
-  noremap <silent> '2 <Cmd>call VSCodeCall('numberedBookmarks.jumpToBookmark2')<CR>
-  noremap <silent> '3 <Cmd>call VSCodeCall('numberedBookmarks.jumpToBookmark3')<CR>
-  noremap <silent> '4 <Cmd>call VSCodeCall('numberedBookmarks.jumpToBookmark4')<CR>
-  noremap <silent> '5 <Cmd>call VSCodeCall('numberedBookmarks.jumpToBookmark5')<CR>
-  noremap <silent> '6 <Cmd>call VSCodeCall('numberedBookmarks.jumpToBookmark6')<CR>
-  noremap <silent> '7 <Cmd>call VSCodeCall('numberedBookmarks.jumpToBookmark7')<CR>
-  noremap <silent> '8 <Cmd>call VSCodeCall('numberedBookmarks.jumpToBookmark8')<CR>
-  noremap <silent> '9 <Cmd>call VSCodeCall('numberedBookmarks.jumpToBookmark9')<CR>
-  noremap <silent> '0 <Cmd>call VSCodeCall('numberedBookmarks.jumpToBookmark0')<CR>
+  " For bookmarks extension
+  nnoremap <silent> <leader>m <Cmd>call VSCodeNotify('bookmarks.toggle')<CR>
+  nnoremap <silent> mk <Cmd>call VSCodeNotify('bookmarks.toggle')<CR>
+  nnoremap <silent> ml <Cmd>call VSCodeNotify('bookmarks.toggleLabeled')<CR>
+  vnoremap <silent> ml <Cmd>call VSCodeNotifyVisual('bookmarks.toggleLabeled', 1)<CR>
+  nnoremap <silent> 'j <Cmd>call VSCodeNotify('bookmarks.jumpToNext')<CR>
+  nnoremap <silent> 'k <Cmd>call VSCodeNotify('bookmarks.jumpToPrevious')<CR>
 
   " Good example of cmd bind that extends
   nnoremap <silent> ? <Cmd>call VSCodeNotify('workbench.action.findInFiles', { 'query': expand('<cword>')})<CR>
+  vnoremap <silent> ? <Cmd>call VSCodeNotifyVisual('workbench.action.findInFiles', 1)<CR>
 
   " Fix for comments?
   "FIXME use plugin for vim motions not working with vsCode comments
@@ -360,8 +356,8 @@ if exists('g:vscode')
 
   " look at how maybe treesitter can work.
   "FIXME " VSC highlighting only activates Visual mode if mouse inits
-  " vmap <silent> af <Cmd>call VSCodeNotifyVisual('editor.action.smartSelect.grow')<CR>
-  " vmap <silent> aF <Cmd>call VSCodeNotifyVisual('editor.action.smartSelect.shrink')<CR>
+  " vnoremap <silent> af <Cmd>call VSCodeNotifyVisual('editor.action.smartSelect.grow')<CR>
+  " vnoremap <silent> aF <Cmd>call VSCodeNotifyVisual('editor.action.smartSelect.shrink')<CR>
 
   "BORKED
   "(Hacky attempt and having colored action bar but overwrites and esc not working)

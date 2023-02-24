@@ -35,7 +35,7 @@ alias ..='cd ..'
 alias ...='cd ../../'
 alias ....='cd ../../../'
 
-alias .1m='ssh -t sh0rtyb@1mind.dev'
+alias .1m='ssh -t root@104.219.41.206'
 
 # Python stuffs
 alias py='python3'
