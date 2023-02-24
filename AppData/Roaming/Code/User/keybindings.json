@@ -209,7 +209,7 @@
 	// 	"when": "explorerViewletVisible && filesExplorerFocus && !explorerResourceIsRoot && !explorerResourceReadonly && !inputFocus"
 	// },
 
-	//< gitNavigation
+	//< git diff Navigation
 	//fixme stageChange or toggle into lens
 	// {
 	//   "key": "ctrl+s",
@@ -242,12 +242,13 @@
 		"when": "editorFocus"
 	},
 
-	//< gitSideBar
 	// {
 	// 	"key": "alt+g",
 	// 	"command": "workbench.scm.focus"
 	// 	// "when": ""
 	// },
+
+	//< git actions
 	{
 		"key": "s",
 		"command": "extension.multiCommand.execute",
@@ -272,22 +273,22 @@
 		"when": "sideBarFocus && focusedView == 'workbench.scm'"
 	},
 	{
-		"key": "alt+u",
+		"key": "shift+u",
 		"command": "git.unstageAll",
 		"when": "isInDiffEditor || !textInputFocus && sideBarFocus && focusedView == 'workbench.scm'"
 	},
 	{
-		"key": "alt+s",
+		"key": "s",
 		"command": "git.stageSelectedRanges",
 		"when": "isInDiffEditor || dirtyDiffVisible"
 	},
 	{
-		"key": "alt+r",
+		"key": "r",
 		"command": "git.revertSelectedRanges",
 		"when": "isInDiffEditor || dirtyDiffVisible"
 	},
 	{
-		"key": "alt+u",
+		"key": "u",
 		"command": "git.unstageSelectedRanges",
 		"when": "isInDiffEditor || dirtyDiffVisible"
 	},
@@ -329,7 +330,7 @@
 		"when": "sideBarFocus && inputFocus && focusedView == 'workbench.scm'",
 		"args": {
 			"sequence": [
-				"list.focusFirst", // focuses the commit message input, as close as you can get
+				"list.focusFirst",
 				"list.focusDown",
 				"list.focusDown",
 				"list.focusDown"
@@ -337,9 +338,12 @@
 		}
 	},
 	{
-		"key": "alt+l",
-		"command": "list.focusFirst",
-		"when": "sideBarFocus && !inputFocus && focusedView == 'workbench.scm'"
+		"key": "alt+k",
+		"command": "extension.multiCommand.execute",
+		"when": "sideBarFocus && !inputFocus && focusedView == 'workbench.scm'",
+		"args": {
+			"sequence": ["list.focusFirst", "list.select"]
+		}
 	},
 	{
 		"key": "alt+k",
@@ -351,11 +355,11 @@
 		"command": "workbench.scm.focus",
 		"when": "sideBarFocus && focusedView == 'timeline'"
 	},
-	{
-		"key": "alt+k",
-		"command": "gitstash.explorer.focus",
-		"when": "focusedView == 'workbench.scm' && workbench.scm.defaultViewLocation"
-	},
+	// {
+	// 	"key": "alt+k",
+	// 	"command": "gitstash.explorer.focus",
+	// 	"when": "focusedView == 'workbench.scm' && workbench.scm.defaultViewLocation"
+	// },
 
 	//< error navigation /
 	{
@@ -656,10 +660,21 @@
 	},
 
 	//> Testing auto closing sideBar with focus keybinds too
+	// {
+	// 	"key": "alt+l",
+	// 	"command": "workbench.action.toggleSidebarVisibility",
+	// 	"when": "activeEditorGroupLast && editorTextFocus && !sideBarVisible && !inReferenceSearchEditor",
+	// },
 	{
 		"key": "alt+l",
-		"command": "workbench.action.toggleSidebarVisibility",
-		"when": "activeEditorGroupLast && editorFocus && !sideBarVisible && !inReferenceSearchEditor"
+		"command": "extension.multiCommand.execute",
+		"when": "activeEditorGroupLast && editorTextFocus && !sideBarVisible && !inReferenceSearchEditor",
+		"args": {
+			"sequence": [
+				"workbench.action.toggleSidebarVisibility", // focuses the commit message input, as close as you can get
+				"workbench.action.navigateRight"
+			]
+		}
 	},
 	{
 		"key": "alt+h",
