@@ -50,6 +50,7 @@ call plug#begin('~/.vim/plugged')
   Plug 'unblevable/quick-scope'
   Plug 'adelarsq/vim-matchit'
   Plug 'tpope/vim-surround'
+  Plug 'leafOfTree/vim-svelte-plugin'
   " Plug 'rhysd/clever-f.vim'
 
   " >vim plugins only
@@ -69,7 +70,6 @@ call plug#begin('~/.vim/plugged')
 
     " Good
     Plug 'tpope/vim-commentary'
-    Plug 'leafOfTree/vim-svelte-plugin'
     "Plug 'evanleck/vim-svelte', {'branch': 'main'}
     " Plug 'michaeljsmith/vim-indent-object'
 
