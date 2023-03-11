@@ -10,6 +10,7 @@
 
 	//> ZenMode settings
 	"zenMode.fullScreen": false,
+	"zenMode.hideStatusBar": false,
 	"zenMode.silentNotifications": true,
 	"zenMode.centerLayout": false,
 	"zenMode.hideLineNumbers": false,
@@ -30,9 +31,8 @@
 	"workbench.editor.enablePreviewFromQuickOpen": false,
 	"workbench.list.multiSelectModifier": "alt",
 	"workbench.colorCustomizations": {
-		"bookmarks.overviewRuler": "#00000000",
-		"bookmarks.gutterIconFillColor": "#ffffff"
-		// "bookmarks.": "#0099ff50"
+		"bookmarks.overviewRuler": "#00000000"
+		// "bookmarks.gutterIconFillColor": "#ffffff"
 	},
 
 	"editor.copyWithSyntaxHighlighting": false,
@@ -374,7 +374,7 @@
 	"screencastMode.keyboardShortcutsFormat": "keys",
 	"css.enabledLanguages": ["svelte", "html"],
 
-	//notworking gutterIcon..
+	//not working gutterIcon..
 	// "bookmarks.gutterIconFillColor": "#ffffff",
 
 	"git.showActionButton": {
@@ -389,7 +389,8 @@
 
 	"svelte.enable-ts-plugin": true,
 	"svelte.ui.svelteKitFilesContextMenu.enable": "auto",
-	"git.closeDiffOnOperation": true
+	"git.closeDiffOnOperation": true,
+	"workbench.tree.renderIndentGuides": "none"
 	// "workbench.editor.revealIfOpen": true
 	// "output.smartScroll.enabled": false,
 	// "editor.cursorBlinking": "phase",

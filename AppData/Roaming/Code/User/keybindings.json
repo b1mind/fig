@@ -612,7 +612,7 @@
 
 	//< breadCrumbs
 	{
-		"key": "alt+;",
+		"key": "shift+space",
 		"command": "breadcrumbs.focusAndSelect",
 		"when": "neovim.mode == normal && breadcrumbsPossible"
 	},
