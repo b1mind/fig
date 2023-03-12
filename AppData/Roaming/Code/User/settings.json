@@ -222,19 +222,19 @@
 			]
 		}
 	],
+
+	//> multi line commands //this better than task?
 	"multiCommand.commands": [
 		{
 			"command": "multiCommand.ZenZen",
 			"interval": 200,
-			"when": "inZenMode",
+			"when": "inZenMode", // does not seem to effect anything? has to be on the bind
 			"sequence": [
 				"workbench.action.joinAllGroups",
 				"workbench.action.toggleFullScreen"
 			]
 		}
 	],
-
-	//> multi line commands //this better than task?
 
 	//> cSpell spell better
 	"cSpell.showStatus": false,
