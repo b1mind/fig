@@ -1,0 +1,408 @@
+{
+	//wtf is this?
+	// "files.eol": "\n",
+
+	"keyboard-quickfix.showActionNotification": true,
+	"security.workspace.trust.untrustedFiles": "open",
+
+	"window.title": "${dirty} 📁 ${activeFolderShort} | ${activeEditorShort} ",
+	"window.menuBarVisibility": "compact",
+
+	//> ZenMode settings
+	"zenMode.fullScreen": false,
+	"zenMode.hideStatusBar": false,
+	"zenMode.silentNotifications": true,
+	"zenMode.centerLayout": false,
+	"zenMode.hideLineNumbers": false,
+	"zenMode.restore": true,
+	"explorer.openEditors.visible": 0,
+
+	"workbench.editor.closeOnFileDelete": true,
+	"workbench.iconTheme": "symbols",
+	"workbench.layoutControl.enabled": false,
+	"workbench.sideBar.location": "right",
+	"workbench.editor.tabSizing": "shrink",
+	"workbench.editor.labelFormat": "short",
+	"workbench.preferredDarkColorTheme": "Night Mind [purple]",
+	"workbench.colorTheme": "Night Mind [purple]",
+	"workbench.startupEditor": "newUntitledFile",
+	"workbench.editor.closeEmptyGroups": true,
+	"workbench.editor.scrollToSwitchTabs": true,
+	"workbench.editor.enablePreviewFromQuickOpen": false,
+	"workbench.list.multiSelectModifier": "alt",
+	"workbench.colorCustomizations": {
+		"bookmarks.overviewRuler": "#00000000"
+	},
+
+	"bookmarks.gutterIconBorderColor": "#7676cc",
+	"bookmarks.gutterIconFillColor": "#00000000",
+	"bookmarks.label.suggestion": "suggestWhenSelectedOrLineWhenNoSelected",
+	"bookmarks.sideBar.expanded": true,
+
+	"editor.copyWithSyntaxHighlighting": false,
+	"editor.occurrencesHighlight": false,
+	"editor.inlayHints.enabled": "onUnlessPressed",
+	"editor.inlayHints.fontSize": 12,
+	"editor.parameterHints.enabled": false,
+	"editor.formatOnPaste": true,
+	"editor.bracketPairColorization.enabled": true,
+	"editor.renderLineHighlightOnlyWhenFocus": true,
+	"editor.snippetSuggestions": "top",
+	"editor.inlineSuggest.enabled": true,
+	"editor.minimap.enabled": false,
+	"editor.lineNumbers": "relative", // turn off for neovim?
+	"editor.tabSize": 2,
+	"editor.detectIndentation": true,
+	"editor.colorDecorators": true,
+	"editor.folding": false,
+	"editor.fontFamily": "'FiraCode Nerd Font Mono','Delugia', 'Iosevka', 'Monaco', 'Consolas', 'monospace' ",
+	"editor.fontLigatures": true,
+	"editor.fontSize": 14,
+	"editor.lineHeight": 0,
+	"editor.acceptSuggestionOnEnter": "smart",
+	"editor.peekWidgetDefaultFocus": "editor",
+
+	"breadcrumbs.symbolPath": "last",
+	"breadcrumbs.showBooleans": false,
+	"breadcrumbs.showProperties": false,
+	"breadcrumbs.showArrays": false,
+	"breadcrumbs.showConstants": false,
+
+	"files.associations": {
+		"*.svg": "html"
+	},
+
+	"settingsSync.ignoredSettings": [
+		"editor.lineNumbers",
+		"workbench.colorCustomizations"
+	],
+
+	//> Terminal
+	"terminal.integrated.shellIntegration.decorationsEnabled": "never",
+	"terminal.integrated.altClickMovesCursor": false,
+	"terminal.integrated.cursorBlinking": true,
+	"terminal.integrated.fontFamily": "'FiraCode Nerd Font Mono', 'Monaco', 'Consolas','monospace'",
+	"terminal.integrated.fontSize": 14,
+	"terminal.integrated.copyOnSelection": true,
+	"terminal.integrated.tabs.focusMode": "singleClick",
+	"terminal.integrated.tabs.enabled": true,
+	"terminal.integrated.commandsToSkipShell": [
+		// Ensure the toggle sidebar visibility keybinding skips the shell
+		"workbench.action.toggleSidebarVisibility",
+		// Send quick open's keybinding to the shell
+		"-workbench.action.quickOpen"
+	],
+
+	//> extensions start
+	"extensions.autoUpdate": false,
+
+	//> Prettier
+	"editor.defaultFormatter": "esbenp.prettier-vscode",
+	"editor.formatOnSave": true,
+	"prettier.useTabs": true,
+	"prettier.semi": false,
+	"prettier.singleQuote": true,
+	"prettier.arrowParens": "avoid",
+	"prettier.trailingComma": "all",
+	"[svelte]": {
+		"editor.defaultFormatter": "svelte.svelte-vscode"
+	},
+
+	//> material
+	"material-icon-theme.hidesExplorerArrows": true,
+
+	//> Keyshare
+	//todo raise issue for bar opacity setting
+	"screencastMode.fontSize": 28,
+	"screencastMode.verticalOffset": 6,
+	"screencastMode.keyboardOverlayTimeout": 4200,
+
+	//> Todo
+	"todo.timekeeping.finished.time": false,
+	"todo.file.view.expanded": false,
+	"todo.embedded.view.expanded": true,
+	//prettier-ignore
+	"todo.file.exclude": [
+		"**/.!(todo|todos|task|tasks)/**", "**/*.html", "**/*.css", "**/.json", "**/env/**", "**/static/admin/**", "**/node_modules/**",
+	],
+	//prettier-ignore
+	"todo.embedded.exclude": [
+		"**/.!(todo|todos|task|tasks)/**", "**/*.html", "**/*.css", "**/.json", "**/env/**", "**/staticfiles/**", "**/node_modules/**", "**/__sapper__/**", "**/build/**", "**/dist/**", "**/build/**"
+	],
+
+	//> better comments
+	"better-comments.highlightPlainText": true,
+	//prettier-ignore
+	"better-comments.tags": [
+		{ "tag": "todo", "color": "#fbff00", "strikethrough": false, "backgroundColor": "transparent" },
+		{ "tag": "fixme", "color": "#ff2d00", "strikethrough": false, "backgroundColor": "transparent" },
+		{ "tag": "!", "color": "#a20000", "strikethrough": false, "backgroundColor": "transparent" },
+		{ "tag": "?", "color": "#757500", "strikethrough": false, "backgroundColor": "transparent" },
+		{ "tag": "//", "color": "#444444", "strikethrough": true, "backgroundColor": "transparent" },
+		{ "tag": "*", "color": "#FF8C00", "strikethrough": false, "backgroundColor": "transparent" },
+		{ "tag": "@", "color": "#00ff5a", "strikethrough": false, "backgroundColor": "transparent" },
+		{ "tag": ">", "color": "#007aff", "strikethrough": false, "backgroundColor": "transparent" },
+		{ "tag": "<", "color": "#1c4d89", "strikethrough": false, "backgroundColor": "transparent" }
+	],
+
+	//>auto prefixer
+	"less.lint.propertyIgnoredDueToDisplay": "error",
+
+	//< linting
+	"eslint.run": "onSave",
+	"eslint.probe": [
+		"javascript",
+		"javascriptreact",
+		"typescript",
+		"typescriptreact",
+		"html",
+		"vue",
+		"markdown",
+		"svelte"
+	],
+	// "vscode-neovim.mouseSelectionStartVisualMode": true,
+	// "vscode-neovim.revealCursorScrollLine": true,
+	"vscode-neovim.neovimInitVimPaths.linux": "~/.config/nvim/init.vim",
+	"vscode-neovim.neovimExecutablePaths.linux": "/usr/bin/nvim",
+	"vscode-neovim.useWSL": true,
+	"vscode-neovim.useCtrlKeysForInsertMode": true,
+	"vscode-neovim.highlightGroups.unknownHighlight": "vim",
+	"vscode-neovim.highlightGroups.highlights": {
+		"IncSearch": {
+			"backgroundColor": "theme.editor.findMatchBackground",
+			"borderColor": "theme.editor.findMatchBorder"
+		},
+		"Search": {
+			"backgroundColor": "theme.editor.findMatchHighlightBackground",
+			"borderColor": "theme.editor.findMatchHighlightBorder"
+		}
+		// "Visual": {
+		// 	"backgroundColor": "theme.editor.selectionBackground"
+		// }
+	},
+
+	//> settings.cycle create any command combos for vsCode
+	"settings.cycle": [
+		{
+			"id": "lineNumber",
+			"overrideWorkspaceSettings": true,
+			"values": [
+				{
+					"editor.lineNumbers": "on"
+				},
+				{
+					"editor.lineNumbers": "relative"
+				}
+			]
+		},
+		{
+			"id": "zenModeFull",
+			"overrideWorkspaceSettings": true,
+			"values": [
+				{
+					"zenMode.fullScreen": true
+				},
+				{
+					"zenMode.fullScreen": false
+				}
+			]
+		},
+		{
+			"id": "fontSize",
+			"overrideWorkspaceSettings": true,
+			"values": [
+				{
+					"editor.fontSize": 14,
+					"terminal.integrated.fontSize": 14
+				},
+				{
+					"editor.fontSize": 18,
+					"terminal.integrated.fontSize": 16
+				}
+			]
+		}
+	],
+
+	//> multi line commands //this better than task?
+	"multiCommand.commands": [
+		{
+			"command": "multiCommand.ZenZen",
+			"interval": 200,
+			"when": "inZenMode", // does not seem to effect anything? has to be on the bind
+			"sequence": [
+				"workbench.action.joinAllGroups",
+				"workbench.action.toggleFullScreen"
+			]
+		}
+	],
+
+	//> cSpell spell better
+	"cSpell.showStatus": false,
+	"cSpell.language": "en, lorem",
+	"cSpell.enableFiletypes": ["svelte", "todo"],
+	"cSpell.allowCompoundWords": true,
+	"cSpell.userWords": [
+		"afterbegin",
+		"aliquet",
+		"asyncio",
+		"authn",
+		"autoplace",
+		"autoprefix",
+		"barba",
+		"basepath",
+		"beforeend",
+		"blandit",
+		"blockquote",
+		"Browserslist",
+		"burlywood",
+		"cadetblue",
+		"codepen",
+		"Colorizor",
+		"comfyjs",
+		"commandline",
+		"congue",
+		"convallis",
+		"Cpath",
+		"crossorigin",
+		"csrf",
+		"Csvg",
+		"Curabitur",
+		"darkgrey",
+		"dedupe",
+		"degit",
+		"deps",
+		"destructure",
+		"Donec",
+		"draggable",
+		"draggables",
+		"droppable",
+		"eget",
+		"entrypoints",
+		"favicon",
+		"figcaption",
+		"flexbox",
+		"ghpages",
+		"gifs",
+		"greensock",
+		"greenyellow",
+		"gsap",
+		"gsapper",
+		"imgs",
+		"inrupt",
+		"jalapinos",
+		"keydown",
+		"keyframes",
+		"Keyup",
+		"killa",
+		"Krisp",
+		"labelledby",
+		"lectus",
+		"lightblue",
+		"lightgrey",
+		"lukeed",
+		"malesuada",
+		"Manni",
+		"Mauris",
+		"mdsvex",
+		"Meryl",
+		"Milly",
+		"minmax",
+		"monokai",
+		"monsta",
+		"mousedown",
+		"mousemove",
+		"ms",
+		"ms flexbox",
+		"nibh",
+		"nisl",
+		"nocursor",
+		"noscript",
+		"nums",
+		"ontransitioned",
+		"onwarn",
+		"outro",
+		"Plex",
+		"pointerdown",
+		"porttitor",
+		"posuere",
+		"prefetch",
+		"prefetches",
+		"prismic",
+		"Proin",
+		"pulvinar",
+		"readwrite",
+		"Resub",
+		"resubbed",
+		"rgba",
+		"Roboto",
+		"rutrum",
+		"scrollbar",
+		"scroller",
+		"serviceworker",
+		"sesh",
+		"shroom",
+		"shrooms",
+		"sirv",
+		"skyblue",
+		"soluta",
+		"Soueidan",
+		"sourcemap",
+		"successkid",
+		"sveltejs",
+		"tempora",
+		"tincidunt",
+		"todos",
+		"token",
+		"tortor",
+		"trippy",
+		"Tweening",
+		"typeof",
+		"unstage",
+		"untracked",
+		"vash",
+		"vercel",
+		"vimium",
+		"vite",
+		"Vivamus",
+		"vmax",
+		"webp",
+		"wysiyg",
+		"yoyo",
+		"Yuki"
+	],
+	//prettier-ignore
+	"cSpell.enabledLanguageIds": [
+		"asciidoc", "c", "cpp", "csharp", "css", "git-commit", "go", "graphql", "handlebars", "haskell", "html", "jade", "java", "javascript", "javascriptreact", "json", "jsonc", "latex", "less", "markdown", "php", "plaintext", "python", "pug", "restructuredtext", "rust", "scala", "scss", "text", "typescript", "typescriptreact", "yaml", "yml", "todo"
+	],
+
+	//Todo organise
+	"workbench.editorAssociations": {
+		"*.ipynb": "jupyter-notebook"
+	},
+	"notebook.cellToolbarLocation": {
+		"default": "right",
+		"jupyter-notebook": "left"
+	},
+	"screencastMode.keyboardShortcutsFormat": "keys",
+	"css.enabledLanguages": ["svelte", "html"],
+
+	"git.showActionButton": {
+		"publish": false
+	},
+	"git.mergeEditor": true,
+	"scm.repositories.sortOrder": "path",
+	"scm.diffDecorationsGutterPattern": {
+		"added": true
+	},
+	"diffEditor.renderSideBySide": false,
+
+	"svelte.enable-ts-plugin": true,
+	"svelte.ui.svelteKitFilesContextMenu.enable": "auto",
+	"git.closeDiffOnOperation": true,
+	"workbench.tree.renderIndentGuides": "none"
+	// "workbench.editor.revealIfOpen": true
+	// "output.smartScroll.enabled": false,
+	// "editor.cursorBlinking": "phase",
+	// "window.newWindowDimensions": "maximized"
+	// "files.hotExit": "onExitAndWindowClose"
+}
