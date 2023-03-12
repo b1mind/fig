@@ -95,18 +95,17 @@
 		"when": "listFocus && !inputFocus"
 	},
 
+	//> zen mode && settings cycle
 	{
 		"key": "alt+z",
 		"command": "workbench.action.toggleZenMode"
 	},
-
-	// tasks... dope
 	{
 		"key": "ctrl+alt+z",
-		"command": "workbench.action.tasks.runTask",
-		"args": "ZenZen",
+		"command": "multiCommand.ZenZen",
 		"when": "inZenMode"
 	},
+
 	{
 		"key": "ctrl+alt+f",
 		"command": "settings.cycle.fontSize",
@@ -146,12 +145,12 @@
 		"when": "!editorTextFocus && editorFocus && !renameInputVisible"
 	},
 	{
-		"key": "ctrl+k escape",
+		"key": "ctrl+k ctrl+k",
 		"command": "workbench.action.navigateLast",
 		"when": "!terminalFocus || !editorTextFocus || !terminalEditorFocus"
 	},
 	{
-		"key": "ctrl+k k",
+		"key": "ctrl+k s",
 		"command": "svelte.kit.generateMultipleFiles",
 		"when": "sideBarFocus && explorerViewletFocus || editorFocus"
 	},
@@ -666,12 +665,23 @@
 	// 	"when": "activeEditorGroupLast && editorTextFocus && !sideBarVisible && !inReferenceSearchEditor",
 	// },
 	{
+		"key": "enter",
+		"command": "extension.multiCommand.execute",
+		"when": "explorerViewletVisible && filesExplorerFocus && !explorerResourceIsFolder && !inputFocus",
+		"args": {
+			"sequence": [
+				"workbench.action.toggleSidebarVisibility", // focuses the commit message input, as close as you can get
+				"explorer.openAndPassFocus"
+			]
+		}
+	},
+	{
 		"key": "alt+l",
 		"command": "extension.multiCommand.execute",
 		"when": "activeEditorGroupLast && editorTextFocus && !sideBarVisible && !inReferenceSearchEditor",
 		"args": {
 			"sequence": [
-				"workbench.action.toggleSidebarVisibility", // focuses the commit message input, as close as you can get
+				"workbench.action.toggleSidebarVisibility",
 				"workbench.action.navigateRight"
 			]
 		}

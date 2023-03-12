@@ -32,8 +32,12 @@
 	"workbench.list.multiSelectModifier": "alt",
 	"workbench.colorCustomizations": {
 		"bookmarks.overviewRuler": "#00000000"
-		// "bookmarks.gutterIconFillColor": "#ffffff"
 	},
+
+	"bookmarks.gutterIconBorderColor": "#7676cc",
+	"bookmarks.gutterIconFillColor": "#00000000",
+	"bookmarks.label.suggestion": "suggestWhenSelectedOrLineWhenNoSelected",
+	"bookmarks.sideBar.expanded": true,
 
 	"editor.copyWithSyntaxHighlighting": false,
 	"editor.occurrencesHighlight": false,
@@ -53,7 +57,7 @@
 	"editor.folding": false,
 	"editor.fontFamily": "'FiraCode Nerd Font Mono','Delugia', 'Iosevka', 'Monaco', 'Consolas', 'monospace' ",
 	"editor.fontLigatures": true,
-	"editor.fontSize": 18,
+	"editor.fontSize": 14,
 	"editor.lineHeight": 0,
 	"editor.acceptSuggestionOnEnter": "smart",
 	"editor.peekWidgetDefaultFocus": "editor",
@@ -63,9 +67,6 @@
 	"breadcrumbs.showProperties": false,
 	"breadcrumbs.showArrays": false,
 	"breadcrumbs.showConstants": false,
-
-	"bookmarks.label.suggestion": "suggestWhenSelectedOrLineWhenNoSelected",
-	"bookmarks.sideBar.expanded": true,
 
 	"files.associations": {
 		"*.svg": "html"
@@ -81,7 +82,7 @@
 	"terminal.integrated.altClickMovesCursor": false,
 	"terminal.integrated.cursorBlinking": true,
 	"terminal.integrated.fontFamily": "'FiraCode Nerd Font Mono', 'Monaco', 'Consolas','monospace'",
-	"terminal.integrated.fontSize": 16,
+	"terminal.integrated.fontSize": 14,
 	"terminal.integrated.copyOnSelection": true,
 	"terminal.integrated.tabs.focusMode": "singleClick",
 	"terminal.integrated.tabs.enabled": true,
@@ -112,7 +113,7 @@
 
 	//> Keyshare
 	//todo raise issue for bar opacity setting
-	"screencastMode.fontSize": 26,
+	"screencastMode.fontSize": 28,
 	"screencastMode.verticalOffset": 6,
 	"screencastMode.keyboardOverlayTimeout": 4200,
 
@@ -218,6 +219,17 @@
 					"editor.fontSize": 18,
 					"terminal.integrated.fontSize": 16
 				}
+			]
+		}
+	],
+	"multiCommand.commands": [
+		{
+			"command": "multiCommand.ZenZen",
+			"interval": 200,
+			"when": "inZenMode",
+			"sequence": [
+				"workbench.action.joinAllGroups",
+				"workbench.action.toggleFullScreen"
 			]
 		}
 	],
@@ -373,9 +385,6 @@
 	},
 	"screencastMode.keyboardShortcutsFormat": "keys",
 	"css.enabledLanguages": ["svelte", "html"],
-
-	//not working gutterIcon..
-	// "bookmarks.gutterIconFillColor": "#ffffff",
 
 	"git.showActionButton": {
 		"publish": false
