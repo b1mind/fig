@@ -897,5 +897,15 @@
 		"key": "ctrl+d",
 		"command": "-editor.action.addSelectionToNextFindMatch",
 		"when": "editorFocus"
+	},
+	{
+		"key": "space",
+		"command": "filesExplorer.openFilePreserveFocus",
+		"when": "explorerViewletVisible && filesExplorerFocus && !explorerResourceIsFolder && !inputFocus && !treeElementCanExpand"
+	},
+	{
+		"key": "space",
+		"command": "-filesExplorer.openFilePreserveFocus",
+		"when": "explorerViewletVisible && filesExplorerFocus && !explorerResourceIsFolder && !inputFocus"
 	}
 ]
