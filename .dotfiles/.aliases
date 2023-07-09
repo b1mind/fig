@@ -19,11 +19,14 @@ rl () {
 }
 alias .rl='rl'
 
-alias v='nvim'
 alias .a='nvim ~/.dotfiles/.aliases'
 alias .b='nvim ~/.bashrc'
 alias .v='nvim ~/.config/nvim/init.vim'
 
+# is this really safe lol (blame Matia)
+alias yeet='rm -rf'
+
+alias v='nvim'
 alias c='code'
 
 alias explore='explorer.exe .'
@@ -44,6 +47,9 @@ alias dj='python3 manage.py'
 
 # NPM stuff
 alias nrd='npm run dev'
+
+alias pn='pnpm'
+alias pni='pnpm i -D'
 
 # Git stuffs
 alias gc='git commit -m'
