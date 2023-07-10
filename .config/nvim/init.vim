@@ -50,6 +50,7 @@ call plug#begin('~/.vim/plugged')
   Plug 'unblevable/quick-scope'
   Plug 'adelarsq/vim-matchit'
   Plug 'tpope/vim-surround'
+  Plug 'leafOfTree/vim-svelte-plugin'
   " Plug 'rhysd/clever-f.vim'
 
   " >vim plugins only
@@ -69,7 +70,6 @@ call plug#begin('~/.vim/plugged')
 
     " Good
     Plug 'tpope/vim-commentary'
-    Plug 'leafOfTree/vim-svelte-plugin'
     "Plug 'evanleck/vim-svelte', {'branch': 'main'}
     " Plug 'michaeljsmith/vim-indent-object'
 
@@ -107,8 +107,7 @@ if !exists('g:vscode')
     " autocmd ColorScheme * highlight QuickScopePrimary guifg='#afff5f' gui=underline ctermfg=155 cterm=underline
     " autocmd ColorScheme * highlight QuickScopeSecondary guifg='#5fffff' gui=underline ctermfg=81 cterm=underline
     autocmd ColorScheme * highlight QuickScopePrimary gui=underline ctermfg=155 cterm=underline
-    autocmd ColorScheme * highlight QuickScopeSecondary guifg='#e3e3e3' gui=underline ctermfg=81 cterm=underline
-  " highlight QuickScopeSecondary guifg='#888888' gui=underline ctermfg=81 cterm=underline
+    autocmd ColorScheme * highlight QuickScopeSecondary gui=underline ctermfg=81 cterm=underline
   augroup END
 
   let g:airline#extensions#tabline#enabled = 1
@@ -258,10 +257,11 @@ function! SpecialChange(type)
 endfunction
 
 " ctrl maps
-"FIXME " noremap <C-S-CR> O<Esc>
 nnoremap <CR> o<Esc>
-"FIXME " nmap <S-C><CR> O<Esc>
 nnoremap <C-s> <Cmd>:w<CR>
+"nnoremap <C-z> u
+"FIXME " noremap <C-S-CR> O<Esc>
+"FIXME " nmap <S-C><CR> O<Esc>
 
 " leader maps
 nnoremap <leader>a $
@@ -307,10 +307,14 @@ if exists('g:vscode')
   highlight QuickScopePrimary gui=underline cterm=underline ctermfg=155 
   highlight QuickScopeSecondary gui=underline cterm=underline ctermfg=81
   highlight Visual guibg='#2f2b3a' 
+  
+  " for colors
+  " highlight QuickScopePrimary guisp='#afff5f' gui=underline ctermfg=155 cterm=underline
+  " highlight QuickScopeSecondary guisp='#5fffff' gui=underline ctermfg=81 cterm=underline
   " highlight Visual guibg='#00000000' 
 
   nnoremap <silent> <leader>z <Cmd>call VSCodeCall('workbench.action.toggleZenMode')<CR>
-  nnoremap <silent> <leader><leader>z <Cmd>call VSCodeCall('workbench.action.tasks.runTask', 'ZenZen')<CR>
+  nnoremap <silent> <leader><leader>z <Cmd>call VSCodeCall('multiCommand.ZenZen')<CR>
   " nnoremap <silent> <leader><leader>z <Cmd>call VSCodeCall('workbench.action.toggleFullScreen')<CR>
   " nnoremap <silent> zv <Cmd>call VSCodeCall('workbench.action.toggleZenMode')<CR><Cmd>call VSCodeCall('workbench.action.focusActiveEditorGroup')<CR>
 
@@ -331,14 +335,16 @@ if exists('g:vscode')
   "TODO some things to control git staging, can use vim commands?
   "TODO gpot for errors? gE? then <c-d><c-u> when conditional?
 
-  noremap <silent> gm <Cmd>call VSCodeCall('editor.action.addSelectionToNextFindMatch')<CR>
-  noremap <silent> gM <Cmd>call VSCodeCall('editor.action.selectHighlights')<CR>
+  nnoremap <silent> gm <Cmd>call VSCodeCall('editor.action.addSelectionToNextFindMatch')<CR>
+  nnoremap <silent> gM <Cmd>call VSCodeCall('editor.action.selectHighlights')<CR>
+  " is there away we can grab the whole visual not just word?
+  " vnoremap <silent> gm <Cmd>call VSCodeNotifyVisual('editor.action.addSelectionToNextFindMatch', 0)<CR>
 
   " For bookmarks extension
   nnoremap <silent> <leader>m <Cmd>call VSCodeNotify('bookmarks.toggle')<CR>
   nnoremap <silent> mk <Cmd>call VSCodeNotify('bookmarks.toggle')<CR>
   nnoremap <silent> ml <Cmd>call VSCodeNotify('bookmarks.toggleLabeled')<CR>
-  vnoremap <silent> ml <Cmd>call VSCodeNotifyVisual('bookmarks.toggleLabeled', 1)<CR>
+  vnoremap <silent> ml <Cmd>call VSCodeNotifyVisual('bookmarks.toggleLabeled', 1)<CR><Esc>
   nnoremap <silent> 'j <Cmd>call VSCodeNotify('bookmarks.jumpToNext')<CR>
   nnoremap <silent> 'k <Cmd>call VSCodeNotify('bookmarks.jumpToPrevious')<CR>
 
