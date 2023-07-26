@@ -15,7 +15,12 @@
 	"zenMode.centerLayout": false,
 	"zenMode.hideLineNumbers": false,
 	"zenMode.restore": true,
-	"explorer.openEditors.visible": 0,
+
+	//> Explorer
+	"explorer.fileNesting.enabled": true,
+	"explorer.fileNesting.expand": false,
+	"explorer.openEditors.sortOrder": "fullPath",
+	"explorer.sortOrder": "foldersNestsFiles",
 
 	"workbench.editor.closeOnFileDelete": true,
 	"workbench.iconTheme": "symbols",
@@ -28,7 +33,6 @@
 	"workbench.startupEditor": "newUntitledFile",
 	"workbench.editor.closeEmptyGroups": true,
 	"workbench.editor.scrollToSwitchTabs": true,
-	"workbench.editor.enablePreviewFromQuickOpen": false,
 	"workbench.list.multiSelectModifier": "alt",
 	"workbench.colorCustomizations": {
 		"bookmarks.overviewRuler": "#00000000"
@@ -59,9 +63,8 @@
 	"editor.fontLigatures": true,
 	"editor.fontSize": 14,
 	"editor.lineHeight": 0,
-	"editor.acceptSuggestionOnEnter": "smart",
+	"editor.acceptSuggestionOnEnter": "off",
 	"editor.peekWidgetDefaultFocus": "editor",
-
 	"breadcrumbs.symbolPath": "last",
 	"breadcrumbs.showBooleans": false,
 	"breadcrumbs.showProperties": false,
@@ -72,10 +75,7 @@
 		"*.svg": "html"
 	},
 
-	"settingsSync.ignoredSettings": [
-		"editor.lineNumbers",
-		"workbench.colorCustomizations"
-	],
+	"settingsSync.ignoredSettings": ["editor.lineNumbers"],
 
 	//> Terminal
 	"terminal.integrated.shellIntegration.decorationsEnabled": "never",
@@ -216,8 +216,8 @@
 					"terminal.integrated.fontSize": 14
 				},
 				{
-					"editor.fontSize": 18,
-					"terminal.integrated.fontSize": 16
+					"editor.fontSize": 19,
+					"terminal.integrated.fontSize": 17
 				}
 			]
 		}
@@ -241,6 +241,8 @@
 	"cSpell.language": "en, lorem",
 	"cSpell.enableFiletypes": ["svelte", "todo"],
 	"cSpell.allowCompoundWords": true,
+
+	//prettier-ignore
 	"cSpell.userWords": [
 		"afterbegin",
 		"aliquet",
@@ -330,6 +332,7 @@
 		"prismic",
 		"Proin",
 		"pulvinar",
+		"rdflib",
 		"readwrite",
 		"Resub",
 		"resubbed",
@@ -370,6 +373,7 @@
 		"yoyo",
 		"Yuki"
 	],
+
 	//prettier-ignore
 	"cSpell.enabledLanguageIds": [
 		"asciidoc", "c", "cpp", "csharp", "css", "git-commit", "go", "graphql", "handlebars", "haskell", "html", "jade", "java", "javascript", "javascriptreact", "json", "jsonc", "latex", "less", "markdown", "php", "plaintext", "python", "pug", "restructuredtext", "rust", "scala", "scss", "text", "typescript", "typescriptreact", "yaml", "yml", "todo"
@@ -385,23 +389,68 @@
 	},
 	"screencastMode.keyboardShortcutsFormat": "keys",
 	"css.enabledLanguages": ["svelte", "html"],
-
 	"git.showActionButton": {
 		"publish": false
 	},
+	"git.closeDiffOnOperation": true,
 	"git.mergeEditor": true,
 	"scm.repositories.sortOrder": "path",
 	"scm.diffDecorationsGutterPattern": {
 		"added": true
 	},
 	"diffEditor.renderSideBySide": false,
-
+	"workbench.tree.renderIndentGuides": "none",
 	"svelte.enable-ts-plugin": true,
 	"svelte.ui.svelteKitFilesContextMenu.enable": "auto",
-	"git.closeDiffOnOperation": true,
-	"workbench.tree.renderIndentGuides": "none"
+	"explorer.fileNesting.patterns": {
+		"vite.config.js": "*.config.js, *.config.cjs, .*rc, .*rc.cjs, .*rc.js, *jsconfig.json",
+		".gitignore": ".*ignore"
+	},
+	"explorer.compactFolders": false,
+	"editor.acceptSuggestionOnCommitCharacter": false,
+	"workbench.settings.enableNaturalLanguageSearch": false,
+	"editor.suggestOnTriggerCharacters": false,
+	"editor.suggest.insertMode": "replace",
+	"task.quickOpen.history": 3,
+	"git.useCommitInputAsStashMessage": true,
+	"editor.tokenColorCustomizations": {
+		"textMateRules": [
+			{
+				"name": "envKeys",
+				"scope": "string.quoted.single.ini,constant.numeric.ini,string.quoted.double.ini",
+				"settings": {
+					"foreground": "#19354900"
+				}
+			}
+		]
+	},
+	"editor.suggestFontSize": 14,
+	"editor.wordBasedSuggestionsMode": "allDocuments",
+	"cssvar.files": ["**/*.css", "**/*.scss"],
+	"cssPeek.peekToExclude": [
+		"**/node_modules/**",
+		"**/bower_components/**",
+		"**/build/**",
+		"**/.svelte-kit/**"
+	],
+	"javascript.preferences.importModuleSpecifier": "non-relative",
+	"typescript.preferences.importModuleSpecifier": "non-relative",
+	"javascript.suggest.paths": true,
+	"typescript.suggest.paths": true,
+	"editor.suggest.snippetsPreventQuickSuggestions": false,
+	"symbols.hidesExplorerArrows": false,
+	"diffEditor.experimental.useVersion2": true,
+	"diffEditor.experimental.collapseUnchangedRegions": true,
+	"diffEditor.experimental.showMoves": true,
+	"editor.suggest.showReferences": false,
+	"editor.gotoLocation.alternativeDefinitionCommand": "editor.action.referenceSearch.trigger",
+	"emmet.showAbbreviationSuggestions": false,
+	"emmet.showSuggestionsAsSnippets": true,
+	"search.quickOpen.history.filterSortOrder": "recency"
+	//"search.quickOpen.includeSymbols": true
+
 	// "workbench.editor.revealIfOpen": true
-	// "output.smartScroll.enabled": false,
+	// "output.smartScroll.enabled": false
 	// "editor.cursorBlinking": "phase",
 	// "window.newWindowDimensions": "maximized"
 	// "files.hotExit": "onExitAndWindowClose"
