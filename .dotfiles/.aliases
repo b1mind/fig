@@ -52,7 +52,7 @@ alias pn='pnpm'
 alias pni='pnpm i -D'
 
 # Git stuffs
-alias gc='git commit -m'
+alias gc='git commit -p'
 alias gall='git add .'
 alias gomg='~/.scripts/releaseMe.sh'
 
