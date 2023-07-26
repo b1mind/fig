@@ -17,7 +17,6 @@
 	"zenMode.restore": true,
 
 	//> Explorer
-	"explorer.openEditors.visible": 0,
 	"explorer.fileNesting.enabled": true,
 	"explorer.fileNesting.expand": false,
 	"explorer.openEditors.sortOrder": "fullPath",
@@ -34,7 +33,6 @@
 	"workbench.startupEditor": "newUntitledFile",
 	"workbench.editor.closeEmptyGroups": true,
 	"workbench.editor.scrollToSwitchTabs": true,
-	"workbench.editor.enablePreviewFromQuickOpen": false,
 	"workbench.list.multiSelectModifier": "alt",
 	"workbench.colorCustomizations": {
 		"bookmarks.overviewRuler": "#00000000"
@@ -67,7 +65,6 @@
 	"editor.lineHeight": 0,
 	"editor.acceptSuggestionOnEnter": "off",
 	"editor.peekWidgetDefaultFocus": "editor",
-
 	"breadcrumbs.symbolPath": "last",
 	"breadcrumbs.showBooleans": false,
 	"breadcrumbs.showProperties": false,
@@ -406,7 +403,7 @@
 	"svelte.enable-ts-plugin": true,
 	"svelte.ui.svelteKitFilesContextMenu.enable": "auto",
 	"explorer.fileNesting.patterns": {
-		"vite.config.js": "*.config.js, *.config.cjs, .*rc, .*rc.cjs, .*rc.js",
+		"vite.config.js": "*.config.js, *.config.cjs, .*rc, .*rc.cjs, .*rc.js, *jsconfig.json",
 		".gitignore": ".*ignore"
 	},
 	"explorer.compactFolders": false,
@@ -414,10 +411,7 @@
 	"workbench.settings.enableNaturalLanguageSearch": false,
 	"editor.suggestOnTriggerCharacters": false,
 	"editor.suggest.insertMode": "replace",
-	"search.quickOpen.history.filterSortOrder": "recency",
-	"editor.suggest.snippetsPreventQuickSuggestions": false,
-	"search.quickOpen.includeHistory": false,
-	"task.quickOpen.history": 5,
+	"task.quickOpen.history": 3,
 	"git.useCommitInputAsStashMessage": true,
 	"editor.tokenColorCustomizations": {
 		"textMateRules": [
@@ -442,10 +436,21 @@
 	"javascript.preferences.importModuleSpecifier": "non-relative",
 	"typescript.preferences.importModuleSpecifier": "non-relative",
 	"javascript.suggest.paths": true,
-	"typescript.suggest.paths": true
+	"typescript.suggest.paths": true,
+	"editor.suggest.snippetsPreventQuickSuggestions": false,
+	"symbols.hidesExplorerArrows": false,
+	"diffEditor.experimental.useVersion2": true,
+	"diffEditor.experimental.collapseUnchangedRegions": true,
+	"diffEditor.experimental.showMoves": true,
+	"editor.suggest.showReferences": false,
+	"editor.gotoLocation.alternativeDefinitionCommand": "editor.action.referenceSearch.trigger",
+	"emmet.showAbbreviationSuggestions": false,
+	"emmet.showSuggestionsAsSnippets": true,
+	"search.quickOpen.history.filterSortOrder": "recency"
 	//"search.quickOpen.includeSymbols": true
+
 	// "workbench.editor.revealIfOpen": true
-	// "output.smartScroll.enabled": false,
+	// "output.smartScroll.enabled": false
 	// "editor.cursorBlinking": "phase",
 	// "window.newWindowDimensions": "maximized"
 	// "files.hotExit": "onExitAndWindowClose"

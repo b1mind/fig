@@ -6,12 +6,29 @@
 	// workbench.action.toggleMultiCursorModifier
 	// createCursor
 
+	//working on this for explorer fileGroups
+	{
+		"key": "space",
+		"command": "filesExplorer.openFilePreserveFocus",
+		"when": "explorerViewletVisible && filesExplorerFocus && !explorerResourceIsFolder && !inputFocus && !treeElementCanExpand"
+	},
+	{
+		"key": "space",
+		"command": "list.toggleExpand",
+		"when": "listFocus && !inputFocus"
+	},
+	{
+		"key": "space",
+		"command": "-filesExplorer.openFilePreserveFocus",
+		"when": "explorerViewletVisible && filesExplorerFocus && !explorerResourceIsFolder && !inputFocus"
+	},
+
 	//< List vim like controls
-	//trying to move to center after ctrl d/u
+	//semi working to move to center after ctrl d/u
 	{
 		"key": "ctrl+d",
 		"command": "extension.multiCommand.execute",
-		"when": "editorTextFocus && neovim.mode == normal",
+		"when": "editorTextFocus && neovim.mode == normal && !isInDiffEditor",
 		"args": {
 			"sequence": [
 				"vscode-neovim.ctrl-d",
@@ -22,7 +39,7 @@
 	{
 		"key": "ctrl+u",
 		"command": "extension.multiCommand.execute",
-		"when": "editorTextFocus && neovim.mode == normal",
+		"when": "editorTextFocus && neovim.mode == normal && !isInDiffEditor",
 		"args": {
 			"sequence": [
 				"vscode-neovim.ctrl-u",
@@ -51,16 +68,7 @@
 	// 	"args": { "to": "viewPortCenter" }
 	// },
 
-	{
-		"key": "o",
-		"command": "list.expand",
-		"when": "listFocus && !inputFocus"
-	},
-	// {
-	// 	"key": "shift+o",
-	// 	"command": "list.select",
-	// 	"when": "listFocus && !inputFocus"
-	// },
+	//this is nice
 	{
 		"key": "shift+h",
 		"command": "list.collapseAll",
@@ -118,6 +126,10 @@
 	},
 	{
 		"key": "alt+b",
+		"command": "workbench.action.toggleSidebarVisibility"
+	},
+	{
+		"key": "ctrl+b",
 		"command": "workbench.action.toggleSidebarVisibility"
 	},
 	{
@@ -233,12 +245,12 @@
 	{
 		"key": "ctrl+d",
 		"command": "workbench.action.compareEditor.nextChange",
-		"when": "isInDiffEditor && neovim.mode == insert || sideBarFocus && workbench.scm.active"
+		"when": "isInDiffEditor || sideBarFocus && focusedView == 'workbench.scm'"
 	},
 	{
 		"key": "ctrl+u",
 		"command": "workbench.action.compareEditor.previousChange",
-		"when": "isInDiffEditor && neovim.mode == insert || sideBarFocus && workbench.scm.active"
+		"when": "isInDiffEditor || sideBarFocus && focusedView == 'workbench.scm'"
 	},
 	{
 		"key": "ctrl+alt+d",
@@ -282,17 +294,17 @@
 		"when": "isInDiffEditor || !textInputFocus && sideBarFocus && focusedView == 'workbench.scm'"
 	},
 	{
-		"key": "s",
+		"key": "alt+s",
 		"command": "git.stageSelectedRanges",
 		"when": "isInDiffEditor || dirtyDiffVisible"
 	},
 	{
-		"key": "r",
+		"key": "alt+r",
 		"command": "git.revertSelectedRanges",
 		"when": "isInDiffEditor || dirtyDiffVisible"
 	},
 	{
-		"key": "u",
+		"key": "alt+u",
 		"command": "git.unstageSelectedRanges",
 		"when": "isInDiffEditor || dirtyDiffVisible"
 	},
@@ -672,14 +684,25 @@
 	{
 		"key": "enter",
 		"command": "extension.multiCommand.execute",
-		"when": "explorerViewletVisible && filesExplorerFocus && !explorerResourceIsFolder && !inputFocus",
+		"when": "sidebarFocus && listFocus && !inputFocus && !editorFocus",
 		"args": {
-			"sequence": [
-				"workbench.action.toggleSidebarVisibility", // focuses the commit message input, as close as you can get
-				"explorer.openAndPassFocus"
-			]
+			"sequence": ["workbench.action.toggleSidebarVisibility", "list.select"]
 		}
 	},
+
+	//fixme this needs working for scm
+	// {
+	// 	"key": "enter",
+	// 	"command": "extension.multiCommand.execute",
+	// 	"when": "listFocus && focusedView == 'workbench.scm' && !inputFocus",
+	// 	"args": {
+	// 		"sequence": [
+	// 			"workbench.action.toggleSidebarVisibility",
+	// 			// need to know what opens diff
+	// 			"workbench.action.openDiffView"
+	// 		]
+	// 	}
+	// },
 	{
 		"key": "alt+l",
 		"command": "extension.multiCommand.execute",
@@ -895,17 +918,11 @@
 	},
 	{
 		"key": "ctrl+d",
-		"command": "-editor.action.addSelectionToNextFindMatch",
+		"command": "-editor.action.addSelectionToNextFindMatch"
+	},
+	{
+		"key": "ctrl+shift+l",
+		"command": "-editor.action.selectHighlights",
 		"when": "editorFocus"
-	},
-	{
-		"key": "space",
-		"command": "filesExplorer.openFilePreserveFocus",
-		"when": "explorerViewletVisible && filesExplorerFocus && !explorerResourceIsFolder && !inputFocus && !treeElementCanExpand"
-	},
-	{
-		"key": "space",
-		"command": "-filesExplorer.openFilePreserveFocus",
-		"when": "explorerViewletVisible && filesExplorerFocus && !explorerResourceIsFolder && !inputFocus"
 	}
 ]
