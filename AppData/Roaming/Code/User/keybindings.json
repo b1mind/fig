@@ -245,12 +245,12 @@
 	{
 		"key": "ctrl+d",
 		"command": "workbench.action.compareEditor.nextChange",
-		"when": "isInDiffEditor || sideBarFocus && focusedView == 'workbench.scm'"
+		"when": "isInDiffEditor || sideBarFocus && focusedView == 'workbench.scm' || sidebarFocus && focusedView == 'timeline'"
 	},
 	{
 		"key": "ctrl+u",
 		"command": "workbench.action.compareEditor.previousChange",
-		"when": "isInDiffEditor || sideBarFocus && focusedView == 'workbench.scm'"
+		"when": "isInDiffEditor || sideBarFocus && focusedView == 'workbench.scm' || sideBarFocus && focusedView == 'timeline'"
 	},
 	{
 		"key": "ctrl+alt+d",
