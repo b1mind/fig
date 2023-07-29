@@ -1,6 +1,7 @@
 set exrc
 set nohlsearch
 set hidden
+set nocursorcolumn
 
 if !exists('g:vscode')
   syntax on
@@ -48,7 +49,7 @@ call plug#begin('~/.vim/plugged')
   Plug 'vim-scripts/ReplaceWithRegister'
   Plug 'chaoren/vim-wordmotion'
   Plug 'unblevable/quick-scope'
-  Plug 'adelarsq/vim-matchit'
+  " Plug 'adelarsq/vim-matchit'
   Plug 'tpope/vim-surround'
   Plug 'leafOfTree/vim-svelte-plugin'
   " Plug 'rhysd/clever-f.vim'
@@ -100,15 +101,15 @@ if !exists('g:vscode')
   let g:netrw_banner = 0
   let g:netrw_winsize = 25
 
-  " >> ThemeSetup--
-    "
-  augroup qs_colors
-    autocmd!
-    " autocmd ColorScheme * highlight QuickScopePrimary guifg='#afff5f' gui=underline ctermfg=155 cterm=underline
-    " autocmd ColorScheme * highlight QuickScopeSecondary guifg='#5fffff' gui=underline ctermfg=81 cterm=underline
-    autocmd ColorScheme * highlight QuickScopePrimary gui=underline ctermfg=155 cterm=underline
-    autocmd ColorScheme * highlight QuickScopeSecondary gui=underline ctermfg=81 cterm=underline
-  augroup END
+  "" >> ThemeSetup--
+
+  "augroup qs_colors
+  "  autocmd!
+  "  " autocmd ColorScheme * highlight QuickScopePrimary guifg='#afff5f' gui=underline ctermfg=155 cterm=underline
+  "  " autocmd ColorScheme * highlight QuickScopeSecondary guifg='#5fffff' gui=underline ctermfg=81 cterm=underline
+  "  autocmd ColorScheme * highlight QuickScopePrimary gui=underline ctermfg=155 cterm=underline
+  "  autocmd ColorScheme * highlight QuickScopeSecondary gui=underline ctermfg=81 cterm=underline
+  "augroup END
 
   let g:airline#extensions#tabline#enabled = 1
   colorscheme onedark
@@ -118,9 +119,9 @@ if !exists('g:vscode')
   " set guicursor=
   hi Cursor guifg='#e3e3e3' guibg='#ff50ff'
   set termguicolors
-  set guicursor=n-v-c:block,i-ci-ve:ver25,r-cr:hor20,o:hor50
-    \,a:blinkwait600-blinkoff400-blinkon250-Cursor/lCursor
-    \,sm:block-blinkwait275-blinkoff120-blinkon175,
+  " set guicursor=n-v-c:block,i-ci-ve:ver25,r-cr:hor20,o:hor50
+  "   \,a:blinkwait600-blinkoff400-blinkon250-Cursor/lCursor
+  "   \,sm:block-blinkwait275-blinkoff120-blinkon175,
 
   " >> abbreviations
   " abbr soM something
@@ -306,7 +307,7 @@ if exists('g:vscode')
   " Different settings in vsCode for scoping 
   highlight QuickScopePrimary gui=underline cterm=underline ctermfg=155 
   highlight QuickScopeSecondary gui=underline cterm=underline ctermfg=81
-  highlight Visual guibg='#2f2b3a' 
+  " highlight Visual guibg='#2f2b3a' 
   
   " for colors
   " highlight QuickScopePrimary guisp='#afff5f' gui=underline ctermfg=155 cterm=underline
@@ -344,13 +345,13 @@ if exists('g:vscode')
   nnoremap <silent> <leader>m <Cmd>call VSCodeNotify('bookmarks.toggle')<CR>
   nnoremap <silent> mk <Cmd>call VSCodeNotify('bookmarks.toggle')<CR>
   nnoremap <silent> ml <Cmd>call VSCodeNotify('bookmarks.toggleLabeled')<CR>
-  vnoremap <silent> ml <Cmd>call VSCodeNotifyVisual('bookmarks.toggleLabeled', 1)<CR><Esc>
+  vnoremap <silent> ml <Cmd>call VSCodeNotify('bookmarks.toggleLabeled', 1)<CR><Esc>
   nnoremap <silent> 'j <Cmd>call VSCodeNotify('bookmarks.jumpToNext')<CR>
   nnoremap <silent> 'k <Cmd>call VSCodeNotify('bookmarks.jumpToPrevious')<CR>
 
   " Good example of cmd bind that extends
   nnoremap <silent> ? <Cmd>call VSCodeNotify('workbench.action.findInFiles', { 'query': expand('<cword>')})<CR>
-  vnoremap <silent> ? <Cmd>call VSCodeNotifyVisual('workbench.action.findInFiles', 1)<CR>
+  vnoremap <silent> ? <Cmd>call VSCodeNotify('workbench.action.findInFiles', 1)<CR>
 
   " Fix for comments?
   "FIXME use plugin for vim motions not working with vsCode comments
