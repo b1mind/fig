@@ -6,6 +6,8 @@ if [ -d ~/.poshthemes/ ]; then
     eval "$(oh-my-posh --init --shell bash --config ~/.poshthemes/1mind.omp.json)"
 fi
 
+bind -x '"\C-l": clear'
+
 # Alias definitions.
 # See /usr/share/doc/bash-doc/examples in the bash-doc package.
 

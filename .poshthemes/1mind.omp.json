@@ -1,118 +1,92 @@
 {
   "$schema": "https://raw.githubusercontent.com/JanDeDobbeleer/oh-my-posh/main/themes/schema.json",
+  "version": 2,
   "blocks": [
     {
       "type": "prompt",
       "alignment": "left",
       "segments": [
-
         {
           "type": "text",
           "style": "plain",
           "foreground": "#7b56ff",
-          "properties": {
-            "prefix":"",
-            "text": "<#9494ff>┏[</>",
-            "postfix":""
-          }
+          "template": "<#9494ff>\u250f[</>"
         },
-
         {
           "type": "exit",
           "style": "plain",
           "foreground": "#9494ff",
-          "properties": {
-            "prefix": "<#f05050>x</><#9494ff>][</>",
-            "postfix":"",
-            "display_exit_code": false
-          }
+          "template": "<#f05050>x</><#9494ff>][</>{{ if gt .Code 0 }}\uf00d{{ else }}\uf42e{{ end }}"
         },
-
         {
           "type": "root",
           "style": "plain",
           "foreground": "#9494ff",
+          "template": "\uf0e7 ",
           "properties": {
-            "root_icon": "\u2b4d",
-            "prefix": "",
-            "postfix": " "
+            "root_icon": "\u2b4d"
           }
         },
-
         {
           "type": "session",
           "style": "plain",
           "foreground": "#7b56ff",
+          "template": "{{ if .SSHSession }}<#9494ff>\uf817</> {{ end }}<#7b56ff>{{ .HostName }}</><#9494ff>: </>",
           "properties": {
-            "ssh_icon": "<#9494ff>\uF817</> ",
-            "prefix": "",
-            "display_user": false,
-            "host_color": "#7b56ff",
-            "postfix": "<#9494ff>: </>"
+            "display_user": false
           }
         },
-
         {
           "type": "node",
           "style": "plain",
           "foreground": "#AAE682",
+          "template": "\ue781{{ if .PackageManagerIcon }}{{ .PackageManagerIcon }} {{ end }}{{ .Full }} ",
           "properties": {
-            "display_version": false,
-            "prefix": "\uE781",
-            "postfix": " "
+            "fetch_version": false
           }
         },
-
         {
           "type": "python",
           "style": "plain",
           "foreground": "#906cff",
+          "template": "\ue235{{ if .Error }}{{ .Error }}{{ else }}{{ if .Venv }}{{ .Venv }} {{ end }}{{ .Full }}{{ end }} ",
           "properties": {
             "display_mode": "context",
-            "display_version": false,
-            "prefix": "\uE235",
-            "postfix": " "
+            "fetch_version": false
           }
         },
-
         {
           "type": "path",
           "style": "plain",
           "foreground": "#94bfff",
+          "template": "{{ .Path }} ",
           "properties": {
-            "style": "folder",
-            "prefix": ""
+            "style": "folder"
           }
         },
-
         {
           "type": "git",
           "style": "plain",
           "foreground": "#C678DD",
+          "template": "{{ .HEAD }}{{if .BranchStatus }} {{ .BranchStatus }}{{ end }}{{ if .Working.Changed }} \uf044 {{ .Working.String }}{{ end }}{{ if and (.Staging.Changed) (.Working.Changed) }} |{{ end }}{{ if .Staging.Changed }} \uf046 {{ .Staging.String }}{{ end }}",
           "properties": {
-            "prefix": "",
-            "display_status": true,
-            "postfix":""
+            "fetch_status": true
           }
         }
-
       ]
     },
     {
       "type": "prompt",
       "alignment": "left",
-      "newline": true,
       "segments": [
         {
           "type": "text",
           "style": "plain",
           "foreground": "#9494ff",
-          "properties": {
-            "prefix": "┖",
-            "text": "\u276F"
-          }
+          "template": "\u2516❯ "
         }
-      ]
+      ],
+      "newline": true
     }
   ]
 }

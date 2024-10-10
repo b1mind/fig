@@ -38,7 +38,9 @@ alias ..='cd ..'
 alias ...='cd ../../'
 alias ....='cd ../../../'
 
-alias .1m='ssh -t root@104.219.41.206'
+# alias .1m='ssh -t root@104.219.41.206' # old server
+alias .1test='ssh -t root@66.179.209.95' # test server 4c8r
+alias .1m='ssh -t root@66.179.208.130'
 
 # Python stuffs
 alias py='python3'

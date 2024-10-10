@@ -52,6 +52,7 @@ call plug#begin('~/.vim/plugged')
   " Plug 'adelarsq/vim-matchit'
   Plug 'tpope/vim-surround'
   Plug 'leafOfTree/vim-svelte-plugin'
+  Plug 'vscode-neovim/vscode-multi-cursor.nvim'
   " Plug 'rhysd/clever-f.vim'
 
   " >vim plugins only
@@ -122,7 +123,7 @@ if !exists('g:vscode')
   " set guicursor=n-v-c:block,i-ci-ve:ver25,r-cr:hor20,o:hor50
   "   \,a:blinkwait600-blinkoff400-blinkon250-Cursor/lCursor
   "   \,sm:block-blinkwait275-blinkoff120-blinkon175,
-
+ 
   " >> abbreviations
   " abbr soM something
 
@@ -145,9 +146,9 @@ if !exists('g:vscode')
   "TODO map <C-t> buffer tab cycle
   "TODO map <C-v> <C-q>
   
-" nice hack to center after up/down
-nnoremap <C-u> <C-u>zz
-nnoremap <C-d> <C-d>M
+  " nice hack to center after up/down
+  nnoremap <C-u> <C-u>zz
+  nnoremap <C-d> <C-d>M
 
   
   " navigate windows/buffers
@@ -191,8 +192,8 @@ let mapleader = " "
 map , %
 
 " nnoremap ; zz
-nnoremap J }j
-vnoremap J }
+" nnoremap J }j
+" vnoremap J }
 nnoremap K {k
 vnoremap K {
 nnoremap Y y$
@@ -208,6 +209,8 @@ nnoremap } }j
 nnoremap { {k
 vnoremap } }j
 vnoremap { {k
+nnoremap n nzz
+nnoremap N Nzz
 
 " normal maps
 nnoremap R r
@@ -326,26 +329,25 @@ if exists('g:vscode')
   " hit that gspot with vsc actions (todo make some work for neovim)
   nnoremap <silent> gp <Cmd>call VSCodeCall('editor.action.marker.next')<CR>
   nnoremap <silent> gl <Cmd>call VSCodeCall('editor.action.openLink')<CR>
-  nnoremap gd <Cmd>call VSCodeNotify('editor.action.peekDefinition')<CR>
-  nnoremap gD <Cmd>call VSCodeNotify('editor.action.revealDefinition')<CR>
-  " map gD <Cmd>call <SID>vscodeGoToDefinition('revealDefinition')<CR>
+  nnoremap gd <Cmd>call VSCodeNotify('editor.action.revealDefinition')<CR>
+  nnoremap gD <Cmd>call VSCodeNotify('editor.action.peekDefinition')<CR>
 
   " Git version controls
-  nnoremap <silent> gb <Cmd>call VSCodeCall('editor.action.dirtydiff.next')<CR>
+  nnoremap <silent> ga <Cmd>call VSCodeCall('editor.action.dirtydiff.next')<CR>
 
   "TODO some things to control git staging, can use vim commands?
   "TODO gpot for errors? gE? then <c-d><c-u> when conditional?
 
-  nnoremap <silent> gm <Cmd>call VSCodeCall('editor.action.addSelectionToNextFindMatch')<CR>
-  nnoremap <silent> gM <Cmd>call VSCodeCall('editor.action.selectHighlights')<CR>
-  " is there away we can grab the whole visual not just word?
-  " vnoremap <silent> gm <Cmd>call VSCodeNotifyVisual('editor.action.addSelectionToNextFindMatch', 0)<CR>
+  " no longer working since new vis mode, need https://github.com/vscode-neovim/vscode-multi-cursor.nvim
+  " can't get multi-cursor working might need to move to lua finally
+  map <silent> gm <Cmd>call VSCodeNotify('editor.action.addSelectionToNextFindMatch')<CR>
+  map <silent> gM <Cmd>call VSCodeNotify('editor.action.selectHighlights', 1)<CR>
 
   " For bookmarks extension
   nnoremap <silent> <leader>m <Cmd>call VSCodeNotify('bookmarks.toggle')<CR>
   nnoremap <silent> mk <Cmd>call VSCodeNotify('bookmarks.toggle')<CR>
   nnoremap <silent> ml <Cmd>call VSCodeNotify('bookmarks.toggleLabeled')<CR>
-  vnoremap <silent> ml <Cmd>call VSCodeNotify('bookmarks.toggleLabeled', 1)<CR><Esc>
+  vnoremap <silent> ml <Cmd>call VSCodeNotify('bookmarks.toggleLabeled', 1)<CR>
   nnoremap <silent> 'j <Cmd>call VSCodeNotify('bookmarks.jumpToNext')<CR>
   nnoremap <silent> 'k <Cmd>call VSCodeNotify('bookmarks.jumpToPrevious')<CR>
 
